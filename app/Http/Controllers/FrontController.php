@@ -11,11 +11,13 @@ use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
-
+    // 開發中暫用
     public function redirectToCh() {
-        return redirect('/ch');
+        return redirect('/admin');
     }
 
+
+    // 前台部分
     public function index() {
         $banners = Banners::orderBy('sort','desc')->get();
         $all_news = News::orderBy('sort','desc')->take(4)->get();

@@ -14,9 +14,9 @@ class SeoTableSeeder extends Seeder
     {
         DB::table('seo')->insert([
             'page' => "default_seo",
-            'keyword' => '嘉鴻塑膠',
-            'title' => '嘉鴻塑膠',
-            'description' => '嘉鴻塑膠'
+            'keyword' => 'HolofightZ',
+            'title' => 'HolofightZ',
+            'description' => 'HolofightZ'
         ]);
     }
 }

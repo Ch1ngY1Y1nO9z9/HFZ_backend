@@ -38,9 +38,9 @@
                     <div class="left_side col-6 col-md-4">
                         <div class="logo">
                             <a class="w-100" href="/ch">
-                                <img width="100%" class="lazy" data-src="/img/logo.png" src="/img/logo.png" alt="嘉鴻塑膠">
+                                <img width="100%" class="lazy" data-src="/img/logo.png" src="/img/logo.png" alt="HolofightZ">
                                 <span>
-                                    嘉鴻塑膠
+                                    HolofightZ
                                 </span>
                             </a>
                         </div>
@@ -114,7 +114,7 @@
         <div class="container">
             <div class="footer_info">
                 505 彰化縣鹿港鎮溝墘里棋盤巷77號 Tel:04-7779606<br>
-                Copyright © 2021 嘉鴻塑膠股份有限公司 All Rights Reserved
+                Copyright © 2021 HolofightZ股份有限公司 All Rights Reserved
             </div>
         </div>
     </footer>

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,11 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('/welcome');
 // })->name('index');
-Route::get('/', 'FrontController@redirectToCh');
-Route::get('/ch', 'FrontController@index');
-Route::get('/en', 'FrontController@index_en');
+// Route::get('/', 'FrontController@redirectToCh');
+// Route::get('/ch', 'FrontController@index');
+// Route::get('/en', 'FrontController@index_en');
+// test get lang
+
 Route::post('/contact_us', 'FrontController@contact_us');
 
 Route::get('/news/{lang}/{id}', 'FrontController@news');
@@ -41,55 +44,73 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 // Route::get('password/reset', 'Auth\ResetPasswordController@showResetForm');
 // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('/admin', 'HomeController@index')->name('home');
-
 
 // 網站後台
 Route::middleware(['auth'])->prefix('admin')->group(function () {
-    Route::get('/', 'HomeController@index');
 
-    Route::get('/resetPassword', "HomeController@resetPassword");
-    Route::post('/resetPassword', "HomeController@reset");
+    Route::group(['middleware' => ['language']], function () {
+
+        Route::get('/{lang?}','HomeController@index');
+    });
+
+    Route::prefix('en')->group(function(){
+        //SEO設定
+        Route::get('seo', 'SeoController@index');
+
+        // Banner
+        Route::get('banner','BannerController@index');
+        Route::get('banner/create','BannerController@create');
+        Route::get('banner/edit/{id}', 'BannerController@edit');
+
+        // 最新消息
+        Route::get('/news','NewsController@index');
+        Route::get('news/create','NewsController@create');
+        Route::get('news/edit/{id}', 'NewsController@edit');
+
+        //聯絡我們管理
+        Route::get('contact','ContactController@index');
+        Route::get('contact/{id}','ContactController@show');
+
+
+        //產品類別管理
+        Route::get('product_type','ProductTypeController@index');
+        Route::get('product_type/create','ProductTypeController@create');
+        Route::get('product_type/edit/{id}', 'ProductTypeController@edit');
+
+
+        //產品管理
+        Route::get('products','ProductsController@index');
+        Route::get('products/create','ProductsController@create');
+        Route::get('products/edit/{id}', 'ProductsController@edit');
+    });
 
     //SEO設定
-    Route::get('seo', 'SeoController@index');
     Route::post('seo', 'SeoController@update');
 
     // Banner
-    Route::get('banner','BannerController@index');
-    Route::get('banner/create','BannerController@create');
     Route::post('banner/store', 'BannerController@store');
-    Route::get('banner/edit/{id}', 'BannerController@edit');
     Route::post('banner/update/{id}', 'BannerController@update');
     Route::post('banner/delete/{id}', 'BannerController@delete');
 
     // 最新消息
-    Route::get('/news','NewsController@index');
-    Route::get('news/create','NewsController@create');
     Route::post('news/store', 'NewsController@store');
-    Route::get('news/edit/{id}', 'NewsController@edit');
     Route::post('news/update/{id}', 'NewsController@update');
     Route::post('news/delete/{id}', 'NewsController@delete');
 
     //聯絡我們管理
-    Route::get('contact','ContactController@index');
-    Route::get('contact/{id}','ContactController@show');
     Route::post('contact/delete/{id}','ContactController@delete');
     Route::post('contact/delete_all/','ContactController@delete_all')->name('clear_contact');
 
     //產品類別管理
-    Route::get('product_type','ProductTypeController@index');
-    Route::get('product_type/create','ProductTypeController@create');
     Route::post('product_type/store', 'ProductTypeController@store');
-    Route::get('product_type/edit/{id}', 'ProductTypeController@edit');
     Route::post('product_type/update/{id}', 'ProductTypeController@update');
     Route::post('product_type/delete/{id}', 'ProductTypeController@delete');
 
     //產品管理
-    Route::get('products','ProductsController@index');
-    Route::get('products/create','ProductsController@create');
     Route::post('products/store', 'ProductsController@store');
-    Route::get('products/edit/{id}', 'ProductsController@edit');
     Route::post('products/update/{id}', 'ProductsController@update');
     Route::post('products/delete/{id}', 'ProductsController@delete');
+
+    Route::get('/resetPassword', "HomeController@resetPassword");
+    Route::post('/resetPassword', "HomeController@reset");
 });
