@@ -37,32 +37,19 @@
                     <?php $lang = Session::get('lang'); ?>
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/{{$lang}}/seo">SEO管理</a>
+                            <a class="nav-link" href="/admin/seo">SEO</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/{{$lang}}/banner">首頁橫幅管理</a>
+                            <a class="nav-link" href="/admin/banner">Index Banner</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/{{$lang}}/news">最新消息管理</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                產品管理
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/admin/product_type">類別管理</a>
-                                <a class="dropdown-item" href="/admin/products">產品上架</a>
-                            </div>
+                            <a class="nav-link" href="/admin/news">FightZNews</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/contact">聯絡我們管理</a>
+                            <a class="nav-link" href="/admin/profile">Profile Management</a>
                         </li>
                         <li class="nav-item">
-                            @if($lang == 'en')
-                                <a class="nav-link" href="/admin/ch">change language</a>
-                            @else
-                                <a class="nav-link" href="/admin/en">change language</a>
-                            @endif
+                            <a class="nav-link" href="/admin/contact">Contact us</a>
                         </li>
                     </ul>
                     @endif

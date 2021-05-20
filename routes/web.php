@@ -23,7 +23,17 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/en', 'FrontController@index_en');
 // test get lang
 
-Route::post('/contact_us', 'FrontController@contact_us');
+
+Route::get('/', 'FrontController@index');
+Route::get('/FAQ', 'FrontController@FAQ');
+Route::get('/FightZNews', 'FrontController@FightZNews');
+Route::get('/FightZNews/{new_id}', 'FrontController@News');
+Route::get('/PreviousShows', 'FrontController@PreviousShows');
+Route::get('/WrestlersProfile', 'FrontController@WrestlersProfile');
+Route::get('/WrestlersProfile/{character}', 'FrontController@Profile');
+
+
+Route::post('/ContactHFZ', 'FrontController@contact_us');
 
 Route::get('/news/{lang}/{id}', 'FrontController@news');
 Route::get('/Types/{lang}/{id}', 'FrontController@Types');
@@ -48,69 +58,27 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 // 網站後台
 Route::middleware(['auth'])->prefix('admin')->group(function () {
 
-    Route::group(['middleware' => ['language']], function () {
+    Route::get('/','HomeController@index');
 
-        Route::get('/{lang?}','HomeController@index');
-    });
-
-    Route::prefix('en')->group(function(){
-        //SEO設定
-        Route::get('seo', 'SeoController@index');
-
-        // Banner
-        Route::get('banner','BannerController@index');
-        Route::get('banner/create','BannerController@create');
-        Route::get('banner/edit/{id}', 'BannerController@edit');
-
-        // 最新消息
-        Route::get('/news','NewsController@index');
-        Route::get('news/create','NewsController@create');
-        Route::get('news/edit/{id}', 'NewsController@edit');
-
-        //聯絡我們管理
-        Route::get('contact','ContactController@index');
-        Route::get('contact/{id}','ContactController@show');
-
-
-        //產品類別管理
-        Route::get('product_type','ProductTypeController@index');
-        Route::get('product_type/create','ProductTypeController@create');
-        Route::get('product_type/edit/{id}', 'ProductTypeController@edit');
-
-
-        //產品管理
-        Route::get('products','ProductsController@index');
-        Route::get('products/create','ProductsController@create');
-        Route::get('products/edit/{id}', 'ProductsController@edit');
-    });
-
-    //SEO設定
-    Route::post('seo', 'SeoController@update');
+    Route::get('seo', 'SeoController@index');
 
     // Banner
-    Route::post('banner/store', 'BannerController@store');
-    Route::post('banner/update/{id}', 'BannerController@update');
-    Route::post('banner/delete/{id}', 'BannerController@delete');
+    Route::get('banner','BannerController@index');
+    Route::get('banner/create','BannerController@create');
+    Route::get('banner/edit/{id}', 'BannerController@edit');
 
     // 最新消息
-    Route::post('news/store', 'NewsController@store');
-    Route::post('news/update/{id}', 'NewsController@update');
-    Route::post('news/delete/{id}', 'NewsController@delete');
+    Route::get('/news','NewsController@index');
+    Route::get('news/create','NewsController@create');
+    Route::get('news/edit/{id}', 'NewsController@edit');
 
     //聯絡我們管理
+    Route::get('contact','ContactController@index');
+    Route::post('contact/{id}','ContactController@show');
     Route::post('contact/delete/{id}','ContactController@delete');
-    Route::post('contact/delete_all/','ContactController@delete_all')->name('clear_contact');
-
-    //產品類別管理
-    Route::post('product_type/store', 'ProductTypeController@store');
-    Route::post('product_type/update/{id}', 'ProductTypeController@update');
-    Route::post('product_type/delete/{id}', 'ProductTypeController@delete');
 
     //產品管理
-    Route::post('products/store', 'ProductsController@store');
-    Route::post('products/update/{id}', 'ProductsController@update');
-    Route::post('products/delete/{id}', 'ProductsController@delete');
-
-    Route::get('/resetPassword', "HomeController@resetPassword");
-    Route::post('/resetPassword', "HomeController@reset");
+    Route::get('profile','ProductsController@index');
+    Route::get('profile/create','ProductsController@create');
+    Route::get('profile/edit/{id}', 'ProductsController@edit');
 });

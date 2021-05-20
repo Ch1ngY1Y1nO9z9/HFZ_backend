@@ -12,52 +12,47 @@ use Illuminate\Http\Request;
 class FrontController extends Controller
 {
     // 開發中暫用
-    public function redirectToCh() {
-        return redirect('/admin');
-    }
+    // public function redirectToCh() {
+    //     return redirect('/admin');
+    // }
 
 
     // 前台部分
     public function index() {
-        $banners = Banners::orderBy('sort','desc')->get();
-        $all_news = News::orderBy('sort','desc')->take(4)->get();
-        $productTypes = ProductsType::orderBy('sort','desc')->get();
-
-        return view('front.index',compact('banners','all_news','productTypes'));
+        $banner = Banners::find(1);
+        $news = News::orderBy('sort','desc')->take(3)->get();
+        return view('front.index',compact('banner','news'));
     }
 
-    public function index_en() {
-        $banners = Banners::orderBy('sort','desc')->get();
-        $all_news = News::orderBy('sort','desc')->take(4)->get();
-        $productTypes = ProductsType::orderBy('sort','desc')->get();
-
-        return view('front.index_en',compact('banners','all_news','productTypes'));
+    public function FAQ() {
+        return view('front.FAQ');
     }
 
+    public function FightZNews() {
+        $news = News::orderBy('sort','desc')->get();
+        return view('front.FightZNews',compact('news'));
+    }
 
-    public function news($lang,$id) {
+    public function News($id) {
         $news = News::find($id);
-
-        if($lang == 'ch'){
-            return view('front.news_ch',compact('news'));
-        }
-
-        return view('front.news_en',compact('news'));
+        return view('front.News',compact('news'));
     }
 
-    public function Types($lang,$id) {
-        $type = ProductsType::find($id);
-        $products = Products::where('type',$type->id)->orderBy('sort','desc')->get();
+    public function PreviousShows() {
+        return view('front.PreviousShows');
+    }
 
-        if($lang == 'ch'){
-            return view('front.product_ch',compact('type','products'));
-        }
-        return view('front.product_en',compact('type','products'));
+    public function WrestlersProfile() {
+        return view('front.WrestlersProfile');
+    }
+
+    public function Profile($character) {
+        return view('front.Profile');
     }
 
     public function contact_us(Request $request) {
         ContactUs::create($request->all());
 
-        return redirect('/');
+        return redirect('/#Contact')->with('message','thank you :)');
     }
 }

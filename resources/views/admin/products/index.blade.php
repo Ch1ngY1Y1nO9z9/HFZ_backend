@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        產品上架管理
+                        Profile Management
                     </div>
 
                     <div class="card-body">

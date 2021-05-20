@@ -11,27 +11,27 @@
             <div class="col-sm-12">
                 <div class="card">
                     <h4 class="card-header">
-                        SEO設定
+                        SEO Management
                     </h4>
                     <div class="card-body">
                         <form action="/admin/seo" method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="title" class="col-form-label">網頁名稱</label>
+                                <label for="title" class="col-form-label">Website title</label>
                                 <input type="text" class="form-control" id="title" name="title" value="{{$seo->title}}" required>
                             </div>
                             <div class="form-group">
-                                <label for="keyword" class="col-form-label">搜尋引擎關鍵字</label>
+                                <label for="keyword" class="col-form-label">Keyword for Search engine</label>
                                 <input type="text" class="form-control" id="keyword" name="keyword" placeholder="keyword, keyword1, keyword2" value="{{$seo->keyword}}" required>
-                                <small class="text-danger">多筆關鍵字需要用逗號分隔,例:keyword, keyword1, keyword2</small>
+                                <small class="text-danger">example:keyword, keyword1, keyword2</small>
                             </div>
                             <div class="form-group">
-                                <label for="description" class="col-form-label">網頁描述</label>
+                                <label for="description" class="col-form-label">Website Description</label>
                                 <input type="text" class="form-control" id="description" name="description" value="{{$seo->description}}" required>
                             </div>
                             <hr>
                             <div class="offset-5 col-2 text-center">
-                                <button class="btn btn-success">更新</button>
+                                <button class="btn btn-success">Update</button>
                             </div>
                         </form>
                     </div>
