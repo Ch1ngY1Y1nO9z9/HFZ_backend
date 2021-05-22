@@ -28,7 +28,7 @@
                 </ul>
               </p>
               <div class="flex pt-3">
-                <a
+                <a href="/box/16"
                   class="inline-block ml-auto mt-3 bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">BOX</a>
                 <a target="_blank" href="https://youtu.be/18Be0gmBKgY"
                   class="inline-block ml-3 mt-3 bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">WATCH

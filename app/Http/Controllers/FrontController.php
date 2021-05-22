@@ -39,16 +39,27 @@ class FrontController extends Controller
         return view('front.News',compact('news'));
     }
 
+    public function Box($stream_id) {
+        // $news = News::find($id);
+        return view('front.Box');
+    }
+
+
     public function PreviousShows() {
         return view('front.PreviousShows');
     }
 
     public function WrestlersProfile() {
         $generations = Generations::all();
-        $gen0_all = Profiles::where('generations_id','0')->get();
-        $gen1_all = Profiles::where('generations_id','1')->get();
+        $gen0_all = Profiles::where('generations_id','1')->get();
+        $gen1_all = Profiles::where('generations_id','2')->get();
+        $gen2_all = Profiles::where('generations_id','3')->get();
+        $gamers_all = Profiles::where('generations_id','4')->get();
+        $gen3_all = Profiles::where('generations_id','5')->get();
+        $gen4_all = Profiles::where('generations_id','6')->get();
+        $gen5_all = Profiles::where('generations_id','7')->get();
 
-        return view('front.WrestlersProfile', compact('generations','gen0_all','gen1_all'));
+        return view('front.WrestlersProfile', compact('generations','gen0_all','gen1_all','gen2_all','gamers_all','gen3_all','gen4_all','gen5_all'));
     }
 
     public function Profile($character) {

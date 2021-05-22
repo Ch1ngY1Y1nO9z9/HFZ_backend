@@ -24,19 +24,11 @@
                         <h2 class="title-font font-medium tracking-widest text-sm">All</h2>
                     </a>
                     @foreach ($generations as $gen)
-                        @if($gen->id < 6)
-                            <a href="#"
-                                class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/6 w-1/2 px-4 py-4 nav-item"
-                                data-rel="Gen-{{$gen->id-1}}">
-                                <h2 class="title-font font-medium tracking-widest text-sm">{{$gen->generations}}</h2>
-                            </a>
-                        @else
-                            <a href="#"
-                                class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/5 w-1/2 px-4 py-4 nav-item"
-                                data-rel="{{$gen->generations}}">
-                                <h2 class="title-font font-medium tracking-widest text-sm">{{$gen->generations}}</h2>
-                            </a>
-                        @endif
+                        <a href="#"
+                            class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/6 w-1/2 px-4 py-4 nav-item"
+                            data-rel="Gen-{{$gen->id-1}}">
+                            <h2 class="title-font font-medium tracking-widest text-sm">{{$gen->generations}}</h2>
+                        </a>
                     @endforeach
                 </nav>
             </div>
@@ -59,7 +51,7 @@
                                 </a>
                                 <div class="flex-grow sm:pl-8">
                                     <h2 class="title-font font-medium text-lg text-gray-900">{{$gen0->file_list_name}}</h2>
-                                    <h3 class="text-gray-500 mb-3">{{$gen0->aka}}</h3>
+                                    <h3 class="text-gray-500 mb-3">@ {{$gen0->aka}}</h3>
                                     <p class="mb-4">
                                         {{$gen0->spamming}}
                                     </p>
@@ -88,7 +80,7 @@
                                 </a>
                                 <div class="flex-grow sm:pl-8">
                                     <h2 class="title-font font-medium text-lg text-gray-900">{{$gen1->file_list_name}}</h2>
-                                    <h3 class="text-gray-500 mb-3">{{$gen1->aka}}</h3>
+                                    <h3 class="text-gray-500 mb-3">@ {{$gen1->aka}}</h3>
                                     <p class="mb-4">
                                         {{$gen1->spamming}}
                                     </p>
@@ -104,84 +96,153 @@
                             </div>
                         </div>
                     @endforeach
-                    <div class="p-4 w-full">
-                        <div
-                            class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                            <a href="/WrestlersProfile/Sora" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
-                                <img width="100%" class="rounded-lg object-cover object-center" alt="team"
-                                    src="/images/wrestlers/haato_avatar.jpg">
-                            </a>
-                            <div class="flex-grow sm:pl-8">
-                                <h2 class="title-font font-medium text-lg text-gray-900">A. Haato</h2>
-                                <h3 class="text-gray-500 mb-3">@OHAROUGE</h3>
-                                <p class="mb-4">STRONGEST IDOL</p>
-                                <span class="inline-flex">
-                                    <a class="text-gray-500 hover_twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a class="ml-2 text-gray-500 hover_youtube">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="w-full flex flex-wrap Members Gen-2">
-                    <div class="p-4 w-full">
-                        <div
-                            class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                            <a href="/WrestlersProfile/Sora" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
-                                <img width="100%" class="rounded-lg object-cover object-center" alt="team"
-                                    src="/images/wrestlers/subaru_avatar.jpg">
-                            </a>
-                            <div class="flex-grow sm:pl-8">
-                                <h2 class="title-font font-medium text-lg text-gray-900">O. Subaru</h2>
-                                <h3 class="text-gray-500 mb-3">@SHUBA.</h3>
-                                <p class="mb-4">
-
-                                </p>
-                                <span class="inline-flex">
-                                    <a class="text-gray-500 hover_twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a class="ml-2 text-gray-500 hover_youtube">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
-                                </span>
+                    @foreach ($gen2_all as $gen2)
+                    <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$gen2->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$gen2->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gen2->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$gen2->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$gen2->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$gen2->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$gen2->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <div class="w-full flex flex-wrap Members Gen-3">
-                    <div class="p-4 w-full">
-                        <div
-                            class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                            <a href="/WrestlersProfile/Sora" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
-                                <img width="100%" class="rounded-lg object-cover object-center" alt="team"
-                                    src="/images/wrestlers/pekora_avatar.jpg">
-                            </a>
-
-                            <div class="flex-grow sm:pl-8">
-                                <h2 class="title-font font-medium text-lg text-gray-900">U. Pekora</h2>
-                                <h3 class="text-gray-500 mb-3">@^ V ^ V ^ V ^</h3>
-                                <p class="mb-4">
-                                    Ogey
-                                </p>
-                                <span class="inline-flex">
-                                    <a class="text-gray-500 hover_twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a class="ml-2 text-gray-500 hover_youtube">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
-                                </span>
+                    @foreach ($gamers_all as $gamer)
+                    <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$gamer->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$gamer->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gamer->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$gamer->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$gamer->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$gamer->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$gamer->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
+
+                <div class="w-full flex flex-wrap Members Gen-4">
+                    @foreach ($gen3_all as $gen3)
+                    <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$gen3->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$gen3->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gen3->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$gen3->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$gen3->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$gen3->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$gen3->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="w-full flex flex-wrap Members Gen-5">
+                    @foreach ($gen4_all as $gen4)
+                    <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$gen4->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$gen4->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gen4->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$gen4->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$gen4->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$gen4->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$gen4->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="w-full flex flex-wrap Members Gen-6">
+                    @foreach ($gen5_all as $gen5)
+                    <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$gen5->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$gen5->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gen5->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$gen5->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$gen5->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$gen5->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$gen5->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
             </div>
         </div>
     </section>

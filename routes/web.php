@@ -26,11 +26,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontController@index');
 Route::get('/FAQ', 'FrontController@FAQ');
+Route::get('/box/{stream_id}', 'FrontController@Box');
 Route::get('/FightZNews', 'FrontController@FightZNews');
 Route::get('/FightZNews/{new_id}', 'FrontController@News');
 Route::get('/PreviousShows', 'FrontController@PreviousShows');
 Route::get('/WrestlersProfile', 'FrontController@WrestlersProfile');
 Route::get('/WrestlersProfile/{character}', 'FrontController@Profile');
+
 
 
 Route::post('/ContactHFZ', 'FrontController@contact_us');
