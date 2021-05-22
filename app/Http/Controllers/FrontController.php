@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Banners;
-use App\ContactUs;
 use App\News;
-use App\Products;
-use App\ProductsType;
+use App\Banners;
+use App\Profiles;
+use App\ContactUs;
+use App\Generations;
+use App\WrestlerData;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -43,11 +44,20 @@ class FrontController extends Controller
     }
 
     public function WrestlersProfile() {
-        return view('front.WrestlersProfile');
+        $generations = Generations::all();
+        $gen0_all = Profiles::where('generations_id','0')->get();
+        $gen1_all = Profiles::where('generations_id','1')->get();
+
+        return view('front.WrestlersProfile', compact('generations','gen0_all','gen1_all'));
     }
 
     public function Profile($character) {
-        return view('front.Profile');
+        $profile = Profiles::where('file_list_name',$character)->with('generations')->with('WLR')->first();
+
+        $WLR = $profile->WLR;
+        $data = WrestlerData::find($profile->id);
+
+        return view('front.Profile',compact('profile','data','WLR'));
     }
 
     public function contact_us(Request $request) {

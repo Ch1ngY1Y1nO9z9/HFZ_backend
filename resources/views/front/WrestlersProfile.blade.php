@@ -23,56 +23,21 @@
                         data-rel="Members">
                         <h2 class="title-font font-medium tracking-widest text-sm">All</h2>
                     </a>
-                    <a href="#"
-                        class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/6 w-1/2 px-4 py-4 nav-item"
-                        data-rel="Gen-0">
-                        <h2 class="title-font font-medium tracking-widest text-sm">Gen 0</h2>
-                    </a>
-                    <a href="#"
-                        class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/6 w-1/2 px-4 py-4 nav-item"
-                        data-rel="Gen-1">
-                        <h2 class="title-font font-medium tracking-widest text-sm">Gen 1</h2>
-                    </a>
-                    <a href="#"
-                        class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/6 w-1/2 px-4 py-4 nav-item"
-                        data-rel="Gen-2">
-                        <h2 class="title-font font-medium tracking-widest text-sm">Gen 2</h2>
-                    </a>
-                    <a href="#"
-                        class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/6 w-1/2 px-4 py-4 nav-item"
-                        data-rel="Gen-3">
-                        <h2 class="title-font font-medium tracking-widest text-sm">Gen 3</h2>
-                    </a>
-                    <a href="#"
-                        class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/6 w-1/2 px-4 py-4 nav-item"
-                        data-rel="Gen-4">
-                        <h2 class="title-font font-medium tracking-widest text-sm">Gen 4</h2>
-                    </a>
-                    <a href="#"
-                        class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/5 w-1/2 px-4 py-4 nav-item"
-                        data-rel="Gen-5">
-                        <h2 class="title-font font-medium tracking-widest text-sm">Gen 5</h2>
-                    </a>
-                    <a href="#"
-                        class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/5 w-1/2 px-4 py-4 nav-item"
-                        data-rel="Holo_ID">
-                        <h2 class="title-font font-medium tracking-widest text-sm">Holo ID Gen 1</h2>
-                    </a>
-                    <a href="#"
-                        class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/5 w-1/2 px-4 py-4 nav-item"
-                        data-rel="Holo_ID">
-                        <h2 class="title-font font-medium tracking-widest text-sm">Holo ID Gen 2</h2>
-                    </a>
-                    <a href="#"
-                        class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/5 w-1/2 px-4 py-4 nav-item"
-                        data-rel="Holo_EN">
-                        <h2 class="title-font font-medium tracking-widest text-sm">Holo EN Gen 1</h2>
-                    </a>
-                    <a href="#"
-                        class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/5 w-1/2 px-4 py-4 nav-item"
-                        data-rel="INONAKA">
-                        <h2 class="title-font font-medium tracking-widest text-sm">INONAKA</h2>
-                    </a>
+                    @foreach ($generations as $gen)
+                        @if($gen->id < 6)
+                            <a href="#"
+                                class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/6 w-1/2 px-4 py-4 nav-item"
+                                data-rel="Gen-{{$gen->id-1}}">
+                                <h2 class="title-font font-medium tracking-widest text-sm">{{$gen->generations}}</h2>
+                            </a>
+                        @else
+                            <a href="#"
+                                class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/5 w-1/2 px-4 py-4 nav-item"
+                                data-rel="{{$gen->generations}}">
+                                <h2 class="title-font font-medium tracking-widest text-sm">{{$gen->generations}}</h2>
+                            </a>
+                        @endif
+                    @endforeach
                 </nav>
             </div>
 
@@ -84,105 +49,61 @@
                 </div>
 
                 <div class="w-full flex flex-wrap Members Gen-0">
-                    <div class="p-4 w-full lg:w-1/2">
-                        <div
-                            class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                            <a href="/WrestlersProfile/Sora" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
-                                <img width="100%" class="rounded-lg object-cover object-center" alt="team"
-                                    src="/images/wrestlers/sora_avatar.jpg">
-                            </a>
-                            <div class="flex-grow sm:pl-8">
-                                <h2 class="title-font font-medium text-lg text-gray-900">T.Sora</h2>
-                                <h3 class="text-gray-500 mb-3">@ONETRUEIDOL</h3>
-                                <p class="mb-4">
-                                    (๑╹ᆺ╹)ぬんぬん
-                                </p>
-                                <span class="inline-flex">
-                                    <a target="_blank" href="https://twitter.com/tokino_sora" class="text-gray-500 hover_twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a target="_blank" href="https://www.youtube.com/channel/UCp6993wxpyDPHUpavwDFqgg" class="ml-2 text-gray-500 hover_youtube">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
-                                </span>
+                    @foreach ($gen0_all as $gen0)
+                        <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$gen0->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$gen0->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gen0->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">{{$gen0->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$gen0->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$gen0->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$gen0->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="p-4 w-full lg:w-1/2">
-                        <div
-                            class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                            <a href="/WrestlersProfile/Sora" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
-                                <img width="100%" class="rounded-lg object-cover object-center" alt="team"
-                                    src="/images/wrestlers/roboco_avatar.jpg">
-                            </a>
-                            <div class="flex-grow sm:pl-8">
-                                <h2 class="title-font font-medium text-lg text-gray-900">ROBOCO</h2>
-                                <h3 class="text-gray-500 mb-3">@DOMOARIGATO</h3>
-                                <p class="mb-4">
-                                    YOU WILL PLAY APEX.
-                                </p>
-                                <span class="inline-flex">
-                                    <a class="text-gray-500 hover_twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a class="ml-2 text-gray-500 hover_youtube">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4 w-full lg:w-1/2">
-                        <div
-                            class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                            <a href="/WrestlersProfile/Sora" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
-                                <img width="100%" class="rounded-lg object-cover object-center" alt="team"
-                                    src="/images/wrestlers/magic_not_real.jpg">
-                            </a>
-                            <div class="flex-grow sm:pl-8">
-                                <h2 class="title-font font-medium text-lg text-gray-900">S. Miko</h2>
-                                <h3 class="text-gray-500 mb-3">@FAAAAAAAAAAQ</h3>
-                                <p class="mb-4">
-                                    HOLY SHIT ITS MIKOLER I CARE NOW HOLY SHIT ITS MIKOLER I CARE NOW HOLY SHIT ITS MIKOLER I CARE NOW HOLY SHIT ITS MIKOLER I CARE NOW HOLY SHIT ITS MIKOLER I CARE NOW HOLY SHIT ITS MIKOLER I CARE NOW
-                                </p>
-                                <span class="inline-flex">
-                                    <a class="text-gray-500 hover_twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a class="ml-2 text-gray-500 hover_youtube">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-4 w-full lg:w-1/2">
-                        <div
-                            class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                            <a href="/WrestlersProfile/Sora" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
-                                <img width="100%" class="rounded-lg object-cover object-center" alt="team"
-                                    src="/images/wrestlers/suisei_avatar.jpg">
-                            </a>
-                            <div class="flex-grow sm:pl-8">
-                                <h2 class="title-font font-medium text-lg text-gray-900">H. Suisei</h2>
-                                <h3 class="text-gray-500 mb-3">@SUISIOPATH</h3>
-                                <p class="mb-4">
-                                    今日もかわいい
-                                </p>
-                                <span class="inline-flex">
-                                    <a class="text-gray-500 hover_twitter">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a class="ml-2 text-gray-500 hover_youtube">
-                                        <i class="fab fa-youtube"></i>
-                                    </a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <div class="w-full flex flex-wrap Members Gen-1">
+                    @foreach ($gen1_all as $gen1)
+                    <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$gen1->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$gen1->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gen1->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">{{$gen1->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$gen1->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$gen1->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$gen1->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                     <div class="p-4 w-full">
                         <div
                             class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
@@ -289,11 +210,12 @@
             $(".nav-item").click(function () {
                 // assigns class to selected item
                 selectedClass = $(this).attr("data-rel");
+                gen = $(this).text();
                 // fades out all portfolio items
                 $(".portfolio .Members").fadeOut(300);
                 // fades in selected category
                 $(".portfolio .Members." + selectedClass).delay(300).fadeIn(300);
-                $(".portfolio .member_title h1").text(selectedClass);
+                $(".portfolio .member_title h1").text(gen);
             });
         });
 

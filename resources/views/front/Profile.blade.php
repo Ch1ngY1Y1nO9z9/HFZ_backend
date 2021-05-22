@@ -17,35 +17,37 @@
         <div class="container mx-auto flex px-5 pb-12 md:flex-row flex-col items-center">
             <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
                 <img class="object-cover object-center rounded mx-auto md:mx-0 md:ml-auto" alt="hero"
-                    src="/images/wrestlers/sora.png" style="height: 600px;">
+                    src="{{$profile->picture}}" style="height: 600px;">
             </div>
             <div
                 class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-                <h2 class="text-sm title-font text-gray-500 tracking-widest ml-1">Gen 0</h2>
-                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1 font-bold mt-1">ときのそら/ TOKINOSORA</h1>
+                <h2 class="text-sm title-font text-gray-500 tracking-widest ml-1">{{$profile->generations->generations}}</h2>
+                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1 font-bold mt-1">{{$profile->name_jp}}/ {{$profile->name_en}}</h1>
                 <div class="flex mb-4">
                     <span class="flex items-center">
-                        <span class="text-gray-600 ml-1">@ONETRUEIDOL</span>
+                        <span class="text-gray-600 ml-1">{{$profile->aka}}</span>
                     </span>
                     <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
-                        <a target="_blank" href="https://twitter.com/tokino_sora" class="text-gray-500 hover_twitter">
+                        <a target="_blank" href="{{$profile->twitter_link}}" class="text-gray-500 hover_twitter">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a target="_blank" href="https://www.youtube.com/channel/UCp6993wxpyDPHUpavwDFqgg"
+                        <a target="_blank" href="{{$profile->youtube_link}}"
                             class="ml-2 text-gray-500 hover_youtube">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </span>
                 </div>
-                <p>Debut: <span class="font-bold">Stream 7</span></p>
-                <p><br>Birthday: <span class="font-bold">September 9</span></p>
-                <p><br>Weight: <span class="font-bold">236 lb</span></p>
-                <p><br>Fan base name: <span class="font-bold">Sora-tomo</span></p>
-                <p><br>Signature: <span class="font-bold">Idol Steps</span></p>
-                <p>Finisher: <span class="font-bold">SODA Kicks</span></p>
+                <p>Debut: <span class="font-bold">{{$data->debut ?? ''}}</span></p>
+                <p><br>Birthday: <span class="font-bold">{{$data->birth_day ?? ''}}</span></p>
+                <p><br>Weight: <span class="font-bold">{{$data->weight ?? ''}} lb</span></p>
+                <p><br>Fan base name: <span class="font-bold">{{$data->fan_name ?? ''}}</span></p>
+                <p><br>Signature: <span class="font-bold">{{$data->signature ?? ''}}</span></p>
+                <p>Finisher: <span class="font-bold">{{$data->finisher ?? ''}}</span></p>
 
-                <p><br>tag with: <span class="font-bold">Iofi</span> , <span class="font-bold">A-chan</span> , <span
-                        class="font-bold">AZKi</span></p>
+                <p>
+                    <br>tag with:
+                    <span class="font-bold">{{$data->tag_with ?? ''}}</span>
+                </p>
             </div>
         </div>
         <div class="container px-5 pb-12 mx-auto">
@@ -111,14 +113,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <?php
+
+                                    // not finish
+                                        // $total = $WLR->single_total + $WLR->tag_total + $WLR->specailEvent_total;
+                                        // $total_win = $WLR->single_win + $WLR->tag_win + $WLR->specailEvent_win;
+
+                                        // $single_lose = $WLR->single_total - $WLR->single_win;
+                                        // $tag_lose = $WLR->tag_total  - $WLR->tag_win;
+                                        // $specailEvent_lose = $WLR->specailEvent_total  - $WLR->specailEvent_win;
+
+                                    ?>
+                                    {{-- <tr>
                                         <td class="font-light py-1 px-2 font-bold">
                                             all
                                         </td>
-                                        <td>15</td>
-                                        <td>5</td>
-                                        <td>8</td>
-                                        <td>2</td>
+                                        <td>{{$total ?? ''}}</td>
+                                        <td>{{$total_win ?? ''}}</td>
+                                        <td>{{$total - $total_win - $WLR->draw ?? ''}}</td>
+                                        <td>{{$WLR->draw ?? ''}}</td>
                                         <td>
                                             <span class="text-green-500 font-bold">33%</span>
                                         </td>
@@ -127,10 +140,10 @@
                                         <td class="font-light py-1 px-2 font-bold">
                                             1 v 1
                                         </td>
-                                        <td>3</td>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>0</td>
+                                        <td>{{$WLR->single_total ?? ''}}</td>
+                                        <td>{{$WLR->single_win ?? ''}}</td>
+                                        <td>{{$single_lose ?? ''}}</td>
+                                        <td>-</td>
                                         <td>
                                             <span class="text-green-500 font-bold">33%</span>
                                         </td>
@@ -139,10 +152,10 @@
                                         <td class="font-light py-1 px-2 font-bold">
                                             2 v 2
                                         </td>
-                                        <td>7</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>2</td>
+                                        <td>{{$WLR->tag_total ?? ''}}</td>
+                                        <td>{{$WLR->tag_win ?? ''}}</td>
+                                        <td>{{$tag_lose ?? ''}}</td>
+                                        <td>-</td>
                                         <td>
                                             <span class="text-green-500 font-bold">29%</span>
                                         </td>
@@ -151,14 +164,14 @@
                                         <td class="font-light py-1 px-2 font-bold">
                                             Specail event
                                         </td>
-                                        <td>5</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>0</td>
+                                        <td>{{$WLR->specailEvent_total ?? ''}}</td>
+                                        <td>{{$WLR->specailEvent_win ?? ''}}</td>
+                                        <td>{{$specailEvent_lose ?? ''}}</td>
+                                        <td>-</td>
                                         <td>
                                             <span class="text-green-500 font-bold">40%</span>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                         </div>
