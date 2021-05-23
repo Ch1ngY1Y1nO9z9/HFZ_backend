@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class News extends Model
+class WrestlerClips extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
@@ -16,5 +16,9 @@ class News extends Model
     /**
      * @var array
      */
-    protected $fillable = ['title', 'type', 'content', 'date', 'sort','img'];
+    protected $fillable = ['wrestler_id','clip_title','embed_code', 'sort'];
+
+    function clips() {
+        return $this->belongsTo('App\Profiles', 'wrestler_id');
+    }
 }

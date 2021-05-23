@@ -18,7 +18,7 @@ class Generations extends Model
      */
     protected $fillable = ['generations'];
 
-    function generations() {
+    function gens() {
         return $this->hasMany('App\Profiles', 'generations_id');
     }
 }

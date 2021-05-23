@@ -25,7 +25,6 @@
                                 <tr>
                                     <td><img src="{{$item->img}}" width="200" alt=""></td>
                                     <td>{{$item->alt}}</td>
-                                    <td>{{$item->sort}}</td>
                                     <td>
                                         <a class="btn btn-success btn-sm" href="/admin/banner/edit/{{ $item->id}}">edit</a>
                                     </td>

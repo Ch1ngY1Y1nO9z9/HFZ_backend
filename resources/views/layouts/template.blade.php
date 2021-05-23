@@ -70,7 +70,7 @@
             <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/Poll">Poll</a>
           </li>
           <li class="mr-3">
-            <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/index#Contact">Contact
+            <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/#Contact">Contact
               us</a>
           </li>
           <li class="mr-3">

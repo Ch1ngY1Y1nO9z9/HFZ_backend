@@ -63,24 +63,38 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/','HomeController@index');
 
     Route::get('seo', 'SeoController@index');
+    Route::post('seo', 'SeoController@update');
 
     // Banner
     Route::get('banner','BannerController@index');
-    Route::get('banner/create','BannerController@create');
     Route::get('banner/edit/{id}', 'BannerController@edit');
+    Route::post('banner/update/{id}', 'BannerController@update');
 
     // 最新消息
     Route::get('/news','NewsController@index');
     Route::get('news/create','NewsController@create');
     Route::get('news/edit/{id}', 'NewsController@edit');
+    Route::post('news/store','NewsController@store');
+    Route::post('news/update/{id}', 'NewsController@update');
+    Route::post('news/delete/{id}', 'NewsController@delete');
 
     //聯絡我們管理
     Route::get('contact','ContactController@index');
     Route::post('contact/{id}','ContactController@show');
     Route::post('contact/delete/{id}','ContactController@delete');
 
-    //產品管理
-    Route::get('profile','ProductsController@index');
-    Route::get('profile/create','ProductsController@create');
-    Route::get('profile/edit/{id}', 'ProductsController@edit');
+    //檔案資料管理
+    Route::get('profile','ProfilesController@index');
+    Route::get('profile_data/edit/{id}', 'ProfilesController@edit_data');
+    Route::get('profile_WLR/edit/{id}', 'ProfilesController@edit_WLR');
+    Route::post('profile_data/update/{id}', 'ProfilesController@update_data');
+    Route::post('profile_WLR/update/{id}', 'ProfilesController@update_WLR');
+
+    // 短片管理
+    Route::get('profile/{wrestler_id}/clips','ClipsController@index');
+    Route::get('profile/{wrestler_id}/clips/create', 'ClipsController@create');
+    Route::get('profile/{wrestler_id}/clips/edit/{id}', 'ClipsController@edit');
+    Route::post('profile/clips/store', 'ClipsController@store');
+    Route::post('profile/clips/update/{id}', 'ClipsController@update');
+    Route::post('profile/clips/delete/{id}', 'ClipsController@delete');
 });

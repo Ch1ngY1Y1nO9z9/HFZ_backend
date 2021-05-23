@@ -243,6 +243,151 @@
                     @endforeach
                 </div>
 
+                <div class="w-full flex flex-wrap Members Gen-7">
+                    @foreach ($genID1_all as $genID1)
+                    <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$genID1->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$genID1->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$genID1->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$genID1->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$genID1->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$genID1->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$genID1->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="w-full flex flex-wrap Members Gen-8">
+                    @foreach ($genID2_all as $genID2)
+                    <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$genID2->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$genID2->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$genID2->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$genID2->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$genID2->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$genID2->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$genID2->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="w-full flex flex-wrap Members Gen-9">
+                    @foreach ($genEN_all as $genEN)
+                    <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$genEN->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$genEN->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$genEN->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$genEN->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$genEN->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$genEN->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$genEN->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="w-full flex flex-wrap Members Gen-10">
+                    @foreach ($INONAKA_all as $INONAKA)
+                    <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$INONAKA->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$INONAKA->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$INONAKA->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$INONAKA->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$INONAKA->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$INONAKA->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$INONAKA->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="w-full flex flex-wrap Members">
+                    @foreach ($cover as $management)
+                    <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$management->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$management->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$management->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$management->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$management->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$management->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$management->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
             </div>
         </div>
     </section>

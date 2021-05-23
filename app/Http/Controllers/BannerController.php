@@ -23,25 +23,6 @@ class BannerController extends Controller
         return view($this->index,compact('items'));
     }
 
-    public function create()
-    {
-        return view($this->create);
-    }
-
-    public function store(Request $request)
-    {
-        $new_record = new Banners();
-        $new_record -> alt = $request->alt;
-        if($request->hasFile('img')){
-            $new_record->img = $this->upload_file($request->file('img'));
-        }
-
-        $new_record -> sort = $request->sort;
-
-        $new_record -> save();
-        return redirect('/admin/banner')->with('message','新增成功!');
-    }
-
     public function edit($id)
     {
         $items = Banners::find($id);
@@ -56,8 +37,6 @@ class BannerController extends Controller
             $this->delete_file($items->img);
             $items->img = $this->upload_file($request->file('img'));
         }
-
-        $items -> sort = $request->sort;
 
         $items -> save();
 
@@ -79,7 +58,7 @@ class BannerController extends Controller
         if ($file->getClientOriginalExtension() &&
             !in_array($file->getClientOriginalExtension(), $allowed_extensions))
         {
-            return redirect()->back()->with('message','僅接受.jpg, .png, .gif, .jepg, .pdf格式檔案!');
+            return redirect()->back()->with('message','Only.jpg, .png, .gif, .jepg, .pdf!');
         }
         $extension = $file->getClientOriginalExtension();
         $destinationPath = public_path() . '/upload/banner/';

@@ -19,6 +19,6 @@ class WinLoseRatio extends Model
     protected $fillable = ['wrestler_id','single_total','single_win','tag_total','tag_win','specailEvent_total','specailEvent_win','draw'];
 
     function WLR() {
-        return $this->hasOne('App\Profiles', 'wrestler_id');
+        return $this->belongsTo('App\Profiles', 'id');
     }
 }

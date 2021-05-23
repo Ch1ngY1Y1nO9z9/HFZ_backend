@@ -1,45 +1,6 @@
 @extends('layouts.app')
 
 @section('css')
-<style>
-    /* .news_infos {
-        position: relative;
-    }
-
-    .news_infos .btn-danger {
-        border-radius: 50%;
-        position: absolute;
-        right: -5px;
-        top: -5px;
-    }
-
-    .news_infos .sort {
-        display: flex;
-        margin-top: 5px;
-    }
-
-    .news_infos label {
-        margin: 0 5px;
-        line-height: 37px;
-    }
-
-    .news_infos input {
-        width: 100%;
-    }
-
-    .time_btn {
-        padding: 3px 20px;
-        border: 1px solid black;
-        cursor: pointer;
-        height: 30px;
-    }
-
-    .time_btn.active {
-        background-color: black;
-        color: white;
-    } */
-
-</style>
 @endsection
 
 @section('content')
@@ -47,55 +8,61 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">最新消息 - 編輯</div>
+                    <div class="card-header">News - edit</div>
 
                     <div class="card-body">
+                        <a class="btn btn-success" href="/admin/news">back</a>
+                        <hr>
                         <form method="POST" action="/admin/news/update/{{$news->id}}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="date" value="{{$news->date}}">
+
+                            <div class="form-group">
+                                <label for="type">Type</label>
+                                <select class="form-control" id="type" name="type" onchange="change_layout(this.id)">
+                                  <option value="img">fan art</option>
+                                  <option value="news" @if($news->type == 'news') selected @endif >news</option>
+                                </select>
+                            </div>
+
                             <div class="form-group row">
-                                <label for="img" class="col-2 col-form-label">當前圖片</label>
+                                <label for="title" class="col-2 col-form-label">Title</label>
                                 <div class="col-10">
-                                    <img width="200" src="{{$news->img}}" alt="">
+                                    <input type="text" class="form-control" id="title" name="title" value="{{$news->title}}" required>
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label for="img" class="col-2 col-form-label">上傳新圖片</label>
+                                <label for="description" class="col-2 col-form-label">Description</label>
                                 <div class="col-10">
-                                    <input type="file" class="form-control-file" id="img" name="img">
-                                </div>
-                                <div class="col-12"><small class="text-danger">*注意：建議尺寸：360 * 360 (px)</small></div>
-                            </div>
-                            <hr>
-                            <div class="form-group row">
-                                <label for="title_ch" class="col-2 col-form-label">標題(中)</label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="title_ch" name="title_ch" value="{{$news->title_ch}}" required>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="title_en" class="col-2 col-form-label">標題(英)</label>
-                                <div class="col-10">
-                                    <input type="text" class="form-control" id="title_en" name="title_en" value="{{$news->title_en}}" required>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="form-group row">
-                                <label for="content_ch" class="col-2 col-form-label">內文(中)</label>
-                                <div class="col-10">
-                                    <textarea style="height:150px;" type="text" class="form-control" id="content_ch" name="content_ch" required>{{$news->content_ch}}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="content_en" class="col-2 col-form-label">內文(英)</label>
-                                <div class="col-10">
-                                    <textarea style="height:150px;" type="text" class="form-control" id="content_en" name="content_en" required>{{$news->content_en}}</textarea>
+                                    <input type="text" class="form-control" id="description" name="description" value="{{$news->description}}" required>
                                 </div>
                             </div>
 
                             <hr>
+
+                            <div id="fan_art" @if($news->type == 'news') class="d-none" @endif>
+                                <div class="form-group row">
+                                    <label for="img" class="col-2 col-form-label">Fan arts file link</label>
+                                    <div class="col-10">
+                                        <input type="text" class="form-control" id="img" name="img" @if($news->type == 'img') value="{{$news->img}}" @endif>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="news" @if($news->type == 'img') class="d-none" @endif>
+                                <div class="form-group row">
+                                    <label for="content" class="col-2 col-form-label">Content</label>
+                                    <div class="col-10">
+                                        <textarea style="height:150px;" type="text" class="form-control" id="content" name="content" @if($news->type == 'news') @endif>{{$news->content}}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <hr>
                             <div class="form-group row">
-                                <label for="sort" class="col-2 col-form-label">排序</label>
+                                <label for="sort" class="col-2 col-form-label">Sort</label>
                                 <div class="col-10">
                                     <input type="number" class="form-control" id="sort" name="sort" value="{{$news->sort}}" required min="0" max="999">
                                 </div>
@@ -112,51 +79,22 @@
 
 @section('js')
 <script>
+    function change_layout(x){
+        var type = document.getElementById(x).value;
+        var img_layout = document.getElementById('fan_art');
+        var content_layout = document.getElementById('news')
+        var img = document.getElementById('img');
+        var content = document.getElementById('content')
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        if(type == 'img'){
+            content.value = '';
+            content_layout.classList.add('d-none')
+            img_layout.classList.remove('d-none')
+        }else{
+            img.value = '';
+            content_layout.classList.remove('d-none')
+            img_layout.classList.add('d-none')
         }
-    });
-
-    $('.news_infos .btn-danger').click(function () {
-    var info_imgs = $(this).data('infoimgs');
-
-        $.ajax({
-            method: 'POST',
-            url: '/admin/ajax_delete_info_imgs',
-            data: {info_imgs: info_imgs},
-            success: function (res) {
-                $( `.news_infos[data-infoimgs='${info_imgs}']` ).remove();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.error(textStatus + " " + errorThrown);
-            }
-        });
-    });
-
-    function post_ajax_sort(element,info_imgs_id) {
-        var info_imgs_id;
-        var sort_value = element.value;
-
-        $.ajax({
-            method: 'POST',
-            url: '/admin/ajax_sort_product_imgs',
-            data: {info_imgs_id: info_imgs_id,sort_value: sort_value},
-            success: function (res) {
-
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.error(textStatus + " " + errorThrown);
-            }
-        });
     }
-
-    $(".time_btn").click(function () {
-        $(".time_btn").removeClass('active');
-        $(this).addClass('active');
-        var time_value = this.textContent;
-        $("#show_on_what_new").val(time_value);
-    });
 </script>
 @endsection

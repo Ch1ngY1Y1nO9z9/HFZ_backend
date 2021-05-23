@@ -22,13 +22,10 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $new_record = News::create($request->all());
-        if($request->hasFile('img')){
-            $new_record->fill(['img' => $this->upload_file($request->file('img'))]);
-        }
 
         $new_record->save();
 
-        return redirect('/admin/news');
+        return redirect('/admin/news')->with('store','store success!');
 
     }
 
@@ -40,33 +37,21 @@ class NewsController extends Controller
 
     public function update(Request $request,$id)
     {
-        $items = News::find($id);
-        $items->title_ch = $request->title_ch;
-        $items->title_en = $request->title_en;
-        $items->content_ch = $request->content_ch;
-        $items->content_en = $request->content_en;
+        $item = News::find($id);
+        $item->update($request->all());
 
-        if($request->hasFile('img')){
-            $this->delete_file($items->img);
-            $items->img = $this->upload_file($request->file('img'));
-        }
-
-        $items->sort = $request->sort;
-
-        $items->save();
-
-        return redirect('/admin/news');
+        return redirect('/admin/news')->with('update','update success!');
     }
 
     public function delete(Request $request,$id)
     {
+
         $items = News::find($id);
 
-        if($items->image_url){
-            $this->delete_file($items->image_url);
+        if($items){
+            $items->delete();
         }
 
-        $items->delete();
 
         return redirect()->back();
     }

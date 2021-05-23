@@ -6,16 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>
-    HolofightZ Official Website
+    {{$seo->title}}
   </title>
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
-  <meta name="author" content="" />
+  <meta name="description" content="{{$seo->description}}" />
+  <meta name="keywords" content="{{$seo->keywords}}" />
+  
   <link rel="stylesheet" href="/css/swiper-bundle.min.css">
   <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />
   <!--Replace with your tailwind.css once created-->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.css">
   <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
   <style>
     html{
@@ -188,7 +189,7 @@
           </p>
         </div>
         <div class="w-full sm:w-1/2 px-6 py-0 md:p-6">
-          <div class="bg-black h-64"></div>
+          <div class="h-64" style="background-image: url('/images/ring.jpg');background-position: center; backround-size: cover"></div>
         </div>
       </div>
       <div class="flex flex-wrap flex-col-reverse sm:flex-row">
@@ -221,25 +222,42 @@
       </div>
 
       @foreach ($news as $item)
-        <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-            <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-            <div class="bg-black w-full px-6 h-64"></div>
-            <div class="w-full font-bold text-xl text-gray-800 px-6 py-3 md:py-6">
-                {{$item->title}}
+        @if($item->type == 'img')
+            <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col">
+
+                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+                    <a href="{{$item->img}}" data-lightbox="fan-art" data-title="Fan Arts">
+                        <div class="w-full px-6" style="height: 300px; background-image: url('{{$item->img}}'); background-size:contain; background-repeat:no-repeat; background-position: center;"></div>
+                        <div class="w-full font-bold text-xl text-gray-800 px-6 py-6">
+                            {{$item->title}}
+                        </div>
+                        <p class="text-gray-800 text-base px-6 mb-5">
+                            {{$item->description}}
+                        </p>
+                    </a>
+                </div>
             </div>
-            <p class="text-gray-800 text-base px-6 mb-2">
-                {{$item->description}}
-            </p>
+        @else
+            <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col">
+                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+                <div class="bg-black w-full px-6" style="height: 300px;"></div>
+                <div class="w-full font-bold text-xl text-gray-800 px-6 py-6">
+                    {{$item->title}}
+                </div>
+                <p class="text-gray-800 text-base px-6 mb-5">
+                    {{$item->description}}
+                </p>
+                </div>
+                <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+                <div class="flex items-center justify-start">
+                    <a href="/FightZNews/{{$item->id}}"
+                    class="mx-auto lg:mx-0 hover:underline bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                    Watch
+                    </a>
+                </div>
+                </div>
             </div>
-            <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow md:p-6">
-            <div class="flex items-center justify-start">
-                <a href="/FightZNews/{{$item->id}}"
-                class="mx-auto lg:mx-0 hover:underline bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-full my-3 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                Watch
-                </a>
-            </div>
-            </div>
-        </div>
+        @endif
       @endforeach
 
     </div>
@@ -249,29 +267,29 @@
       <div class="flex flex-wrap w-full">
         <div class="p-2 md:p-4 md:w-1/2 w-full">
           <div class="h-full bg-gray-100 p-8 rounded">
-            <h1 class="w-full my-2 text-4xl md:text-5xl font-bold leading-tight text-center text-gray-800" >
+            <h1 class="w-full my-2 text-4xl md:text-5xl font-bold leading-tight text-gray-800" >
               RANK LEADER
-              <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+              <div class="h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </h1>
-            <a href="##">
-              <img width="100%" src="/images/meme-thinkYagoo.jpg" alt="SORA">
+            <a href="/WrestlersProfile/{{$rank_leader->file_list_name}}">
+              <img src="{{$rank_leader->avatar}}" alt="{{$rank_leader->name_en}}">
               <span class="flex-grow flex flex-col ">
-                <h4 class="md:text-3xl text-2xl font-bold leading-tight text-gray-800">SORA@OneTrueIdol</h4>
+                <h4 class="md:text-3xl text-2xl font-bold leading-tight text-gray-800">{{$rank_leader->name_en}}@ {{$rank_leader->aka}}</h4>
               </span>
             </a>
           </div>
         </div>
         <div class="p-2 md:p-4 md:w-1/2 w-full">
           <div class="h-full bg-gray-100 p-8 rounded">
-            <h1 class="w-full my-2 text-4xl md:text-5xl font-bold leading-tight text-center text-gray-800">
+            <h1 class="w-full my-2 text-4xl md:text-5xl font-bold leading-tight text-gray-800">
               RISING STAR
-              <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+              <div class="h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </h1>
-            <a href="##">
-              <img width="100%" src="/images/bigref4website.jpg" alt="REF">
+            <a href="/WrestlersProfile/{{$rank_leader->file_list_name}}">
+              <img src="{{$stars->avatar}}" alt="{{$stars->name_en}}">
               <span class="flex-grow flex flex-col">
                 <h4 class="md:text-3xl text-2xl font-bold leading-tight text-gray-800">
-                  REF@HATE
+                    {{$stars->name_en}} @ {{$stars->aka}}
                 </h4>
               </span>
             </a>
@@ -468,11 +486,11 @@
       </div>
     </div>
   </footer>
-  <!-- jQuery if you need it
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
   <script src="/js/index.js"></script>
 
   @if(Session::has('message'))

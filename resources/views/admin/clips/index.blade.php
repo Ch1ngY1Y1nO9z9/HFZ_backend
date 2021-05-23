@@ -10,38 +10,35 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        News Management
+                      {{$wrestler->name_en}} Clips Management
                     </div>
 
                     <div class="card-body">
-                        <a class="btn btn-success" href="/admin/news/create">Create</a>
+                        <a class="btn btn-secondary" href="/admin/profile">Back to Profile</a>
+                        <hr>
+                        <a class="btn btn-success" href="/admin/profile/{{$wrestler->id}}/clips/create">Create</a>
                         <hr>
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>type</th>
-                                <th>Fan arts</th>
-                                <th>Date</th>
+                                <th>Wrestler name</th>
+                                <th>Clip Title</th>
                                 <th>Sort</th>
                                 <th width="80">Feature</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($news_lists as $news)
+                            @foreach($items as $item)
                                 <tr>
+                                    <td>{{$item->clips->name_en}}</td>
+                                    <td>{{$item->clip_title}}</td>
+                                    <td>{{$item->sort}}</td>
+                                    <td width="200">
+                                        <a class="btn btn-primary btn-sm" href="/admin/profile/{{$item->wrestler_id}}/clips/edit/{{$item->id}}">edit</a>
+                                        <a class="btn btn-danger  btn-sm" href="#" data-itemid="{{$item->id}}" href="">delete</a>
 
-                                    <td>{{$news->title}}</td>
-                                    <td>{{$news->type}}</td>
-                                    <td><img src="{{$news->img}}" width="200" alt=""></td>
-                                    <td>{{$news->date}}</td>
-                                    <td>{{$news->sort}}</td>
-                                    <td>
-                                        <a class="btn btn-primary btn-sm" href="/admin/news/edit/{{$news->id}}">edit</a>
-                                        <a class="btn btn-danger  btn-sm" href="#" data-itemid="{{$news->id}}" href="">delete</a>
-
-                                        <form class="destroy-form" data-itemid="{{$news->id}}"
-                                            action="/admin/news/delete/{{$news->id}}" method="POST"
+                                        <form class="destroy-form" data-itemid="{{$item->id}}"
+                                            action="/admin/profile/clips/delete/{{$item->id}}" method="POST"
                                             style="display: none;">
                                           @csrf
                                       </form>
@@ -62,13 +59,11 @@
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" defer></script>
     <script>
         $(document).ready(function() {
-            $('#example').DataTable({
-                order: [[ 3, 'desc' ]],
-            });
+            $('#example').DataTable();
 
             $('#example').on('click','.btn-danger',function(){
                 event.preventDefault();
-                var r = confirm("Do you want delete this news?");
+                var r = confirm("Do you want delete this clip?");
                 if (r == true) {
                     var itemid = $(this).data("itemid");
                     $(`.destroy-form[data-itemid="${itemid}"]`).submit();
@@ -76,17 +71,5 @@
             });
         } );
     </script>
-
-    @if(Session::has('store'))
-        <script>
-            alert('store success!')
-        </script>
-    @endif
-
-    @if(Session::has('update'))
-        <script>
-            alert('update success!')
-        </script>
-    @endif
 
 @endsection
