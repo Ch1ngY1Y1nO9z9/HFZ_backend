@@ -9,10 +9,9 @@
                 <h1 class="text-5xl font-medium title-font mb-4 tracking-widest font-bold" style="color:#49c8f0;">
                     Wrestlers
                     Profile</h1>
-                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Eum maiores nisi odit, fuga sint nihil, velit aperiam perspiciatis, quisquam
-                    voluptatibus doloremque aspernatur repellendus recusandae atque eius! Dolorum corrupti
-                    repellendus eligendi.</p>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+                    All HoloFightZ wrestler data, spamming text in here.
+                </p>
             </div>
 
             <div

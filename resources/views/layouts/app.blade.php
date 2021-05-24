@@ -49,6 +49,9 @@
                             <a class="nav-link" href="/admin/profile">Profile Management</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/admin/stream">Stream Management</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/admin/contact">Contact us</a>
                         </li>
                     </ul>

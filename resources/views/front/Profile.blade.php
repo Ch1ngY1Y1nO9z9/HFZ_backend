@@ -61,42 +61,22 @@
                 <h1 class="text-5xl font-medium title-font text-gray-900 font-bold">Match Records</h1>
             </div>
             <div class="-my-8 divide-y-2 divide-gray-100">
-                <div class="py-8 block md:flex flex-wrap md:flex-nowrap">
-                    <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0  block md:flex flex-col">
-                        <span class="font-semibold title-font text-gray-700">Stream 17</span>
-                    </div>
-                    <div class="md:flex-grow">
-                        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Fatal 5-Way</h2>
-                        <p class="leading-relaxed">Participants:</p>
-                        <p class="leading-relaxed font-bold">Sora, Roboco, Suisei,  AZKi, Miko</p>
-                        <p class="leading-relaxed"><br>Winners:</p>
-                        <p class="leading-relaxed font-bold">Sora</p>
-                    </div>
-                </div>
-                <div class="py-8 block md:flex flex-wrap md:flex-nowrap">
-                    <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0  block md:flex flex-col">
-                        <span class="font-semibold title-font text-gray-700">Stream 16</span>
-                    </div>
-                    <div class="md:flex-grow">
-                        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">2v2 Tag-Team</h2>
-                        <p class="leading-relaxed">Participants:</p>
-                        <p class="leading-relaxed font-bold">(AZKi, Sora) (Pekora, Moona)</p>
-                        <p class="leading-relaxed"><br>Winners:</p>
-                        <p class="leading-relaxed font-bold">Draw</p>
-                    </div>
-                </div>
-                <div class="py-8 block md:flex flex-wrap md:flex-nowrap">
-                    <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0  block md:flex flex-col">
-                        <span class="font-semibold title-font text-gray-700">Stream 15</span>
-                    </div>
-                    <div class="md:flex-grow">
-                        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">2v2 Tag Team</h2>
-                        <p class="leading-relaxed">Participants:</p>
-                        <p class="leading-relaxed font-bold">(Sora, A-Chan) (Korone, Miko)</p>
-                        <p class="leading-relaxed"><br>Winners:</p>
-                        <p class="leading-relaxed font-bold">Korone, Miko</p>
-                    </div>
-                </div>
+                @if($wreslter_records)
+                    @foreach ($wreslter_records as $record)
+                        <div class="py-8 block md:flex flex-wrap md:flex-nowrap">
+                            <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0  block md:flex flex-col">
+                                <span class="font-semibold title-font text-gray-700">Stream {{$record->stream_id}}</span>
+                            </div>
+                            <div class="md:flex-grow">
+                                <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">{{$record->type}}</h2>
+                                <p class="leading-relaxed">Participants:</p>
+                                <p class="leading-relaxed font-bold">{{$record->participants}}</p>
+                                <p class="leading-relaxed"><br>Winners:</p>
+                                <p class="leading-relaxed font-bold @if($record->result == 'DRAW') text-yellow-500 @else text-red-500 @endif ">{{$record->result}}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
         <div class="container px-5 pb-12 mx-auto">

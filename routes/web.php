@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'FrontController@index');
 Route::get('/FAQ', 'FrontController@FAQ');
-Route::get('/box/{stream_id}', 'FrontController@Box');
+Route::get('/Box/{stream_id}', 'FrontController@Box');
 Route::get('/FightZNews', 'FrontController@FightZNews');
 Route::get('/FightZNews/{new_id}', 'FrontController@News');
 Route::get('/PreviousShows', 'FrontController@PreviousShows');
@@ -97,4 +97,29 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('profile/clips/store', 'ClipsController@store');
     Route::post('profile/clips/update/{id}', 'ClipsController@update');
     Route::post('profile/clips/delete/{id}', 'ClipsController@delete');
+
+    // 直播記錄管理
+    Route::get('stream','StreamRecordsController@index');
+    Route::get('stream/create', 'StreamRecordsController@create');
+    Route::get('stream/edit/{id}', 'StreamRecordsController@edit');
+    Route::post('stream/store', 'StreamRecordsController@store');
+    Route::post('stream/update/{id}', 'StreamRecordsController@update');
+    Route::post('stream/delete/{id}', 'StreamRecordsController@delete');
+
+    // 比賽紀錄管理
+    Route::get('stream/match_result/{stream_id}','MatchResultController@index');
+    Route::get('stream/match_result/{stream_id}/create', 'MatchResultController@create');
+    Route::get('stream/match_result/{stream_id}/edit/{id}', 'MatchResultController@edit');
+    Route::post('stream/match_result/{stream_id}/store', 'MatchResultController@store');
+    Route::post('stream/match_result/update/{id}', 'MatchResultController@update');
+    Route::post('stream/match_result/delete/{id}', 'MatchResultController@delete');
+
+    // 歌單管理
+    Route::get('stream/song_list/{stream_id}','StreamRecordsController@index');
+    Route::get('stream/song_list/{stream_id}/create', 'StreamRecordsController@create');
+    Route::get('stream/song_list/{stream_id}/edit/{id}', 'StreamRecordsController@edit');
+    Route::post('stream/song_list/{stream_id}/store', 'StreamRecordsController@store');
+    Route::post('stream/song_list/{stream_id}/update/{id}', 'StreamRecordsController@update');
+    Route::post('stream/song_list/delete/{id}', 'StreamRecordsController@delete');
+
 });

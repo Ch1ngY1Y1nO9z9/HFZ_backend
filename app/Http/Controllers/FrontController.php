@@ -8,6 +8,9 @@ use App\Banners;
 use App\Profiles;
 use App\ContactUs;
 use App\Generations;
+use App\Matches;
+use App\MatchesRecords;
+use App\SongsLists;
 use App\WrestlerData;
 use Illuminate\Http\Request;
 
@@ -47,13 +50,18 @@ class FrontController extends Controller
     }
 
     public function Box($stream_id) {
-        // $news = News::find($id);
-        return view('front.Box');
+
+        $match_records = MatchesRecords::where('stream_id',$stream_id)->get();
+        $songs_list = SongsLists::where('stream_id',$stream_id)->orderBy('played_at','asc')->get();
+
+        return view('front.Box',compact('match_records','stream_id','songs_list'));
     }
 
 
     public function PreviousShows() {
-        return view('front.PreviousShows');
+        $stream_records = Matches::orderBy('stream_number','desc')->get();
+
+        return view('front.PreviousShows',compact('stream_records'));
     }
 
     public function WrestlersProfile() {
@@ -79,8 +87,13 @@ class FrontController extends Controller
 
         $WLR = $profile->WLR;
         $data = WrestlerData::find($profile->id);
+        $name = $profile->name_short;
 
-        return view('front.Profile',compact('profile','data','WLR'));
+        $wreslter_records = MatchesRecords::where(function ($q) use ($name) {
+            $q->orWhere('participants', 'like', "%{$name}%");
+            })->orderBy('stream_id','desc')->get();
+
+        return view('front.Profile',compact('profile','data','WLR','wreslter_records'));
     }
 
     public function contact_us(Request $request) {
