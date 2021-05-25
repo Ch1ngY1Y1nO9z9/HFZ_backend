@@ -16,17 +16,17 @@ class Profiles extends Model
     /**
      * @var array
      */
-    protected $fillable = ['generations_id','file_list_name','name_en','name_jp','aka','spamming','twitter_link','youtube_link'];
+    protected $fillable = ['generations_id','file_list_name','name_en','name_jp','aka','spamming','twitter_link','youtube_link','toindex','rank'];
 
     function gens() {
         return $this->belongsTo('App\Generations', 'generations_id');
     }
 
-    function WLR() {
-        return $this->hasOne('App\WinLoseRatio', 'wrestler_id');
-    }
-
     function clips() {
         return $this->hasMany('App\WrestlerClips', 'wrestler_id')->orderBy('sort');
+    }
+
+    function data() {
+        return $this->hasOne('App\WrestlerData', 'wrestler_id');
     }
 }

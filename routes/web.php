@@ -86,9 +86,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     //檔案資料管理
     Route::get('profile','ProfilesController@index');
     Route::get('profile_data/edit/{id}', 'ProfilesController@edit_data');
-    Route::get('profile_WLR/edit/{id}', 'ProfilesController@edit_WLR');
     Route::post('profile_data/update/{id}', 'ProfilesController@update_data');
-    Route::post('profile_WLR/update/{id}', 'ProfilesController@update_WLR');
 
     // 短片管理
     Route::get('profile/{wrestler_id}/clips','ClipsController@index');

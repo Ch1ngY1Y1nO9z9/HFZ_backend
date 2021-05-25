@@ -18,10 +18,10 @@
                 <div class="w-full sm:w-1/2 bg-cover bg-center"
                 style="background-image: url('{{$stream->background_image}}');">
                     <div class="rounded-lg h-80 overflow-hidden px-5 bg-black bg-opacity-50">
-                        <h2 class="title-font text-4xl font-medium mt-6 mb-1">Stream {{$stream->stream_number}}</h2>
+                        <h2 class="title-font text-4xl font-medium mt-6 mb-1">Ep {{$stream->stream_number}}</h2>
                         <h3 class="title-font text-1xl font-medium mb-3">{{$stream->date}}</h3>
                         <p class="leading-relaxed text-base">
-                            Watch stream {{$stream->stream_number}} of HoloFightz:
+                            Watch episode {{$stream->stream_number}} of HoloFightz:
                             <ul class="list-disc text-indent pl-5">
                                 <li>{{$stream->context1 ?? '-'}}</li>
                                 <li>{{$stream->context2 ?? '-'}}</li>

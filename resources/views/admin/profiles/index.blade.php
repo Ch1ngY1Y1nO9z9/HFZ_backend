@@ -39,7 +39,6 @@
                                     <td>{{$item->spamming}}</td>
                                     <td width="200">
                                         <a class="btn btn-primary btn-sm my-1" href="/admin/profile_data/edit/{{$item->id}}">edit profile_data</a>
-                                        <a class="btn btn-success btn-sm my-1" href="/admin/profile_WLR/edit/{{$item->id}}">edit WLR</a>
                                         <a class="btn btn-info btn-sm my-1" href="/admin/profile/{{$item->id}}/clips">edit clips</a>
                                     </td>
                                 </tr>

@@ -17,6 +17,7 @@
                         <tr>
                           <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Game</th>
                           <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Type</th>
+                          <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Context</th>
                           <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Participants</th>
                           <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Winner</th>
                         </tr>
@@ -28,14 +29,16 @@
                                     <tr>
                                         <td class="px-4 py-3">{{$record->game}}</td>
                                         <td class="px-4 py-3">{{$record->type}}</td>
-                                        <td class="px-4 py-3 text-gray-900">{{$record->participants}}</td>
+                                        <td class="px-4 py-3">{{$record->rule}}</td>
+                                        <td class="px-4 py-3 text-gray-900 font-bold">{{$record->participants}}</td>
                                         <td class="px-4 py-3 @if($record->result == 'DRAW') text-yellow-500 @else text-red-500 @endif">{{$record->result}}</td>
                                     </tr>
                                 @else
                                     <tr>
                                         <td class="border-t-2 border-gray-200 px-4 py-3">{{$record->game}}</td>
                                         <td class="border-t-2 border-gray-200 px-4 py-3">{{$record->type}}</td>
-                                        <td class="border-t-2 border-gray-200 px-4 py-3 text-gray-900">{{$record->participants}}</td>
+                                        <td class="border-t-2 border-gray-200 px-4 py-3">{{$record->rule}}</td>
+                                        <td class="border-t-2 border-gray-200 px-4 py-3 text-gray-900 font-bold">{{$record->participants}}</td>
                                         <td class="border-t-2 border-gray-200 px-4 py-3  @if($record->result == 'DRAW') text-yellow-500 @else text-red-500 @endif">{{$record->result}}</td>
                                     </tr>
                                 @endif

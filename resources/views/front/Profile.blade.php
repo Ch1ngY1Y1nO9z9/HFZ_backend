@@ -60,22 +60,73 @@
             <div class="flex flex-col text-center w-full mb-10 lg:mb-20">
                 <h1 class="text-5xl font-medium title-font text-gray-900 font-bold">Match Records</h1>
             </div>
-            <div class="-my-8 divide-y-2 divide-gray-100">
+            <div x-data={show:false} class="-my-8 divide-y-2 divide-gray-100">
                 @if($wreslter_records)
-                    @foreach ($wreslter_records as $record)
-                        <div class="py-8 block md:flex flex-wrap md:flex-nowrap">
-                            <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0  block md:flex flex-col">
-                                <span class="font-semibold title-font text-gray-700">Stream {{$record->stream_id}}</span>
+
+                    <?php
+                        $record_number = count($wreslter_records);
+                    ?>
+                    @if ($record_number < 4)
+                        @foreach ($wreslter_records as $record)
+                            <div class="py-8 block md:flex flex-wrap md:flex-nowrap">
+                                <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0  block md:flex flex-col">
+                                    <span class="font-semibold title-font text-gray-700">Stream {{$record->stream_id}}</span>
+                                </div>
+                                <div class="md:flex-grow">
+                                    <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">{{$record->type}} - {{$record->rule}}</h2>
+                                    <p class="leading-relaxed">Participants:</p>
+                                    <p class="leading-relaxed font-bold">{{$record->participants}}</p>
+                                    <p class="leading-relaxed"><br>Winners:</p>
+                                    <p class="leading-relaxed font-bold @if($record->result == 'DRAW') text-yellow-500 @else text-red-500 @endif ">{{$record->result}}</p>
+                                </div>
                             </div>
-                            <div class="md:flex-grow">
-                                <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">{{$record->type}}</h2>
-                                <p class="leading-relaxed">Participants:</p>
-                                <p class="leading-relaxed font-bold">{{$record->participants}}</p>
-                                <p class="leading-relaxed"><br>Winners:</p>
-                                <p class="leading-relaxed font-bold @if($record->result == 'DRAW') text-yellow-500 @else text-red-500 @endif ">{{$record->result}}</p>
+                        @endforeach
+
+                    @else
+
+                        @foreach ($wreslter_records as $key => $record)
+                            @if($key < 3)
+                            <div class="py-8 block md:flex flex-wrap md:flex-nowrap">
+                                <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0  block md:flex flex-col">
+                                    <span class="font-semibold title-font text-gray-700">Stream {{$record->stream_id}}</span>
+                                </div>
+                                <div class="md:flex-grow">
+                                    <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">{{$record->type}} - {{$record->rule}}</h2>
+                                    <p class="leading-relaxed">Participants:</p>
+                                    <p class="leading-relaxed font-bold">{{$record->participants}}</p>
+                                    <p class="leading-relaxed"><br>Winners:</p>
+                                    <p class="leading-relaxed font-bold @if($record->result == 'DRAW') text-yellow-500 @else text-red-500 @endif ">{{$record->result}}</p>
+                                </div>
                             </div>
+                            @endif
+                        @endforeach
+
+                        <p class="flex" x-show="!show">
+                            <a x-on:click.prevent="show=!show" x-show="!show" class="bg-indigo-500 text-gray-200 rounded hover:bg-indigo-600 px-4 py-3 cursor-pointer focus:outline-none my-3">
+                            Show All
+                            </a>
+                        </p>
+                        <div x-show="show" class="divide-y-2 divide-gray-100">
+                            @foreach ($wreslter_records as $key => $record)
+                                @if($key >= 3)
+                                <div class="py-8 block md:flex flex-wrap md:flex-nowrap">
+                                    <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0  block md:flex flex-col">
+                                        <span class="font-semibold title-font text-gray-700">Stream {{$record->stream_id}}</span>
+                                    </div>
+                                    <div class="md:flex-grow">
+                                        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">{{$record->type}} - {{$record->rule}}</h2>
+                                        <p class="leading-relaxed">Participants:</p>
+                                        <p class="leading-relaxed font-bold">{{$record->participants}}</p>
+                                        <p class="leading-relaxed"><br>Winners:</p>
+                                        <p class="leading-relaxed font-bold @if($record->result == 'DRAW') text-yellow-500 @else text-red-500 @endif ">{{$record->result}}</p>
+                                    </div>
+                                </div>
+                                @endif
+                            @endforeach
+
                         </div>
-                    @endforeach
+                    @endif
+
                 @endif
             </div>
         </div>
@@ -101,12 +152,104 @@
                                 <tbody>
                                     <?php
 
-                                        $total = $WLR->single_total + $WLR->tag_total + $WLR->specailEvent_total;
-                                        $total_win = $WLR->single_win + $WLR->tag_win + $WLR->specailEvent_win;
+                                        $total = count($wreslter_records);
+                                        $single_total = 0;
+                                        $single_win = 0;
+                                        $single_lose = 0;
+                                        $tag_total = 0;
+                                        $tag_win = 0;
+                                        $tag_lose = 0;
+                                        $multi_total = 0;
+                                        $multi_win = 0;
+                                        $multi_lose = 0;
+                                        $single_draw = 0;
+                                        $tag_draw = 0;
+                                        $multi_draw = 0;
 
-                                        $single_lose = $WLR->single_total - $WLR->single_win;
-                                        $tag_lose = $WLR->tag_total  - $WLR->tag_win;
-                                        $specailEvent_lose = $WLR->specailEvent_total  - $WLR->specailEvent_win;
+                                        foreach($wreslter_records as $record){
+                                            $winners = explode(',',$record->result);
+                                            $check_multi_winners = count($winners);
+
+                                            foreach($winners as $winer){
+
+                                                if($winer == $profile->name_short){
+                                                    if($record->type == '1v1'){
+                                                        $single_total += 1;
+                                                        $single_win += 1;
+                                                    }elseif ($record->type == '2v2'){
+                                                        $tag_total += 1;
+                                                        $tag_win += 1;
+                                                    }else{
+                                                        $multi_total += 1;
+                                                        $multi_win +=1;
+                                                    }
+
+                                                }elseif($winer == 'DRAW'){
+                                                    if($record->type == '1v1'){
+                                                        $single_total += 1;
+                                                        $single_draw += 1;
+                                                    }elseif ($record->type == '2v2'){
+                                                        $tag_total += 1;
+                                                        $tag_draw += 1;
+                                                    }else{
+                                                        $multi_total += 1;
+                                                        $multi_draw += 1;
+                                                    }
+                                                }else{
+                                                    if($record->type == '1v1'){
+                                                        $single_total += 1;
+                                                        $single_lose += 1;
+                                                    }elseif ($record->type == '2v2'){
+                                                        if($winer == $profile->name_short){
+                                                            $tag_total += 1;
+                                                            $tag_lose += 1;
+                                                        }
+                                                    }else{
+                                                        if($check_multi_winners == 1){
+                                                            $multi_total += 1;
+                                                            $multi_lose += 1;
+                                                        }else{
+                                                            if($winer == $profile->name_short){
+                                                                $multi_total += 1;
+                                                                $multi_lose += 1;
+                                                            }
+                                                        }
+
+                                                    }
+                                                }
+
+
+                                            }
+                                        }
+
+                                        $total_win = $single_win + $tag_win + $multi_win;
+                                        $total_draw = $single_draw + $tag_draw + $multi_draw;
+                                        $total_lose = $single_lose + $tag_lose  + $multi_lose;
+
+                                        if($single_win == 0 && $single_total ==0){
+                                            $single_win_rate = 0;
+                                        }else{
+                                            $single_win_rate = round($single_win / $single_total * 100);
+                                        }
+
+                                        if($tag_win == 0 && $tag_total ==0){
+                                            $tag_win_rate = 0;
+                                        }else{
+                                            $tag_win_rate = round($tag_win / $tag_total * 100);
+                                        }
+
+                                        if($multi_win == 0 && $multi_total ==0){
+                                            $multi_win_rate = 0;
+                                        }else{
+                                            $multi_win_rate = round($multi_win / $multi_total * 100);
+                                        }
+
+                                        if($total_win == 0 && $total ==0){
+                                            $total_win_rate = 0;
+                                        }else{
+                                            $total_win_rate = round($total_win / $total * 100);
+                                        }
+
 
                                     ?>
                                     <tr>
@@ -115,46 +258,46 @@
                                         </td>
                                         <td>{{$total}}</td>
                                         <td>{{$total_win}}</td>
-                                        <td>{{$total - $total_win - $WLR->draw}}</td>
-                                        <td>{{$WLR->draw}}</td>
+                                        <td>{{$total_lose}}</td>
+                                        <td>{{$total_draw}}</td>
                                         <td>
-                                            <span class="text-green-500 font-bold">33%</span>
+                                            <span class="text-green-500 font-bold">{{$total_win_rate}}%</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="font-light py-1 px-2 font-bold">
                                             1 v 1
                                         </td>
-                                        <td>{{$WLR->single_total}}</td>
-                                        <td>{{$WLR->single_win}}</td>
+                                        <td>{{$single_total}}</td>
+                                        <td>{{$single_win}}</td>
                                         <td>{{$single_lose}}</td>
-                                        <td>-</td>
+                                        <td>{{$single_draw}}</td>
                                         <td>
-                                            <span class="text-green-500 font-bold">33%</span>
+                                            <span class="text-green-500 font-bold">{{$single_win_rate}}%</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="font-light py-1 px-2 font-bold">
                                             2 v 2
                                         </td>
-                                        <td>{{$WLR->tag_total}}</td>
-                                        <td>{{$WLR->tag_win}}</td>
+                                        <td>{{$tag_total}}</td>
+                                        <td>{{$tag_win}}</td>
                                         <td>{{$tag_lose}}</td>
-                                        <td>-</td>
+                                        <td>{{$tag_draw}}</td>
                                         <td>
-                                            <span class="text-green-500 font-bold">29%</span>
+                                            <span class="text-green-500 font-bold">{{$tag_win_rate}}%</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="font-light py-1 px-2 font-bold">
                                             Specail event
                                         </td>
-                                        <td>{{$WLR->specailEvent_total}}</td>
-                                        <td>{{$WLR->specailEvent_win}}</td>
-                                        <td>{{$specailEvent_lose}}</td>
-                                        <td>-</td>
+                                        <td>{{$multi_total}}</td>
+                                        <td>{{$multi_win}}</td>
+                                        <td>{{$multi_lose}}</td>
+                                        <td>{{$multi_draw}}</td>
                                         <td>
-                                            <span class="text-green-500 font-bold">40%</span>
+                                            <span class="text-green-500 font-bold">{{$multi_win_rate}}%</span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -231,4 +374,10 @@
         @endif
     </section>
 </div>
+@endsection
+
+
+@section('js')
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
 @endsection

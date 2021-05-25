@@ -16,7 +16,7 @@ class MatchesRecords extends Model
     /**
      * @var array
      */
-    protected $fillable = ['stream_id', 'game', 'type', 'participants', 'winner','result'];
+    protected $fillable = ['stream_id', 'game', 'type', 'rule', 'participants', 'winner','result'];
 
     function records() {
         return $this->belongsTo('App\Matches', 'stream_id','stream_number');

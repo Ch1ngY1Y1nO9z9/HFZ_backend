@@ -31,7 +31,9 @@ class FrontController extends Controller
         $stars = Profiles::where('toindex', 1)->first();
         $rank_leader = Profiles::where('rank', 1)->first();
 
-        return view('front.index',compact('seo','banner','news','stars','rank_leader'));
+        $previous_shows = Matches::orderBy('id','desc')->take(3)->get();
+
+        return view('front.index',compact('seo','banner','news','stars','rank_leader','previous_shows'));
     }
 
     public function FAQ() {
@@ -85,7 +87,7 @@ class FrontController extends Controller
     public function Profile($character) {
         $profile = Profiles::where('file_list_name',$character)->with('gens')->with('WLR')->with('clips')->first();
 
-        $WLR = $profile->WLR;
+        // $WLR = $profile->WLR;
         $data = WrestlerData::find($profile->id);
         $name = $profile->name_short;
 
@@ -93,7 +95,7 @@ class FrontController extends Controller
             $q->orWhere('participants', 'like', "%{$name}%");
             })->orderBy('stream_id','desc')->get();
 
-        return view('front.Profile',compact('profile','data','WLR','wreslter_records'));
+        return view('front.Profile',compact('profile','data','wreslter_records'));
     }
 
     public function contact_us(Request $request) {

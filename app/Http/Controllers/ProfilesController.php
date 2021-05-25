@@ -20,36 +20,51 @@ class ProfilesController extends Controller
 
     public function edit_data($id)
     {
-        $name = Profiles::find($id)->name_en;
+        $wrestler = Profiles::find($id);
         $item = WrestlerData::find($id);
 
-        return view('admin.profiles.edit_data',compact('name','item'));
-    }
-
-    public function edit_WLR($id)
-    {
-        $name = Profiles::find($id)->name_en;
-        $item = WinLoseRatio::find($id);
-        return view('admin.profiles.edit_WLR',compact('name','item'));
+        return view('admin.profiles.edit_data',compact('wrestler','item'));
     }
 
     public function update_data(Request $request,$id)
     {
+        $all_wrestler = Profiles::all();
 
         $item = WrestlerData::find($id);
         $item->update($request->all());
 
         $item->save();
 
-        return redirect('/admin/profile')->with('message','success!');
-    }
+        if($request->toindex){
 
-    public function update_WLR(Request $request,$id)
-    {
-        $item = WinLoseRatio::find($id);
-        $item->update($request->all());
+            foreach($all_wrestler as $single_data){
+                $single_data->toindex = 0;
+                $single_data->save();
+            }
 
-        $item->save();
+            $wrestler = $item->data;
+            $wrestler->toindex = 1;
+        }else{
+            $wrestler = $item->data;
+            $wrestler->toindex = 0;
+        }
+
+        if($request->rank){
+            
+            foreach($all_wrestler as $single_data){
+                $single_data->rank = 0;
+                $single_data->save();
+            }
+
+            $wrestler = $item->data;
+            $wrestler->rank = 1;
+        }else{
+            $wrestler = $item->data;
+            $wrestler->rank = 0;
+        }
+
+        $wrestler->save();
+
 
         return redirect('/admin/profile')->with('message','success!');
     }

@@ -9,7 +9,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">{{$name}} - data edit</div>
+                    <div class="card-header">{{$wrestler->name_en}} - data edit</div>
                     <div class="card-body">
                         <a class="btn btn-success" href="/admin/profile">back</a>
                         <hr>
@@ -50,6 +50,20 @@
                                 <label for="finisher" class="col-2 col-form-label">finisher</label>
                                 <div class="col-10">
                                     <input type="text" class="form-control" id="finisher" name="finisher" value="{{$item->finisher}}">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                                <label for="toindex" class="col-2 col-form-label">Rising Star?</label>
+                                <div class="col-10">
+                                    <input class="form-check-input" type="checkbox" @if($wrestler->toindex == 1) checked="true" @endif value="1" id="toindex" name="toindex">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="rank" class="col-2 col-form-label">Rank Leader?</label>
+                                <div class="col-10">
+                                    <input class="form-check-input" type="checkbox" @if($wrestler->rank == 1) checked="true" @endif value="1" id="rank" name="rank">
                                 </div>
                             </div>
 

@@ -10,7 +10,7 @@
   </title>
   <meta name="description" content="{{$seo->description}}" />
   <meta name="keywords" content="{{$seo->keywords}}" />
-  
+
   <link rel="stylesheet" href="/css/swiper-bundle.min.css">
   <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />
   <!--Replace with your tailwind.css once created-->
@@ -274,7 +274,7 @@
             <a href="/WrestlersProfile/{{$rank_leader->file_list_name}}">
               <img src="{{$rank_leader->avatar}}" alt="{{$rank_leader->name_en}}">
               <span class="flex-grow flex flex-col ">
-                <h4 class="md:text-3xl text-2xl font-bold leading-tight text-gray-800">{{$rank_leader->name_en}}@ {{$rank_leader->aka}}</h4>
+                <h4 class="md:text-3xl text-2xl font-bold leading-tight text-gray-800">{{$rank_leader->file_list_name}}@ {{$rank_leader->aka}}</h4>
               </span>
             </a>
           </div>
@@ -310,69 +310,34 @@
       <div class="w-full mx-auto my-20 bg-white">
         <div id="slider" class="swiper-container w-full">
           <div class="swiper-wrapper">
-            <div class="swiper-slide bg-cover bg-center shadow-lg"
-              style="background-image: url('https://static.wixstatic.com/media/a4a930_b263a79d467e457ab587f441792e1e5f~mv2.png/v1/fill/w_750,h_274,al_c,q_85,usm_0.66_1.00_0.01/a4a930_b263a79d467e457ab587f441792e1e5f~mv2.webp');">
-              <div class="container mx-auto px-6 md:px-20 py-6">
-                <div class="w-full md:w-1/2 bg-opacity-50 bg-black p-2 md:p-0">
-                  <div class="md:border border-gray-100 md:p-10">
-                    <h3 class="text-2xl md:text-5xl leading-tight" style="font-family: Niconne, cursive;">May 8th, 2021 </h3>
-                    <h2 class="font-bold leading-tight md:text-6xl text-3xl">Stream 16</h2>
-                    <h4 class="md:text-3xl text-1xl font-bold leading-tight">Watch stream 16 of HoloFightz:</h4>
-                    <ul class="text-1xl mt-3 font-light">
-                      <li>Ina'nis on 5-0 and Matsuri on 3-0</li>
-                      <li>Warson lost her Jobber belt to Haato</li>
-                      <li>Marine hit 10 1v1 appearances and won 4 of them</li>
-                    </ul>
-                  </div>
-                  <div class="my-10 md:mx-10 md:-mt-2">
-                    <a target="_blank" href="https://youtu.be/18Be0gmBKgY"
-                      class="bg-indigo-500  ease-linear hover:bg-indigo-600 text-white px-6 py-4 rounded-full">WATCH VOD</a>
-                  </div>
+
+              @foreach ($previous_shows as $show)
+                <div class="swiper-slide bg-cover bg-center shadow-lg"
+                style="background-image: url('{{$show->background_image}}');">
+                    <div class="container mx-auto px-6 md:px-20 py-6">
+                        <div class="w-full md:w-1/2 bg-opacity-50 bg-black p-2 md:p-0">
+                        <div class="md:border border-gray-100 md:p-10">
+                            <h3 class="text-2xl md:text-5xl leading-tight" style="font-family: Niconne, cursive;">{{$show->date}}</h3>
+                            <h2 class="font-bold leading-tight md:text-6xl text-3xl">EP {{$show->stream_number}}</h2>
+                            <h4 class="md:text-3xl text-1xl font-bold leading-tight">Watch episode {{$show->stream_number}} of HoloFightz:</h4>
+                            <ul class="text-1xl mt-3 font-light">
+                            <li>{{$show->context1 ?? '-'}}</li>
+                            <li>{{$show->context2 ?? '-'}}</li>
+                            <li>{{$show->context3 ?? '-'}}</li>
+                            </ul>
+                        </div>
+                        <div class="my-10 md:mx-10 md:-mt-2">
+                            @if($show->link || $show->link != '')
+                                <a target="_blank" href="{{$show->link}}" class="bg-indigo-500  ease-linear hover:bg-indigo-600 text-white px-6 py-4 rounded-full">WATCH VOD</a>
+                            @else
+                                <a class="bg-indigo-500  ease-linear hover:bg-indigo-600 text-white px-6 py-4 rounded-full">Uploading...</a>
+                            @endif
+                        </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div class="swiper-slide bg-cover bg-center shadow-lg"
-              style="background-image: url('https://static.wixstatic.com/media/a4a930_4c2ed97778784af69fd1ddf3d0292548~mv2.png/v1/fill/w_750,h_274,al_t,q_85,usm_0.66_1.00_0.01/a4a930_4c2ed97778784af69fd1ddf3d0292548~mv2.webp');">
-              <div class="container mx-auto px-6 md:px-20 py-6">
-                <div class="w-full md:w-1/2 bg-opacity-50 bg-black p-2 md:p-0">
-                  <div class="md:border border-gray-100 md:p-10">
-                    <h3 class="text-2xl md:text-5xl leading-tight" style="font-family: Niconne, cursive;">May 1st, 2021 </h3>
-                    <h2 class="font-bold leading-tight md:text-6xl text-3xl">Stream 15</h2>
-                    <h4 class="md:text-3xl text-1xl font-bold leading-tight">Watch stream 15 of HoloFightz:</h4>
-                    <ul class="text-1xl mt-3 font-light">
-                      <li>Gura and Watson failed their challenge </li>
-                      <li>Ina'nis defeated Nene on a 4-0 rail</li>
-                      <li>Kiara first appearance, she's the masked fighter</li>
-                    </ul>
-                  </div>
-                  <div class="my-10 md:mx-10 md:-mt-2">
-                    <a target="_blank" href="https://youtu.be/0ftldC-i00I"
-                      class="bg-indigo-500  ease-linear hover:bg-indigo-600 text-white px-6 py-4 rounded-full">WATCH VOD</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide bg-cover bg-center shadow-lg"
-              style="background-image: url('https://static.wixstatic.com/media/a4a930_60a09a9be2ee416aa020408498185b8a~mv2.png/v1/fill/w_750,h_274,al_c,q_85,usm_0.66_1.00_0.01/a4a930_60a09a9be2ee416aa020408498185b8a~mv2.webp');">
-              <div class="container mx-auto px-6 md:px-20 py-6">
-                <div class="w-full md:w-1/2 bg-opacity-50 bg-black p-2 md:p-0">
-                  <div class="md:border border-gray-100 md:p-10">
-                    <h3 class="text-2xl md:text-5xl leading-tight" style="font-family: Niconne, cursive;">April 24th, 2021</h3>
-                    <h2 class="font-bold leading-tight md:text-6xl text-3xl">Stream 14</h2>
-                    <h4 class="md:text-3xl text-1xl font-bold leading-tight">Watch stream 14 of HoloFightz:</h4>
-                    <ul class="text-1xl mt-3 font-light">
-                      <li>Prospect of the Month, Ina'nis</li>
-                      <li>Matsuri pulled down Luna on her first match</li>
-                      <li>Haachama won the belt and topped the rank</li>
-                    </ul>
-                  </div>
-                  <div class="my-10 md:mx-10 md:-mt-2">
-                    <a target="_blank" href="https://youtu.be/8adXazijtKM"
-                      class="bg-indigo-500  ease-linear hover:bg-indigo-600 text-white px-6 py-4 rounded-full">WATCH VOD</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+              @endforeach
+
           </div>
           <div class="hidden md:flex swiper-button-prev bg-white w-16 h-16 text-xs rounded-full text-indigo-500"></div>
           <div class="hidden md:flex swiper-button-next bg-white w-16 h-16 text-xs rounded-full text-indigo-500"></div>
@@ -432,13 +397,13 @@
                 <div class="p-2 w-1/2">
                   <div class="relative">
                     <label for="email" class="leading-7 text-sm text-white">Email</label>
-                    <input type="email" id="email" name="email" placeholder="if you want we reply your message." class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                    <input type="email" id="email" name="email" placeholder="if you want us send message back..." class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                   </div>
                 </div>
                 <div class="p-2 w-full">
                   <div class="relative">
                     <label for="message" class="leading-7 text-sm text-white">Message</label>
-                    <textarea id="message" name="content" maxlength="300" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                    <textarea id="message" name="content" maxlength="300" placeholder="paste any OC video link, fan arts, match suggest to us" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                   </div>
                 </div>
                 <div class="p-2 w-full">
