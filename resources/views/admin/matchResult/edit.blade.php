@@ -53,16 +53,25 @@
                                     <input type="text" class="form-control" id="result" name="result" value="{{$item->result}}">
                                     <div class="col-12">
                                         <small class="text-danger">
-                                            put Winner name from below or put DRAW
+                                            put Winner's short name from below or Draw, if it's tag team winners, please don't put space after comma.
                                         </small>
                                     </div>
                                 </div>
                             </div>
 
-                            All Holos girl name: <br>
-                            @foreach ($wrestlers_name as $wrestler_name)
-                                {{$wrestler_name->name_short}} ,
-                            @endforeach
+                            <div class="form-group row">
+                                <div class="col-12 text-danger">
+                                    *Please copy the short name to put in input, onegai...
+                                </div>
+                                <div class="col-12">
+                                    <small class="text-danger">
+                                        short_name:<br>
+                                        @foreach($wrestlers_name as $wrestler_name)
+                                        {{$wrestler_name->name_short}} ,
+                                        @endforeach
+                                    </small>
+                                </div>
+                            </div>
 
                             <hr>
 

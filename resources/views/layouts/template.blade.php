@@ -19,6 +19,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
   <style>
+      html{
+          scroll-behavior: smooth;
+      }
+
     .hover_youtube {
       color: red;
     }
@@ -26,11 +30,23 @@
     .hover_twitter {
       color: rgba(29, 161, 242, 1.00);
     }
+
+    .btt {
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+    }
+
   </style>
 </head>
 
-<body class="leading-normal tracking-normal text-white background-img"
+<body id="body" class="leading-normal tracking-normal text-white background-img"
   style="font-family: 'Source Sans Pro', sans-serif;">
+    <div class="btt">
+        <a href="#body">
+            <i class="fas fa-arrow-alt-circle-up text-indigo-500 hover:text-indigo-600 text-4xl md:text-6xl"></i>
+        </a>
+    </div>
   <!--Nav-->
   <nav id="header" class="fixed w-full z-30 top-0 text-white bg-opacity-50 bg-black">
     <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
@@ -87,6 +103,13 @@
               <i class="fab fa-youtube"></i>
             </a>
           </li>
+          <li class="mr-3">
+            <a target="_blank" href="https://www.twitch.tv/holofightz"
+              class="inline-block no-underline text-white text-indigo-600 py-2 px-4"
+              style="text-shadow:#c8c8c8 1px 1px 0px, #b4b4b4 0px 2px 0px, #a0a0a0 0px 3px 0px, rgba(140, 140, 140, 0.498039) 0px 4px 0px, #787878 0px 0px 0px, rgba(0, 0, 0, 0.498039) 0px 5px 10px">
+              <i class="fab fa-twitch"></i>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -95,6 +118,12 @@
   <!--Hero-->
 
   @yield('content')
+
+  <div class="btt">
+      <a href="#body">
+        <i class="fas fa-arrow-alt-circle-up text-indigo-500 hover:text-indigo-600 text-4xl md:text-6xl"></i>
+      </a>
+  </div>
 
   </div>
   <!--Footer-->
@@ -134,8 +163,9 @@
     </div>
   </footer>
 
+  <script src="{{asset('js/pages.js')}}"></script>
   @yield('js')
-  <script src="/public/js/pages.js"></script>
+
 
 </body>
 

@@ -61,10 +61,19 @@
                                 </div>
                             </div>
 
-                            All Holos girl name: <br>
-                            @foreach ($wrestlers_name as $wrestler_name)
-                                {{$wrestler_name->name_short}} ,
-                            @endforeach
+                            <div class="form-group row">
+                                <div class="col-12 text-danger">
+                                    *Please copy the short name to put in input, onegai...
+                                </div>
+                                <div class="col-12">
+                                    <small class="text-danger">
+                                        short_name:<br>
+                                        @foreach($wrestlers_name as $wrestler_name)
+                                        {{$wrestler_name->name_short}} ,
+                                        @endforeach
+                                    </small>
+                                </div>
+                            </div>
 
                             <hr>
                             <button type="submit" class="btn btn-primary d-block mx-auto">Store</button>

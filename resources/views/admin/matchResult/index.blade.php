@@ -68,7 +68,7 @@
     <script>
         $(document).ready(function() {
             $('#example').DataTable({
-                order: [[ 0, 'asc' ]],
+                order: [[ 4, 'asc' ]],
             });
 
             $('#example').on('click','.btn-danger',function(){

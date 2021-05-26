@@ -20,10 +20,12 @@ class ProfilesController extends Controller
 
     public function edit_data($id)
     {
+        $all_wrestler = Profiles::all();
+
         $wrestler = Profiles::find($id);
         $item = WrestlerData::find($id);
 
-        return view('admin.profiles.edit_data',compact('wrestler','item'));
+        return view('admin.profiles.edit_data',compact('wrestler','item','all_wrestler'));
     }
 
     public function update_data(Request $request,$id)
@@ -35,6 +37,8 @@ class ProfilesController extends Controller
 
         $item->save();
 
+        $wrestler = $item->data;
+
         if($request->toindex){
 
             foreach($all_wrestler as $single_data){
@@ -42,31 +46,78 @@ class ProfilesController extends Controller
                 $single_data->save();
             }
 
-            $wrestler = $item->data;
+
             $wrestler->toindex = 1;
         }else{
-            $wrestler = $item->data;
             $wrestler->toindex = 0;
         }
 
+
         if($request->rank){
-            
+
             foreach($all_wrestler as $single_data){
                 $single_data->rank = 0;
                 $single_data->save();
             }
 
-            $wrestler = $item->data;
             $wrestler->rank = 1;
         }else{
-            $wrestler = $item->data;
             $wrestler->rank = 0;
+        }
+
+
+        if($request->isHolochampion){
+
+            foreach($all_wrestler as $single_data){
+                $single_data->isHolochampion = 0;
+                $single_data->save();
+            }
+
+            $wrestler->isHolochampion = 1;
+        }else{
+            $wrestler->isHolochampion = 0;
+        }
+
+
+        if($request->isQoj){
+
+            foreach($all_wrestler as $single_data){
+                $single_data->isQoj = 0;
+                $single_data->save();
+            }
+
+            $wrestler->isQoj = 1;
+        }else{
+            $wrestler->isQoj = 0;
+        }
+
+
+        if($request->isTagTeamChampion){
+
+            foreach($all_wrestler as $single_data){
+                $single_data->isTagTeamChampion = 0;
+                $single_data->save();
+            }
+
+            $wrestler_teammate = Profiles::where('name_short', $request->team_mate)->first();
+            $wrestler_teammate->isTagTeamChampion = 1;
+            $wrestler->isTagTeamChampion = 1;
+            $wrestler_teammate->save();
+        }else{
+            $wrestler->isTagTeamChampion = 0;
+        }
+
+
+        if($request->haveBriefcase){
+            $wrestler->haveBriefcase = 1;
+        }else{
+            $wrestler->haveBriefcase = 0;
         }
 
         $wrestler->save();
 
 
-        return redirect('/admin/profile')->with('message','success!');
+        return redirect()->back()->with('message','success!');
     }
 
     public function delete(Request $request,$id)

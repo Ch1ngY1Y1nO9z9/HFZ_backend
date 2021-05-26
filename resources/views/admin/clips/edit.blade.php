@@ -30,7 +30,7 @@
                                         {{$item->embed_code}}
                                     </textarea>
                                 </div>
-                                <div class="col-12"><small class="text-danger">(*streamable.com only)</small></div>
+                                <div class="col-12"><small class="text-danger">(*streamable.com embed code only)</small></div>
                             </div>
 
                             <hr>

@@ -7,7 +7,7 @@
 @section('content')
     <div class="pt-12">
         <section class="text-gray-600 body-font bg-white px-8 py-24 min-h-screen">
-            <div class="container mx-auto flex flex-wrap pb-12">
+            <div class="container mx-auto flex flex-wrap pb-12 portfolio">
                 <div class="flex flex-col text-center w-full mb-10 text-gray-600">
                     <h1 class="text-5xl font-medium title-font mb-4 tracking-widest font-bold" style="color:#49c8f0;">
                         FIGHTZ NEWS
@@ -17,13 +17,34 @@
                     </p>
                 </div>
                 <div class="w-full mb-4">
-                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+                    <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
                 </div>
+
+                <div class="container p-5 mx-auto flex md:items-center lg:items-start md:flex-row flex-wrap flex-col">
+                    <nav class="flex-grow flex flex-wrap md:pr-20 text-center order-first">
+                        <a href="#"
+                            class="hover:bg-blue-500 hover:text-gray-100 text-gray-900 lg:w-1/4 w-1/2 px-4 py-4 nav-item active"
+                            data-rel="ALL">
+                            <h2 class="title-font font-medium tracking-widest text-sm">All</h2>
+                        </a>
+
+                        <a href="#" class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/4 w-1/2 px-4 py-4 nav-item" data-rel="News">
+                            <h2 class="title-font font-medium tracking-widest text-sm">News</h2>
+                        </a>
+                        <a href="#" class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/4 w-1/2 px-4 py-4 nav-item" data-rel="Fan_Arts">
+                            <h2 class="title-font font-medium tracking-widest text-sm">Fan Arts</h2>
+                        </a>
+                        <a href="#" class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/4 w-1/2 px-4 py-4 nav-item" data-rel="OC_Video">
+                            <h2 class="title-font font-medium tracking-widest text-sm">OC Video</h2>
+                        </a>
+                    </nav>
+                </div>
+
 
                 @foreach ($news as $item)
 
                     @if($item->type == 'img')
-                        <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col">
+                        <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col ALL Fan_Arts">
 
                             <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                                 <a href="{{$item->img}}" data-lightbox="fan-art" data-title="Fan Arts">
@@ -38,7 +59,7 @@
                             </div>
                         </div>
                     @else
-                        <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col">
+                        <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col ALL OC_Video">
                             <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                             <div class="bg-black w-full px-6" style="height: 300px;"></div>
                             <div class="w-full font-bold text-xl text-gray-800 px-6 py-6">
@@ -67,4 +88,20 @@
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+<script>
+    $(function () {
+        // create an empty variable
+        var selectedClass = "";
+        // call function when item is clicked
+        $(".nav-item").click(function () {
+            // assigns class to selected item
+            selectedClass = $(this).attr("data-rel");
+            // fades out all portfolio items
+            $(".portfolio .ALL").fadeOut(300);
+            // fades in selected category
+            $(".portfolio .ALL." + selectedClass).delay(300).fadeIn(300);
+        });
+    });
+</script>
 @endsection

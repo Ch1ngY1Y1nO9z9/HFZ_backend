@@ -62,10 +62,4 @@
             });
         } );
     </script>
-
-    @if(Session::has('message'))
-        <script>
-            alert('update success!')
-        </script>
-    @endif
 @endsection

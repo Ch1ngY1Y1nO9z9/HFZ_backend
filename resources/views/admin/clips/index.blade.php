@@ -59,7 +59,9 @@
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" defer></script>
     <script>
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('#example').DataTable({
+                order: [[ 2, 'desc' ]],
+            });
 
             $('#example').on('click','.btn-danger',function(){
                 event.preventDefault();

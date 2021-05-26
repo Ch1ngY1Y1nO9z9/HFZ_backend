@@ -10,7 +10,7 @@ class StreamRecordsController extends Controller
 {
     public function index()
     {
-        $items = Matches::all();
+        $items = Matches::orderBy('stream_number','desc')->get();
 
         return view('admin.stream.index',compact('items'));
     }

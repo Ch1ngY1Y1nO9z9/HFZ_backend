@@ -115,6 +115,13 @@
               <i class="fab fa-youtube"></i>
             </a>
           </li>
+          <li class="mr-3">
+            <a target="_blank" href="https://www.twitch.tv/holofightz"
+              class="inline-block no-underline text-white text-indigo-600 py-2 px-4"
+              style="text-shadow:#c8c8c8 1px 1px 0px, #b4b4b4 0px 2px 0px, #a0a0a0 0px 3px 0px, rgba(140, 140, 140, 0.498039) 0px 4px 0px, #787878 0px 0px 0px, rgba(0, 0, 0, 0.498039) 0px 5px 10px">
+              <i class="fab fa-twitch"></i>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -188,11 +195,12 @@
             <a href="https://teamup.com/ksgvawzp4akez27rf1">https://teamup.com/ksgvawzp4akez27rf1</a>
           </p>
         </div>
+
         <div class="w-full sm:w-1/2 px-6 py-0 md:p-6">
           <div class="h-64" style="background-image: url('/images/ring.jpg');background-position: center; backround-size: cover"></div>
         </div>
       </div>
-      <div class="flex flex-wrap flex-col-reverse sm:flex-row">
+      {{-- <div class="flex flex-wrap flex-col-reverse sm:flex-row">
         <div class="w-full sm:w-1/2 px-6 py-0 md:p-6 mt-0 md:mt-6">
           <div class="bg-black h-64"></div>
         </div>
@@ -208,7 +216,8 @@
             </p>
           </div>
         </div>
-      </div>
+      </div> --}}
+
     </div>
   </section>
 

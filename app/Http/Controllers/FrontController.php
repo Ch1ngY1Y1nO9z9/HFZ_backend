@@ -85,17 +85,23 @@ class FrontController extends Controller
     }
 
     public function Profile($character) {
-        $profile = Profiles::where('file_list_name',$character)->with('gens')->with('WLR')->with('clips')->first();
+        $profile = Profiles::where('file_list_name',$character)->with('gens')->with('clips')->first();
 
-        // $WLR = $profile->WLR;
         $data = WrestlerData::find($profile->id);
+
+        if($data->team_name){
+            $team_mate_name = Profiles::where('name_short',$data->tag_with)->first()->file_list_name;
+        }else{
+            $team_mate_name = '#';
+        }
+
         $name = $profile->name_short;
 
         $wreslter_records = MatchesRecords::where(function ($q) use ($name) {
             $q->orWhere('participants', 'like', "%{$name}%");
-            })->orderBy('stream_id','desc')->get();
+            })->orderBy('id','desc')->get();
 
-        return view('front.Profile',compact('profile','data','wreslter_records'));
+        return view('front.Profile',compact('profile','data','wreslter_records','team_mate_name'));
     }
 
     public function contact_us(Request $request) {

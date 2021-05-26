@@ -28,7 +28,48 @@
                     {{$profile->gens->generations}}
                     @endif
                 </h2>
-                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1 font-bold mt-1">{{$profile->name_jp}}/ {{$profile->name_en}}</h1>
+                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1 font-bold mt-1">
+                    @if($profile->isHolochampion == 1)
+                        <div class="holo_champion text-2xl md:text-3xl">
+                            <i class="fas fa-crown text-yellow-500" title="HOLO CHAMPION"></i>
+                            CURRENT HOLO CHAMPION
+                        </div>
+                    @endif
+                    @if($profile->isTagTeamChampion == 1)
+                        <div class="holo_champion text-2xl md:text-3xl">
+                            <i class="fas fa-tags text-yellow-500" title="TAG TEAM CHAMPION"></i>
+                            CURRENT TAG TEAM CHAMPION
+                        </div>
+                    @endif
+                    @if($profile->isQoj == 1)
+                        <div class="holo_champion text-2xl md:text-3xl">
+                            <i class="fab fa-accessible-icon text-yellow-500" title="QUEEN OF JOBBER"></i>
+                            CURRENT QUEEN OF JOBBER
+                        </div>
+                    @endif
+                    @if($profile->haveBriefcase == 1)
+                        <div class="holo_champion text-2xl md:text-3xl">
+                            <i class="fas fa-briefcase text-blue-500" title="briefcase owner"></i>
+                            BRIEFCASE OWNER
+                        </div>
+                    @endif
+                    @if($profile->name_short == 'Luna' || $profile->name_short == 'Miko')
+                        <i class="fas fa-baby text-pink-500" title="ばぶばぶ..."></i>
+                    @endif
+                    @if($profile->name_short == 'Rushia')
+                        <i class="fas fa-book-dead" title="DOKI DOKI WAKU WAKU"></i>
+                    @endif
+                    @if($profile->name_short == 'Botan')
+                        <i class="fas fa-shopping-cart" title="Master of shopping-cart"></i>
+                    @endif
+                    @if($profile->name_short == 'Yagoo')
+                        <i class="fas fa-pray" title="Kneel"></i>
+                        <i class="fas fa-pray" title="Kneel"></i>
+                        <i class="fas fa-pray" title="Kneel"></i>
+                    @endif
+
+                    {{$profile->name_jp}}/ {{$profile->name_en}}
+                </h1>
                 <div class="flex mb-4">
                     <span class="flex items-center">
                         <span class="text-gray-600 ml-1">@ {{$profile->aka}}</span>
@@ -51,9 +92,18 @@
                 <p>Finisher: <span class="font-bold">{{$data->finisher ?? ''}}</span></p>
 
                 <p>
-                    <br>tag with:
-                    <span class="font-bold">{{$data->tag_with ?? ''}}</span>
+                    <br>tag team name:
+                    <span class="font-bold">{{$data->team_name ?? 'none'}}</span>
                 </p>
+                @if($data->team_name)
+                    <p>
+                        <br>teamate:
+                        <a href="/WrestlersProfile/{{$team_mate_name}}">
+                            <span class="font-bold">{{$data->tag_with ?? ''}}</span>
+                        </a>
+
+                    </p>
+                @endif
             </div>
         </div>
         <div class="container px-5 pb-12 mx-auto">
@@ -77,7 +127,7 @@
                                     <p class="leading-relaxed">Participants:</p>
                                     <p class="leading-relaxed font-bold">{{$record->participants}}</p>
                                     <p class="leading-relaxed"><br>Winners:</p>
-                                    <p class="leading-relaxed font-bold @if($record->result == 'DRAW') text-yellow-500 @else text-red-500 @endif ">{{$record->result}}</p>
+                                    <p class="leading-relaxed font-bold @if($record->result == 'Draw') text-yellow-500 @else text-red-500 @endif ">{{$record->result}}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -95,7 +145,7 @@
                                     <p class="leading-relaxed">Participants:</p>
                                     <p class="leading-relaxed font-bold">{{$record->participants}}</p>
                                     <p class="leading-relaxed"><br>Winners:</p>
-                                    <p class="leading-relaxed font-bold @if($record->result == 'DRAW') text-yellow-500 @else text-red-500 @endif ">{{$record->result}}</p>
+                                    <p class="leading-relaxed font-bold @if($record->result == 'Draw') text-yellow-500 @else text-red-500 @endif ">{{$record->result}}</p>
                                 </div>
                             </div>
                             @endif
@@ -118,7 +168,7 @@
                                         <p class="leading-relaxed">Participants:</p>
                                         <p class="leading-relaxed font-bold">{{$record->participants}}</p>
                                         <p class="leading-relaxed"><br>Winners:</p>
-                                        <p class="leading-relaxed font-bold @if($record->result == 'DRAW') text-yellow-500 @else text-red-500 @endif ">{{$record->result}}</p>
+                                        <p class="leading-relaxed font-bold @if($record->result == 'Draw') text-yellow-500 @else text-red-500 @endif ">{{$record->result}}</p>
                                     </div>
                                 </div>
                                 @endif
@@ -155,13 +205,11 @@
                                         $total = count($wreslter_records);
                                         $single_total = 0;
                                         $single_win = 0;
-                                        $single_lose = 0;
                                         $tag_total = 0;
                                         $tag_win = 0;
-                                        $tag_lose = 0;
                                         $multi_total = 0;
                                         $multi_win = 0;
-                                        $multi_lose = 0;
+
                                         $single_draw = 0;
                                         $tag_draw = 0;
                                         $multi_draw = 0;
@@ -170,57 +218,54 @@
                                             $winners = explode(',',$record->result);
                                             $check_multi_winners = count($winners);
 
-                                            foreach($winners as $winer){
+                                            if($record->rule == 'Royal Rumble'){
 
+                                                if($record->result == $profile->name_short) {
+                                                    $multi_total+= 1;
+                                                    $multi_win += 1;
+
+                                                    continue;
+                                                }else{
+                                                    $total = $total - 1;
+
+                                                    continue;
+                                                }
+                                            }
+
+                                            if($record->type == '1v1'){
+                                                $single_total += 1;
+                                            }elseif ($record->type == '2v2'){
+                                                $tag_total += 1;
+                                            }else{
+                                                $multi_total += 1;
+                                            }
+
+                                            foreach($winners as $key => $winer){
                                                 if($winer == $profile->name_short){
                                                     if($record->type == '1v1'){
-                                                        $single_total += 1;
                                                         $single_win += 1;
                                                     }elseif ($record->type == '2v2'){
-                                                        $tag_total += 1;
                                                         $tag_win += 1;
                                                     }else{
-                                                        $multi_total += 1;
                                                         $multi_win +=1;
                                                     }
 
-                                                }elseif($winer == 'DRAW'){
+                                                }elseif($winer == 'Draw'){
                                                     if($record->type == '1v1'){
-                                                        $single_total += 1;
                                                         $single_draw += 1;
                                                     }elseif ($record->type == '2v2'){
-                                                        $tag_total += 1;
                                                         $tag_draw += 1;
                                                     }else{
-                                                        $multi_total += 1;
                                                         $multi_draw += 1;
                                                     }
-                                                }else{
-                                                    if($record->type == '1v1'){
-                                                        $single_total += 1;
-                                                        $single_lose += 1;
-                                                    }elseif ($record->type == '2v2'){
-                                                        if($winer == $profile->name_short){
-                                                            $tag_total += 1;
-                                                            $tag_lose += 1;
-                                                        }
-                                                    }else{
-                                                        if($check_multi_winners == 1){
-                                                            $multi_total += 1;
-                                                            $multi_lose += 1;
-                                                        }else{
-                                                            if($winer == $profile->name_short){
-                                                                $multi_total += 1;
-                                                                $multi_lose += 1;
-                                                            }
-                                                        }
-
-                                                    }
                                                 }
-
-
                                             }
+
                                         }
+
+                                        $single_lose = $single_total - $single_win;
+                                        $tag_lose = $tag_total - $tag_win;
+                                        $multi_lose = $multi_total - $multi_win;
 
                                         $total_win = $single_win + $tag_win + $multi_win;
                                         $total_draw = $single_draw + $tag_draw + $multi_draw;
@@ -379,5 +424,4 @@
 
 @section('js')
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-
 @endsection
