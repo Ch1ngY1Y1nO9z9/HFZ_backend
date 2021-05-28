@@ -6,8 +6,8 @@
 
 @section('content')
     <div class="pt-12">
-        <section class="text-gray-600 body-font bg-white px-8 py-24 min-h-screen">
-            <div class="container mx-auto flex flex-wrap pb-12 portfolio">
+        <section class="text-gray-600 body-font px-8 py-24 min-h-screen">
+            <div class="container mx-auto flex flex-wrap portfolio">
                 <div class="flex flex-col text-center w-full mb-10 text-gray-600">
                     <h1 class="text-5xl font-medium title-font mb-4 tracking-widest font-bold" style="color:#49c8f0;">
                         FIGHTZ NEWS
@@ -23,7 +23,7 @@
                 <div class="container p-5 mx-auto flex md:items-center lg:items-start md:flex-row flex-wrap flex-col">
                     <nav class="flex-grow flex flex-wrap md:pr-20 text-center order-first">
                         <a href="#"
-                            class="hover:bg-blue-500 hover:text-gray-100 text-gray-900 lg:w-1/4 w-1/2 px-4 py-4 nav-item active"
+                            class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/4 w-1/2 px-4 py-4 nav-item active"
                             data-rel="ALL">
                             <h2 class="title-font font-medium tracking-widest text-sm">All</h2>
                         </a>
@@ -39,8 +39,11 @@
                         </a>
                     </nav>
                 </div>
-
-
+            </div>
+            <div class="container mx-auto pb-12">
+                <hr>
+            </div>
+            <div class="container mx-auto flex flex-wrap pb-12 portfolio">
                 @foreach ($news as $item)
 
                     @if($item->type == 'img')
@@ -86,10 +89,11 @@
 @endsection
 
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
 <script>
+
     $(function () {
         // create an empty variable
         var selectedClass = "";
@@ -97,11 +101,15 @@
         $(".nav-item").click(function () {
             // assigns class to selected item
             selectedClass = $(this).attr("data-rel");
+            $('.nav-item').removeClass('active')
+            $(this).addClass('active')
             // fades out all portfolio items
             $(".portfolio .ALL").fadeOut(300);
             // fades in selected category
             $(".portfolio .ALL." + selectedClass).delay(300).fadeIn(300);
         });
     });
+
+
 </script>
 @endsection

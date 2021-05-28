@@ -18,7 +18,7 @@
                 class="container p-5 mx-auto flex md:items-center lg:items-start md:flex-row flex-wrap flex-col">
                 <nav class="flex-grow flex flex-wrap md:pr-20 text-center order-first">
                     <a href="#"
-                        class="hover:bg-blue-500 hover:text-gray-100 text-gray-900 lg:w-1/6 w-1/2 px-4 py-4 nav-item active"
+                        class="hover:bg-blue-500 hover:text-gray-100 lg:w-1/6 w-1/2 px-4 py-4 nav-item active"
                         data-rel="Members">
                         <h2 class="title-font font-medium tracking-widest text-sm">All</h2>
                     </a>
@@ -36,7 +36,7 @@
 
             <div class="flex flex-wrap portfolio">
                 <div class="p-4 w-full member_title">
-                    <h1 class="md:text-3xl text-2xl font-medium title-font text-gray-900">Members</h1>
+                    <h1 class="md:text-3xl text-2xl font-medium title-font @if(Session::has('darkMode')) text-white @else text-gray-900 @endif">Members</h1>
                 </div>
 
                 <div class="w-full flex flex-wrap Members Gen-0">
@@ -49,7 +49,7 @@
                                         src="{{$gen0->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gen0->file_list_name}}</h2>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$gen0->file_list_name}}</h2>
                                     <h3 class="text-gray-500 mb-3">@ {{$gen0->aka}}</h3>
                                     <p class="mb-4">
                                         {{$gen0->spamming}}
@@ -78,7 +78,7 @@
                                         src="{{$gen1->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gen1->file_list_name}}</h2>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$gen1->file_list_name}}</h2>
                                     <h3 class="text-gray-500 mb-3">@ {{$gen1->aka}}</h3>
                                     <p class="mb-4">
                                         {{$gen1->spamming}}
@@ -107,7 +107,7 @@
                                         src="{{$gen2->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gen2->file_list_name}}</h2>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$gen2->file_list_name}}</h2>
                                     <h3 class="text-gray-500 mb-3">@ {{$gen2->aka}}</h3>
                                     <p class="mb-4">
                                         {{$gen2->spamming}}
@@ -136,7 +136,7 @@
                                         src="{{$gamer->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gamer->file_list_name}}</h2>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$gamer->file_list_name}}</h2>
                                     <h3 class="text-gray-500 mb-3">@ {{$gamer->aka}}</h3>
                                     <p class="mb-4">
                                         {{$gamer->spamming}}
@@ -165,7 +165,7 @@
                                         src="{{$gen3->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gen3->file_list_name}}</h2>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$gen3->file_list_name}}</h2>
                                     <h3 class="text-gray-500 mb-3">@ {{$gen3->aka}}</h3>
                                     <p class="mb-4">
                                         {{$gen3->spamming}}
@@ -194,7 +194,7 @@
                                         src="{{$gen4->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gen4->file_list_name}}</h2>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$gen4->file_list_name}}</h2>
                                     <h3 class="text-gray-500 mb-3">@ {{$gen4->aka}}</h3>
                                     <p class="mb-4">
                                         {{$gen4->spamming}}
@@ -223,7 +223,7 @@
                                         src="{{$gen5->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$gen5->file_list_name}}</h2>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$gen5->file_list_name}}</h2>
                                     <h3 class="text-gray-500 mb-3">@ {{$gen5->aka}}</h3>
                                     <p class="mb-4">
                                         {{$gen5->spamming}}
@@ -252,7 +252,7 @@
                                         src="{{$genID1->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$genID1->file_list_name}}</h2>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$genID1->file_list_name}}</h2>
                                     <h3 class="text-gray-500 mb-3">@ {{$genID1->aka}}</h3>
                                     <p class="mb-4">
                                         {{$genID1->spamming}}
@@ -281,7 +281,7 @@
                                         src="{{$genID2->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$genID2->file_list_name}}</h2>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$genID2->file_list_name}}</h2>
                                     <h3 class="text-gray-500 mb-3">@ {{$genID2->aka}}</h3>
                                     <p class="mb-4">
                                         {{$genID2->spamming}}
@@ -310,7 +310,7 @@
                                         src="{{$genEN->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$genEN->file_list_name}}</h2>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$genEN->file_list_name}}</h2>
                                     <h3 class="text-gray-500 mb-3">@ {{$genEN->aka}}</h3>
                                     <p class="mb-4">
                                         {{$genEN->spamming}}
@@ -339,7 +339,7 @@
                                         src="{{$INONAKA->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$INONAKA->file_list_name}}</h2>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$INONAKA->file_list_name}}</h2>
                                     <h3 class="text-gray-500 mb-3">@ {{$INONAKA->aka}}</h3>
                                     <p class="mb-4">
                                         {{$INONAKA->spamming}}
@@ -368,7 +368,7 @@
                                         src="{{$management->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg text-gray-900">{{$management->file_list_name}}</h2>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$management->file_list_name}}</h2>
                                     <h3 class="text-gray-500 mb-3">@ {{$management->aka}}</h3>
                                     <p class="mb-4">
                                         {{$management->spamming}}
@@ -395,8 +395,9 @@
 
 
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script>
+
     $(document).ready(function () {
         $('.nav-item').click(function () {
             // reset active class
@@ -423,6 +424,17 @@
                 $(".portfolio .member_title h1").text(gen);
             });
         });
+
+        $('.lights').click(function(){
+            if($('body').hasClass('bg-black')){
+                $('.text-gray-900').addClass('text-white dark-mode');
+                $('.text-gray-900').removeClass('text-gray-900');
+            }else{
+                $('.dark-mode').addClass('text-gray-900');
+                $('.dark-mode').removeClass('text-white dark-mode');
+
+            }
+        })
 
     });
 </script>

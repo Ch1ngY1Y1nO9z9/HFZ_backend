@@ -40,13 +40,9 @@
   </style>
 </head>
 
-<body id="body" class="leading-normal tracking-normal text-white background-img"
+<body id="body" class="leading-normal tracking-normal text-white @if(Session::has('darkMode')) bg-black @else bg-white @endif"
   style="font-family: 'Source Sans Pro', sans-serif;">
-    <div class="btt">
-        <a href="#body">
-            <i class="fas fa-arrow-alt-circle-up text-indigo-500 hover:text-indigo-600 text-4xl md:text-6xl"></i>
-        </a>
-    </div>
+
   <!--Nav-->
   <nav id="header" class="fixed w-full z-30 top-0 text-white bg-opacity-50 bg-black">
     <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
@@ -110,6 +106,12 @@
               <i class="fab fa-twitch"></i>
             </a>
           </li>
+          <li class="mr-3">
+            <div class="lights" style="cursor: pointer">
+                <i class="far fa-lightbulb"></i>
+            </div>
+          </li>
+
         </ul>
       </div>
     </div>
@@ -128,27 +130,27 @@
   </div>
   <!--Footer-->
   <footer class="text-gray-600 body-font">
-    <div class="bg-gray-100">
+    <div class="footer-bg @if(Session::has('darkMode')) bg-gray-900 @else bg-gray-100 @endif">
       <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
         <p class="text-gray-500 text-sm text-center sm:text-left">© 2020 HolofightZ —
           <a target="_blank" href="https://twitter.com/HoloFightZ" class="text-gray-600 ml-1 py-2 px-4 inline-block no-underline" rel="noopener noreferrer"
             target="_blank">@holofightz</a>
         </p>
-        <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start flex-wrap">
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start flex-wrap text-gray-500">
           <a href="/FightZNews" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
-            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">FightZ News</h2>
+            <h2 class="title-font font-medium tracking-widest text-sm mb-3">FightZ News</h2>
           </a>
           <a href="/WrestlersProfile" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
-            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Wrestlers Profile</h2>
+            <h2 class="title-font font-medium tracking-widest text-sm mb-3">Wrestlers Profile</h2>
           </a>
           <a href="/PreviousShows" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
-            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Previous Shows</h2>
+            <h2 class="title-font font-medium tracking-widest text-sm mb-3">Previous Shows</h2>
           </a>
           <a href="/Poll" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
-            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Poll</h2>
+            <h2 class="title-font font-medium tracking-widest text-sm mb-3">Poll</h2>
           </a>
           <a href="/FAQ" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
-            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">FAQ</h2>
+            <h2 class="title-font font-medium tracking-widest text-sm mb-3">FAQ</h2>
           </a>
           <a target="_blank" href="https://twitter.com/HoloFightZ"
             class="text-gray-500 hover_twitter py-2 px-4 md\:w-2 inline-block no-underline">
@@ -163,6 +165,31 @@
     </div>
   </footer>
 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+      $('.lights').click(function(){
+          if($('body').hasClass('bg-white')){
+
+            $('body').removeClass('bg-white')
+            $('body').addClass('bg-black')
+            $('.footer-bg').removeClass('bg-gray-100');
+            $('.footer-bg').addClass('bg-gray-900');
+
+          }else{
+
+            $('body').addClass('bg-white');
+            $('body').removeClass('bg-black');
+            $('.footer-bg').addClass('bg-gray-100');
+            $('.footer-bg').removeClass('bg-gray-900');
+          }
+
+
+        $.get('/lightsoff');
+
+
+      })
+  </script>
   <script src="{{asset('js/pages.js')}}"></script>
   @yield('js')
 

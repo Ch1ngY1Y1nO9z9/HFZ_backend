@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="pt-12">
-    <section class="text-gray-600 body-font bg-white  min-h-screen">
+    <section class="text-gray-600 body-font min-h-screen">
         <div class="container mx-auto flex px-5 pt-12 md:flex-row flex-col items-center">
             <a href="/WrestlersProfile"
                 class="mx-auto lg:mx-0 hover:underline bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
@@ -28,7 +28,7 @@
                     {{$profile->gens->generations}}
                     @endif
                 </h2>
-                <h1 class="text-gray-900 text-3xl title-font font-medium mb-1 font-bold mt-1">
+                <h1 class="text-3xl title-font font-medium mb-1 font-bold mt-1 @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">
                     @if($profile->isHolochampion == 1)
                         <div class="holo_champion text-2xl md:text-3xl">
                             <i class="fas fa-crown text-yellow-500" title="HOLO CHAMPION"></i>
@@ -108,7 +108,7 @@
         </div>
         <div class="container px-5 pb-12 mx-auto">
             <div class="flex flex-col text-center w-full mb-10 lg:mb-20">
-                <h1 class="text-5xl font-medium title-font text-gray-900 font-bold">Match Records</h1>
+                <h1 class="text-5xl font-medium title-font font-bold @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">Match Records</h1>
             </div>
             <div x-data={show:false} class="-my-8 divide-y-2 divide-gray-100">
                 @if($wreslter_records)
@@ -120,10 +120,10 @@
                         @foreach ($wreslter_records as $record)
                             <div class="py-8 block md:flex flex-wrap md:flex-nowrap">
                                 <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0  block md:flex flex-col">
-                                    <span class="font-semibold title-font text-gray-700">Stream {{$record->stream_id}}</span>
+                                    <span class="font-semibold title-font @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">Stream {{$record->stream_id}}</span>
                                 </div>
                                 <div class="md:flex-grow">
-                                    <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">{{$record->type}} - {{$record->rule}}</h2>
+                                    <h2 class="text-2xl font-medium title-font mb-2 @if(Session::has('darkMode')) text-gray-300  dark-mode-gray @else text-gray-700 @endif">{{$record->type}} - {{$record->rule}}</h2>
                                     <p class="leading-relaxed">Participants:</p>
                                     <p class="leading-relaxed font-bold">{{$record->participants}}</p>
                                     <p class="leading-relaxed"><br>Winners:</p>
@@ -138,10 +138,10 @@
                             @if($key < 3)
                             <div class="py-8 block md:flex flex-wrap md:flex-nowrap">
                                 <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0  block md:flex flex-col">
-                                    <span class="font-semibold title-font text-gray-700">Stream {{$record->stream_id}}</span>
+                                    <span class="font-semibold title-font @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">Stream {{$record->stream_id}}</span>
                                 </div>
                                 <div class="md:flex-grow">
-                                    <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">{{$record->type}} - {{$record->rule}}</h2>
+                                    <h2 class="text-2xl font-medium title-font mb-2 @if(Session::has('darkMode')) text-gray-300  dark-mode-gray @else text-gray-700 @endif">{{$record->type}} - {{$record->rule}}</h2>
                                     <p class="leading-relaxed">Participants:</p>
                                     <p class="leading-relaxed font-bold">{{$record->participants}}</p>
                                     <p class="leading-relaxed"><br>Winners:</p>
@@ -161,10 +161,10 @@
                                 @if($key >= 3)
                                 <div class="py-8 block md:flex flex-wrap md:flex-nowrap">
                                     <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0  block md:flex flex-col">
-                                        <span class="font-semibold title-font text-gray-700">Stream {{$record->stream_id}}</span>
+                                        <span class="font-semibold title-font @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">Stream {{$record->stream_id}}</span>
                                     </div>
                                     <div class="md:flex-grow">
-                                        <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">{{$record->type}} - {{$record->rule}}</h2>
+                                        <h2 class="text-2xl font-medium title-font mb-2 @if(Session::has('darkMode')) text-gray-300  dark-mode-gray @else text-gray-700 @endif">{{$record->type}} - {{$record->rule}}</h2>
                                         <p class="leading-relaxed">Participants:</p>
                                         <p class="leading-relaxed font-bold">{{$record->participants}}</p>
                                         <p class="leading-relaxed"><br>Winners:</p>
@@ -182,7 +182,7 @@
         </div>
         <div class="container px-5 pb-12 mx-auto">
             <div class="flex flex-col text-center w-full mb-10 lg:mb-20">
-                <h1 class="text-5xl font-medium title-font text-gray-900 font-bold">Win Lose Ratio</h1>
+                <h1 class="text-5xl font-medium title-font font-bold @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">Win Lose Ratio</h1>
             </div>
             <div class="flex flex-col">
                 <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
@@ -357,7 +357,7 @@
 
         <div class="container px-5 pb-24 mx-auto hidden sm:block">
             <div class="flex flex-col text-center w-full mb-10 lg:mb-20">
-                <h1 class="text-5xl font-medium title-font text-gray-900 font-bold">Match Clips</h1>
+                <h1 class="text-5xl font-medium title-font font-bold @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">Match Clips</h1>
             </div>
             <div class="flex flex-wrap -m-4">
 
@@ -370,7 +370,7 @@
                                         class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
                                         <i class="fas fa-hand-sparkles"></i>
                                     </div>
-                                    <h2 class="text-gray-900 text-lg title-font font-medium">{{$clip->clip_title}}</h2>
+                                    <h2 class="text-lg title-font font-medium @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$clip->clip_title}}</h2>
                                 </div>
                                 <div class="flex-grow">
                                     {!! $clip->embed_code !!}
@@ -386,7 +386,7 @@
                                         class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
                                         <i class="fas fa-hand-middle-finger"></i>
                                     </div>
-                                    <h2 class="text-gray-900 text-lg title-font font-medium">{{$clip->clip_title}}</h2>
+                                    <h2 class="text-lg title-font font-medium @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$clip->clip_title}}</h2>
                                 </div>
                                 <div class="flex-grow">
                                     {!! $clip->embed_code !!}
@@ -402,7 +402,7 @@
                                         class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
                                         <i class="fas fa-fist-raised"></i>
                                     </div>
-                                    <h2 class="text-gray-900 text-lg title-font font-medium">{{$clip->clip_title}}</h2>
+                                    <h2 class="text-lg title-font font-medium @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$clip->clip_title}}</h2>
                                 </div>
                                 <div class="flex-grow">
                                     {!! $clip->embed_code !!}
@@ -424,4 +424,22 @@
 
 @section('js')
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script>
+    $('.lights').click(function(){
+        if($('body').hasClass('bg-black')){
+            $('.text-gray-900').addClass('text-white dark-mode');
+            $('.text-gray-900').removeClass('text-gray-900');
+
+            $('.text-gray-700').addClass('text-gray-300 dark-mode-gray');
+            $('.text-gray-700').removeClass('text-gray-700');
+        }else{
+            $('.dark-mode').addClass('text-gray-900');
+            $('.dark-mode').removeClass('text-white dark-mode');
+
+            $('.text-gray-700').removeClass('text-gray-300 dark-mode-gray');
+            $('.text-gray-700').addClass('text-gray-700');
+
+        }
+    })
+</script>
 @endsection

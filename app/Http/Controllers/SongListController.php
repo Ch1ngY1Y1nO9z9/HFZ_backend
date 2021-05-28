@@ -2,52 +2,47 @@
 
 namespace App\Http\Controllers;
 
+use App\Matches;
+use App\MatchesRecords;
+use App\SongsLists;
 use Illuminate\Http\Request;
 
 class SongListController extends Controller
 {
-    public function index()
+    public function index($stream_number)
     {
-        $items = Matches::all();
+        $items = SongsLists::where('stream_id', $stream_number)->orderBy('stream_id','asc')->get();
 
-        return view('admin.stream.index',compact('items'));
+        return view('admin.songlist.index',compact('items','stream_number'));
     }
 
-    public function create()
+    public function create($stream_number)
     {
-        return view('admin.stream.create');
+        $games = MatchesRecords::where('stream_id',$stream_number)->orderBy('game','asc')->get();
+
+        return view('admin.songlist.create',compact('stream_number','games'));
     }
 
     public function store(Request $request)
     {
-        $new_record =  Matches::create($request->all());
+        SongsLists::create($request->all());
 
-        if($request->hasFile('background_image')){
-            $new_record->fill(['background_image' => $this->upload_file($request->file('background_image'))]);
-        }
-
-        $new_record->save();
-
-        return redirect('/admin/stream');
+        return redirect()->back()->with('store','success!');
     }
 
     public function edit($id)
     {
-        $item = Matches::find($id);
 
-        return view('admin.stream.edit',compact('item'));
+        $item = SongsLists::find($id);
+        $games = MatchesRecords::where('stream_id',$item->stream_id)->orderBy('game','asc')->get();
+
+        return view('admin.songlist.edit',compact('item','games'));
     }
 
     public function update(Request $request,$id)
     {
-
-        $item = Matches::find($id);
+        $item = SongsLists::find($id);
         $item->update($request->all());
-
-        if($request->hasFile('background_image')){
-            $this->delete_file($item->background_image);
-            $item->background_image = $this->upload_file($request->file('background_image'));
-        }
 
         $item->save();
 
@@ -56,40 +51,11 @@ class SongListController extends Controller
 
     public function delete(Request $request,$id)
     {
-        $items = Matches::find($id);
-
-        if($items->background_image){
-            $this->delete_file($items->background_image);
-        }
+        $items = SongsLists::find($id);
 
         $items->delete();
 
         return redirect()->back();
     }
 
-    //上傳檔案
-    public function upload_file($file){
-        $allowed_extensions =["png", "jpg", "gif", "PNG", "JPG", "GIF","jpeg","JPEG"];
-
-        if ($file->getClientOriginalExtension() &&
-            !in_array($file->getClientOriginalExtension(), $allowed_extensions))
-        {
-            return redirect()->back()->with('message','.jpg, .png, .gif, .jepg file only!');
-        }
-        $extension = $file->getClientOriginalExtension();
-        $destinationPath = public_path() . '/StreamRecords/';
-        $original_filename = $file->getClientOriginalName();
-
-        $filename = $file->getFilename() . '.' . $extension;
-        $url = '/StreamRecords/' . $filename;
-
-        $file->move($destinationPath, $filename);
-
-        return $url;
-    }
-
-    //刪除檔案
-    public function delete_file($path){
-        File::delete(public_path().$path);
-    }
 }

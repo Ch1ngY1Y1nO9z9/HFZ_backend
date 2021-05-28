@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <section class="bg-white py-8 pt-24 min-h-screen">
+        <section class="py-8 pt-24 min-h-screen">
             <div class="container max-w-5xl mx-auto m-8">
                 <div class="flex flex-col text-center w-full mb-20">
                 <h1 class="text-5xl font-medium title-font mb-4 tracking-widest font-bold" style="color:#49c8f0;">

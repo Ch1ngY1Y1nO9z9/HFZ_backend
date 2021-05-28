@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Seo;
 use App\News;
+use App\Check;
 use App\Banners;
+use App\Matches;
 use App\Profiles;
 use App\ContactUs;
-use App\Generations;
-use App\Matches;
-use App\MatchesRecords;
 use App\SongsLists;
+use App\Generations;
 use App\WrestlerData;
+use App\MatchesRecords;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class FrontController extends Controller
 {
@@ -35,6 +38,19 @@ class FrontController extends Controller
 
         return view('front.index',compact('seo','banner','news','stars','rank_leader','previous_shows'));
     }
+
+    public function lightsoff() {
+        if(Session::has('darkMode')){
+            Session::forget('darkMode');
+        }else{
+            Session::put('darkMode','on');
+        }
+
+        $session = Session::all();
+
+        return $session;
+    }
+
 
     public function FAQ() {
         return view('front.FAQ');
@@ -81,7 +97,48 @@ class FrontController extends Controller
         $genEN_all = Profiles::where('generations_id','10')->get();
         $INONAKA_all = Profiles::where('generations_id','11')->get();
 
+        if (isset($_SERVER['HTTP_CLIENT_IP'])) {
+
+            $result = $_SERVER['HTTP_CLIENT_IP'];
+
+         } elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+
+            $result = $_SERVER['HTTP_X_FORWARDED_FOR'];
+
+         } elseif (isset($_SERVER['HTTP_X_FORWARDED'])) {
+
+            $result = $_SERVER['HTTP_X_FORWARDED'];
+
+         } elseif (isset($_SERVER['HTTP_FORWARDED_FOR'])) {
+
+            $result = $_SERVER['HTTP_FORWARDED_FOR'];
+
+         } elseif (isset($_SERVER['HTTP_FORWARDED'])) {
+
+            $result = $_SERVER['HTTP_FORWARDED'];
+
+         } elseif (isset($_SERVER['REMOTE_ADDR'])) {
+
+            $result = $_SERVER['REMOTE_ADDR'];
+
+         } else {
+
+             $result = '';
+         }
+
+        $all_check = Check::where('ip_check_for_jp',$result)->first();
+        if(!$all_check){
+            $check = Check::create();
+            $check->ip_check_for_jp = $result;
+            $check->save();
+        }
+
         return view('front.WrestlersProfile', compact('generations','gen0_all','gen1_all','gen2_all','gamers_all','gen3_all','gen4_all','gen5_all','genID1_all','genID2_all','genEN_all','INONAKA_all','cover'));
+    }
+
+    public function Poll()
+    {
+        return view('front.Poll');
     }
 
     public function Profile($character) {

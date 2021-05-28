@@ -54,7 +54,7 @@
   </style>
 </head>
 
-<body class="leading-normal tracking-normal text-white background-img"
+<body class="leading-normal tracking-normal text-white background-img @if(Session::has('darkMode')) bg-black @else bg-white @endif"
   style="font-family: 'Source Sans Pro', sans-serif;">
   <!--Nav-->
   <nav id="header" class="fixed w-full z-30 top-0 text-white bg-opacity-50 bg-black">
@@ -122,6 +122,11 @@
               <i class="fab fa-twitch"></i>
             </a>
           </li>
+          <li class="mr-3">
+            <div class="lights" style="cursor: pointer">
+                <i class="far fa-lightbulb"></i>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -158,7 +163,7 @@
     <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink">
       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
+        <g transform="translate(-2.000000, 44.000000)" fill="@if(Session::has('darkMode')) #000 @else #FFFFFF @endif" fill-rule="nonzero">
           <path
             d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496"
             opacity="0.100000001"></path>
@@ -169,7 +174,7 @@
             d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z"
             id="Path-4" opacity="0.200000003"></path>
         </g>
-        <g transform="translate(-4.000000, 76.000000)" fill="#FFFFFF" fill-rule="nonzero">
+        <g transform="translate(-4.000000, 76.000000)" fill="@if(Session::has('darkMode')) #000 @else #FFFFFF @endif" fill-rule="nonzero">
           <path
             d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z">
           </path>
@@ -177,9 +182,9 @@
       </g>
     </svg>
   </div>
-  <section class="bg-white border-b py-8">
+  <section class="py-8 @if(Session::has('darkMode')) bg-black @else bg-white @endif">
     <div class="container max-w-5xl mx-auto m-8">
-      <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800" style="color:#49c8f0;">
+      <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center" style="color:#49c8f0;">
         ABOUT HOLOFIGHTZ
       </h1>
       <div class="w-full mb-4">
@@ -187,7 +192,7 @@
       </div>
       <div class="flex flex-wrap">
         <div class="w-full sm:w-1/2 p-6">
-          <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+          <h3 class="text-3xl font-bold leading-none mb-3 gray_800 @if(Session::has('darkMode')) text-gray-200 @else text-gray-800 @endif">
             Stream time
           </h3>
           <p class="text-gray-600">
@@ -206,7 +211,7 @@
         </div>
         <div class="w-full sm:w-1/2 p-6 mt-6">
           <div class="align-middle">
-            <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+            <h3 class="text-3xl gray_800 @if(Session::has('darkMode')) text-gray-200 @else text-gray-800 @endif font-bold leading-none mb-3">
               Lorem ipsum dolor sit amet
             </h3>
             <p class="text-gray-600">
@@ -221,9 +226,9 @@
     </div>
   </section>
 
-  <section class="bg-gray-100 border-b py-8">
+  <section class="py-8 @if(Session::has('darkMode')) bg-gray-900 @else bg-gray-100 @endif">
     <div class="container mx-auto flex flex-wrap pt-4 pb-12">
-      <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800" style="color:#49c8f0;">
+      <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center" style="color:#49c8f0;">
         FIGHTZ NEWS
       </h1>
       <div class="w-full mb-4">
@@ -235,25 +240,25 @@
             <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col">
 
                 <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-                    <a href="{{$item->img}}" data-lightbox="fan-art" data-title="Fan Arts">
+                    <a href="{{$item->img}}" data-lightbox="fan-art" data-title="Fan Arts" class="text-gray-800">
                         <div class="w-full px-6" style="height: 300px; background-image: url('{{$item->img}}'); background-size:contain; background-repeat:no-repeat; background-position: center;"></div>
-                        <div class="w-full font-bold text-xl text-gray-800 px-6 py-6">
+                        <div class="w-full font-bold text-xl px-6 py-6">
                             {{$item->title}}
                         </div>
-                        <p class="text-gray-800 text-base px-6 mb-5">
+                        <p class="text-base px-6 mb-5">
                             {{$item->description}}
                         </p>
                     </a>
                 </div>
             </div>
         @else
-            <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col">
+            <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col text-gray-800">
                 <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                 <div class="bg-black w-full px-6" style="height: 300px;"></div>
-                <div class="w-full font-bold text-xl text-gray-800 px-6 py-6">
+                <div class="w-full font-bold text-xl px-6 py-6">
                     {{$item->title}}
                 </div>
-                <p class="text-gray-800 text-base px-6 mb-5">
+                <p class="text-base px-6 mb-5">
                     {{$item->description}}
                 </p>
                 </div>
@@ -271,33 +276,33 @@
 
     </div>
   </section>
-  <section class="border-b py-8 text-gray-600 body-font">
+  <section class="py-8 text-gray-600 body-font">
     <div class="container mx-auto flex flex-wrap pt-4 pb-12">
-      <div class="flex flex-wrap w-full">
+      <div class="flex flex-wrap w-full gray_800 @if(Session::has('darkMode')) text-gray-200 @else text-gray-800 @endif">
         <div class="p-2 md:p-4 md:w-1/2 w-full">
-          <div class="h-full bg-gray-100 p-8 rounded">
-            <h1 class="w-full my-2 text-4xl md:text-5xl font-bold leading-tight text-gray-800" >
+          <div class="h-full p-8 rounded cards-bg @if(Session::has('darkMode')) bg-gray-900 @else bg-gray-100 @endif">
+            <h1 class="w-full my-2 text-4xl md:text-5xl font-bold leading-tight" >
               RANK LEADER
               <div class="h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </h1>
             <a href="/WrestlersProfile/{{$rank_leader->file_list_name}}">
               <img src="{{$rank_leader->avatar}}" alt="{{$rank_leader->name_en}}">
               <span class="flex-grow flex flex-col ">
-                <h4 class="md:text-3xl text-2xl font-bold leading-tight text-gray-800">{{$rank_leader->file_list_name}}@ {{$rank_leader->aka}}</h4>
+                <h4 class="md:text-3xl text-2xl font-bold leading-tight">{{$rank_leader->file_list_name}}@ {{$rank_leader->aka}}</h4>
               </span>
             </a>
           </div>
         </div>
         <div class="p-2 md:p-4 md:w-1/2 w-full">
-          <div class="h-full bg-gray-100 p-8 rounded">
-            <h1 class="w-full my-2 text-4xl md:text-5xl font-bold leading-tight text-gray-800">
+          <div class="h-full p-8 rounded cards-bg @if(Session::has('darkMode')) bg-gray-900 @else bg-gray-100 @endif">
+            <h1 class="w-full my-2 text-4xl md:text-5xl font-bold leading-tight">
               RISING STAR
               <div class="h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </h1>
             <a href="/WrestlersProfile/{{$rank_leader->file_list_name}}">
               <img src="{{$stars->avatar}}" alt="{{$stars->name_en}}">
               <span class="flex-grow flex flex-col">
-                <h4 class="md:text-3xl text-2xl font-bold leading-tight text-gray-800">
+                <h4 class="md:text-3xl text-2xl font-bold leading-tight">
                     {{$stars->name_en}} @ {{$stars->aka}}
                 </h4>
               </span>
@@ -308,16 +313,16 @@
     </div>
   </section>
 
-  <div class="bg-white py-8">
+  <section class="py-8 @if(Session::has('darkMode')) bg-black @else bg-white @endif">
     <div class="container mx-auto px-2 pt-4 pb-12 text-white-800">
-      <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800" style="color:#49c8f0;">
+      <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center" style="color:#49c8f0;">
         PREVIOUS SHOWS
       </h1>
       <div class="w-full mb-4">
         <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
       </div>
       <div class="w-full mx-auto my-20 bg-white">
-        <div id="slider" class="swiper-container w-full">
+        <div id="slider" class="swiper-container w-full border-2">
           <div class="swiper-wrapper">
 
               @foreach ($previous_shows as $show)
@@ -354,19 +359,19 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Change the colour #f8fafc to match the previous section colour -->
   <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
       <g transform="translate(-1.000000, -14.000000)" fill-rule="nonzero">
-        <g class="wave" fill="#f8fafc">
+        <g class="wave" fill="@if(Session::has('darkMode')) #000 @else #f8fafc @endif">
           <path
             d="M1440,84 C1383.555,64.3 1342.555,51.3 1317,45 C1259.5,30.824 1206.707,25.526 1169,22 C1129.711,18.326 1044.426,18.475 980,22 C954.25,23.409 922.25,26.742 884,32 C845.122,37.787 818.455,42.121 804,45 C776.833,50.41 728.136,61.77 713,65 C660.023,76.309 621.544,87.729 584,94 C517.525,105.104 484.525,106.438 429,108 C379.49,106.484 342.823,104.484 319,102 C278.571,97.783 231.737,88.736 205,84 C154.629,75.076 86.296,57.743 0,32 L0,0 L1440,0 L1440,84 Z">
           </path>
         </g>
-        <g transform="translate(1.000000, 15.000000)" fill="#FFFFFF">
+        <g transform="translate(1.000000, 15.000000)" fill="@if(Session::has('darkMode')) #000 @else #FFFFFF @endif">
           <g transform="translate(719.500000, 68.500000) rotate(-180.000000) translate(-719.500000, -68.500000) ">
             <path
               d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496"
@@ -412,7 +417,7 @@
                 <div class="p-2 w-full">
                   <div class="relative">
                     <label for="message" class="leading-7 text-sm text-white">Message</label>
-                    <textarea id="message" name="content" maxlength="300" placeholder="paste any OC video link, fan arts, match suggest to us" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                    <textarea id="message" name="content" maxlength="300" placeholder="paste any OC video link, fan arts, match suggest to us" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" required></textarea>
                   </div>
                 </div>
                 <div class="p-2 w-full">
@@ -426,27 +431,27 @@
 
   <!--Footer-->
   <footer class="text-gray-600 body-font">
-    <div class="bg-gray-100">
+    <div class="footer-bg @if(Session::has('darkMode')) bg-gray-900 @else bg-gray-100 @endif">
       <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
         <p class="text-gray-500 text-sm text-center sm:text-left">© 2020 HolofightZ —
           <a target="_blank" href="https://twitter.com/HoloFightZ" class="text-gray-600 ml-1 py-2 px-4 inline-block no-underline" rel="noopener noreferrer"
             target="_blank">@holofightz</a>
         </p>
-        <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start flex-wrap">
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start flex-wrap text-gray-500">
           <a href="/FightZNews" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
-            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">FightZ News</h2>
+            <h2 class="title-font font-medium tracking-widest text-sm mb-3">FightZ News</h2>
           </a>
           <a href="/WrestlersProfile" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
-            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Wrestlers Profile</h2>
+            <h2 class="title-font font-medium tracking-widest text-sm mb-3">Wrestlers Profile</h2>
           </a>
           <a href="/PreviousShows" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
-            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Previous Shows</h2>
+            <h2 class="title-font font-medium tracking-widest text-sm mb-3">Previous Shows</h2>
           </a>
           <a href="/Poll" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
-            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Poll</h2>
+            <h2 class="title-font font-medium tracking-widest text-sm mb-3">Poll</h2>
           </a>
           <a href="/FAQ" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
-            <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">FAQ</h2>
+            <h2 class="title-font font-medium tracking-widest text-sm mb-3">FAQ</h2>
           </a>
           <a target="_blank" href="https://twitter.com/HoloFightZ"
             class="text-gray-500 hover_twitter py-2 px-4 md\:w-2 inline-block no-underline">
@@ -466,6 +471,56 @@
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
   <script src="/js/index.js"></script>
+
+    <script>
+        $('.lights').click(function(){
+            if($('body').hasClass('bg-white')){
+
+                $('body').removeClass('bg-white')
+                $('body').addClass('bg-black')
+                $('section.bg-white').addClass('bg-black')
+                $('section.bg-white').removeClass('bg-white')
+                $('section.bg-white').addClass('bg-black')
+                $('section.bg-white').removeClass('bg-white')
+
+                $('.footer-bg').removeClass('bg-gray-100');
+                $('.footer-bg').addClass('bg-gray-900');
+                $('.cards-bg').removeClass('bg-gray-100');
+                $('.cards-bg').addClass('bg-gray-900');
+                $('section.bg-gray-100').addClass('bg-gray-900')
+                $('section.bg-gray-100').removeClass('bg-gray-100')
+
+                $('g').attr('fill','#000')
+
+                $('.gray_800').removeClass('text-gray-800');
+                $('.gray_800').addClass('text-gray-200');
+
+            }else{
+
+                $('body').addClass('bg-white');
+                $('body').removeClass('bg-black');
+                $('section.bg-black').addClass('bg-white');
+                $('section.bg-black').removeClass('bg-black');
+
+                $('.footer-bg').addClass('bg-gray-100');
+                $('.footer-bg').removeClass('bg-gray-900');
+                $('.cards-bg').addClass('bg-gray-100');
+                $('.cards-bg').removeClass('bg-gray-900');
+                $('section.bg-gray-900').addClass('bg-gray-100');
+                $('section.bg-gray-900').removeClass('bg-gray-900');
+
+                $('g').attr('fill','#fff')
+
+                $('.gray_800').removeClass('text-gray-200');
+                $('.gray_800').addClass('text-gray-800');
+            }
+
+
+        $.get('/lightsoff');
+
+
+        })
+    </script>
 
   @if(Session::has('message'))
   <script>

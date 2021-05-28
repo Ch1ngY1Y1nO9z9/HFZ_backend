@@ -25,7 +25,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'FrontController@index');
+Route::get('/lightsoff', 'FrontController@lightsoff');
 Route::get('/FAQ', 'FrontController@FAQ');
+Route::get('/Poll', 'FrontController@Poll');
 Route::get('/Box/{stream_id}', 'FrontController@Box');
 Route::get('/FightZNews', 'FrontController@FightZNews');
 Route::get('/FightZNews/{new_id}', 'FrontController@News');
@@ -113,11 +115,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('stream/match_result/delete/{id}', 'MatchResultController@delete');
 
     // 歌單管理
-    Route::get('stream/song_list/{stream_id}','StreamRecordsController@index');
-    Route::get('stream/song_list/{stream_id}/create', 'StreamRecordsController@create');
-    Route::get('stream/song_list/{stream_id}/edit/{id}', 'StreamRecordsController@edit');
-    Route::post('stream/song_list/{stream_id}/store', 'StreamRecordsController@store');
-    Route::post('stream/song_list/{stream_id}/update/{id}', 'StreamRecordsController@update');
-    Route::post('stream/song_list/delete/{id}', 'StreamRecordsController@delete');
+    Route::get('stream/song_list/{stream_id}','SongListController@index');
+    Route::get('stream/song_list/{stream_id}/create', 'SongListController@create');
+    Route::get('stream/song_list/edit/{id}', 'SongListController@edit');
+    Route::post('stream/song_list/store', 'SongListController@store');
+    Route::post('stream/song_list/update/{id}', 'SongListController@update');
+    Route::post('stream/song_list/delete/{id}', 'SongListController@delete');
 
 });
