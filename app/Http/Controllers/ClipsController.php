@@ -12,7 +12,7 @@ class ClipsController extends Controller
     public function index($wrestler_id)
     {
         $wrestler = Profiles::find($wrestler_id);
-        $items = WrestlerClips::with('clips')->get();
+        $items = WrestlerClips::where('wrestler_id',$wrestler_id)->with('clips')->get();
 
         return view('admin.clips.index',compact('wrestler','items'));
     }
