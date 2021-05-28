@@ -24,18 +24,6 @@
         gtag('config', 'G-2X8NTS7JM2');
     </script>
 
-    {{-- google recaptcha v3 --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LcU5_caAAAAADvP92EzQ68Z-HED2chnfrlA2v7w"></script>
-    <script>
-        grecaptcha.ready(function() {
-        grecaptcha.execute('6LcU5_caAAAAADvP92EzQ68Z-HED2chnfrlA2v7w', {action: 'homepage'}).then(function(token) {
-        var recaptchaResponse = document.getElementById('recaptchaResponse');
-        recaptchaResponse.value = token;
-        });
-    });
-    </script>
-
   @yield('css')
   <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />
   <!--Replace with your tailwind.css once created-->
