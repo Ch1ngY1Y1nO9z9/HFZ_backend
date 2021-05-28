@@ -31,7 +31,7 @@
                             <tbody>
                             @foreach($items as $item)
                                 <tr>
-                                    <td>Stream {{$item->game}}</td>
+                                    <td>{{$item->game}}</td>
                                     <td>
                                         {{$item->type}}
                                     </td>
