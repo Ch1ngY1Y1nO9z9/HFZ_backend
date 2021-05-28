@@ -5,12 +5,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <?php
+    $SEO = App/SEO::find(1);
+  ?>
   <title>
-    HolofightZ Official Website
+    {{$SEO->title}}
   </title>
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
-  <meta name="author" content="" />
+  <meta name="description" content="{{$SEO->description}}" />
+  <meta name="keywords" content="{{$SEO->keyword}}" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2X8NTS7JM2"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-2X8NTS7JM2');
+    </script>
+
+    {{-- google recaptcha v3 --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcU5_caAAAAADvP92EzQ68Z-HED2chnfrlA2v7w"></script>
+    <script>
+        grecaptcha.ready(function() {
+        grecaptcha.execute('6LcU5_caAAAAADvP92EzQ68Z-HED2chnfrlA2v7w', {action: 'homepage'}).then(function(token) {
+        var recaptchaResponse = document.getElementById('recaptchaResponse');
+        recaptchaResponse.value = token;
+        });
+    });
+    </script>
 
   @yield('css')
   <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />

@@ -9,15 +9,7 @@
     <meta name="keywords" content="{{$seo->keyword}}">
     <meta name="description" content="{{$seo->description}}" />
     <title>{{$seo->title}}</title>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F9NZVZF5SB"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
-    gtag('config', 'G-F9NZVZF5SB');
-    </script>
 
     @yield('recaptcha')
 
@@ -40,30 +32,14 @@
                             <a class="w-100" href="/ch">
                                 <img width="100%" class="lazy" data-src="/img/logo.png" src="/img/logo.png" alt="HolofightZ">
                                 <span>
-                                    HolofightZ
+
                                 </span>
                             </a>
                         </div>
                     </div>
                     <div class="right_side col-6 col-md-8">
                         <div class="d-none d-md-block h-100">
-                            <ul class="p-0 m-0 links row">
-                                <li class="link col">
-                                    <a href="/ch#about_us">關於嘉鴻</a>
-                                </li>
-                                <li class="link col">
-                                    <a href="/ch#news">最新消息</a>
-                                </li>
-                                <li class="link col">
-                                    <a href="/ch#products">產品介紹</a>
-                                </li>
-                                <li class="link col">
-                                    <a href="/ch#contact_us">聯絡我們</a>
-                                </li>
-                                <li class="link col">
-                                    <a href="/en">中/英</a>
-                                </li>
-                            </ul>
+
                         </div>
                         <div class="mobile_menu d-flex h-100">
                             <div class="ms-auto my-auto d-block d-md-none dropdown">
@@ -71,33 +47,7 @@
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li>
-                                        <a class="dropdown-item" href="#about_us">
-                                            關於嘉鴻
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#news">
-                                            最新消息
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#products">
-                                            產品介紹
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#contact_us">
-                                            聯絡我們
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/en">
-                                            中/英
-                                        </a>
-                                    </li>
-                                </ul>
+
                             </div>
                         </div>
 
@@ -113,8 +63,7 @@
     <footer>
         <div class="container">
             <div class="footer_info">
-                505 彰化縣鹿港鎮溝墘里棋盤巷77號 Tel:04-7779606<br>
-                Copyright © 2021 HolofightZ股份有限公司 All Rights Reserved
+
             </div>
         </div>
     </footer>
