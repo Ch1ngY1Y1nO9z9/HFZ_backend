@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <?php
-    $SEO = App/SEO::find(1);
+    $SEO = App\Seo::find(1);
   ?>
   <title>
     {{$SEO->title}}
