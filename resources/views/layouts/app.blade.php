@@ -34,26 +34,31 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     @if(Auth::check())
                     <!-- Left Side Of Navbar -->
-                    <?php $lang = Session::get('lang'); ?>
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/seo">SEO</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/banner">Index Banner</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/news">FightZNews</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/profile">Profile Management</a>
-                        </li>
+                        @if(Auth::user()->role == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/seo">SEO</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/banner">Index Banner</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/news">FightZNews</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/profile">Profile Management</a>
+                            </li>
+                        @endif
+
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/stream">Stream Management</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/contact">Contact us</a>
-                        </li>
+
+                        @if(Auth::user() == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/contact">Contact us</a>
+                            </li>
+                        @endif
                     </ul>
                     @endif
                     <!-- Right Side Of Navbar -->
@@ -82,9 +87,9 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="/admin/resetPassword">
+                                    {{-- <a class="dropdown-item" href="/admin/resetPassword">
                                         重設密碼
-                                    </a>
+                                    </a> --}}
 
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -105,5 +110,11 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     @yield('js')
+
+    @if(Session::has('no'))
+        <script>
+            alert("DON'T DO THIS, ANON...")
+        </script>
+    @endif
 </body>
 </html>

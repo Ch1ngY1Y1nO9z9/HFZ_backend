@@ -15,8 +15,11 @@
                     </div>
 
                     <div class="card-body">
-                        <a class="btn btn-success" href="/admin/stream/create">Create</a>
-                        <hr>
+                        @if(Auth::user()->role == 'admin')
+                            <a class="btn btn-success" href="/admin/stream/create">Create</a>
+                            <hr>
+                        @endif
+
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                             <tr>
@@ -44,7 +47,9 @@
 
                                     </td>
                                     <td width="200">
-                                        <a class="btn btn-primary btn-sm" href="/admin/stream/edit/{{$item->id}}">edit</a>
+                                        @if(Auth::user()->role == 'admin')
+                                            <a class="btn btn-primary btn-sm" href="/admin/stream/edit/{{$item->id}}">edit</a>
+                                        @endif
                                         <a class="btn btn-success btn-sm my-1" href="/admin/stream/match_result/{{$item->stream_number}}">match result</a>
                                         <a class="btn btn-info btn-sm my-1" href="/admin/stream/song_list/{{$item->stream_number}}">song list</a>
                                         {{-- <a class="btn btn-danger  btn-sm" href="#" data-itemid="{{$item->id}}" href="">delete</a> --}}
@@ -73,17 +78,9 @@
     <script>
         $(document).ready(function() {
             $('#example').DataTable({
-                order: [[ 4, 'desc' ]],
+                order: [[ 3, 'desc' ]],
             });
 
-            $('#example').on('click','.btn-danger',function(){
-                event.preventDefault();
-                var r = confirm("Do you want delete this stream records?");
-                if (r == true) {
-                    var itemid = $(this).data("itemid");
-                    $(`.destroy-form[data-itemid="${itemid}"]`).submit();
-                }
-            });
         } );
     </script>
 

@@ -64,47 +64,50 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::get('/','HomeController@index');
 
-    Route::get('seo', 'SeoController@index');
-    Route::post('seo', 'SeoController@update');
+    Route::middleware('role:admin')->group(function(){
+        Route::get('seo', 'SeoController@index');
+        Route::post('seo', 'SeoController@update');
 
-    // Banner
-    Route::get('banner','BannerController@index');
-    Route::get('banner/edit/{id}', 'BannerController@edit');
-    Route::post('banner/update/{id}', 'BannerController@update');
+        // Banner
+        Route::get('banner','BannerController@index');
+        Route::get('banner/edit/{id}', 'BannerController@edit');
+        Route::post('banner/update/{id}', 'BannerController@update');
 
-    // 最新消息
-    Route::get('/news','NewsController@index');
-    Route::get('news/create','NewsController@create');
-    Route::get('news/edit/{id}', 'NewsController@edit');
-    Route::post('news/store','NewsController@store');
-    Route::post('news/update/{id}', 'NewsController@update');
-    Route::post('news/delete/{id}', 'NewsController@delete');
+        // 最新消息
+        Route::get('/news','NewsController@index');
+        Route::get('news/create','NewsController@create');
+        Route::get('news/edit/{id}', 'NewsController@edit');
+        Route::post('news/store','NewsController@store');
+        Route::post('news/update/{id}', 'NewsController@update');
+        Route::post('news/delete/{id}', 'NewsController@delete');
 
-    //聯絡我們管理
-    Route::get('contact','ContactController@index');
-    Route::post('contact/{id}','ContactController@show');
-    Route::post('contact/delete/{id}','ContactController@delete');
+        //聯絡我們管理
+        Route::get('contact','ContactController@index');
+        Route::post('contact/{id}','ContactController@show');
+        Route::post('contact/delete/{id}','ContactController@delete');
 
-    //檔案資料管理
-    Route::get('profile','ProfilesController@index');
-    Route::get('profile_data/edit/{id}', 'ProfilesController@edit_data');
-    Route::post('profile_data/update/{id}', 'ProfilesController@update_data');
+        //檔案資料管理
+        Route::get('profile','ProfilesController@index');
+        Route::get('profile_data/edit/{id}', 'ProfilesController@edit_data');
+        Route::post('profile_data/update/{id}', 'ProfilesController@update_data');
 
-    // 短片管理
-    Route::get('profile/{wrestler_id}/clips','ClipsController@index');
-    Route::get('profile/{wrestler_id}/clips/create', 'ClipsController@create');
-    Route::get('profile/{wrestler_id}/clips/edit/{id}', 'ClipsController@edit');
-    Route::post('profile/clips/store', 'ClipsController@store');
-    Route::post('profile/clips/update/{id}', 'ClipsController@update');
-    Route::post('profile/clips/delete/{id}', 'ClipsController@delete');
+        // 短片管理
+        Route::get('profile/{wrestler_id}/clips','ClipsController@index');
+        Route::get('profile/{wrestler_id}/clips/create', 'ClipsController@create');
+        Route::get('profile/{wrestler_id}/clips/edit/{id}', 'ClipsController@edit');
+        Route::post('profile/clips/store', 'ClipsController@store');
+        Route::post('profile/clips/update/{id}', 'ClipsController@update');
+        Route::post('profile/clips/delete/{id}', 'ClipsController@delete');
+    });
+
 
     // 直播記錄管理
     Route::get('stream','StreamRecordsController@index');
-    Route::get('stream/create', 'StreamRecordsController@create');
+    Route::get('stream/create', 'StreamRecordsController@create')->middleware('role:admin');
     Route::get('stream/edit/{id}', 'StreamRecordsController@edit');
-    Route::post('stream/store', 'StreamRecordsController@store');
+    Route::post('stream/store', 'StreamRecordsController@store')->middleware('role:admin');
     Route::post('stream/update/{id}', 'StreamRecordsController@update');
-    Route::post('stream/delete/{id}', 'StreamRecordsController@delete');
+    Route::post('stream/delete/{id}', 'StreamRecordsController@delete')->middleware('role:admin');
 
     // 比賽紀錄管理
     Route::get('stream/match_result/{stream_id}','MatchResultController@index');
