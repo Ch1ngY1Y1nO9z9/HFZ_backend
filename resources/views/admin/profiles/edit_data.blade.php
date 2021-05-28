@@ -52,6 +52,24 @@
                                     <input type="text" class="form-control" id="finisher" name="finisher" value="{{$item->finisher}}">
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="tag_with" class="col-2 col-form-label">tag with</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="tag_with" name="tag_with" value="{{$item->tag_with}}">
+                                </div>
+                                <div class="col-12">
+                                    <small class="text-danger">
+                                        *ONLY ONE WRESTLER SHORT NAME, And please copy from down below, for front-end page link to team mate page<br>
+                                        WILL UPDATE.
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="team_name" class="col-2 col-form-label">team name</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="team_name" name="team_name" value="{{$item->team_name}}">
+                                </div>
+                            </div>
                             <hr>
                             <div class="form-group row">
                                 <label for="toindex" class="col-2 col-form-label">Rising Star?</label>

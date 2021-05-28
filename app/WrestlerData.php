@@ -16,7 +16,7 @@ class WrestlerData extends Model
     /**
      * @var array
      */
-    protected $fillable = ['wrestler_id','birth_day','debut','weight','fan_name','signature','finisher','tag_with'];
+    protected $fillable = ['wrestler_id','birth_day','debut','weight','fan_name','signature','finisher','tag_with','team_name'];
 
     function data() {
         return $this->belongsTo('App\Profiles', 'wrestler_id');
