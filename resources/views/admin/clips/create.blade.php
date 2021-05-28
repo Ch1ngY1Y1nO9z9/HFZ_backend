@@ -30,7 +30,7 @@
                                 <div class="col-10">
                                     <textarea style="height:150px;" type="text" class="form-control" id="embed_code" name="embed_code"></textarea>
                                 </div>
-                                <div class="col-12"><small class="text-danger">(*streamable.com embed code only)</small></div>
+                                <div class="col-12"><small class="text-danger">*streamable.com embed code only</small></div>
                             </div>
 
                             <hr>
@@ -45,6 +45,7 @@
                             <hr>
                             <button type="submit" class="btn btn-primary d-block mx-auto">Store</button>
                         </form>
+                        Embed Code copy guide: <img width="100%" src="/images/embedcode_guide.jpg" alt="">
                     </div>
                 </div>
             </div>

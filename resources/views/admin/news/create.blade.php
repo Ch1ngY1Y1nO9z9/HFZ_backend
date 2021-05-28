@@ -49,6 +49,7 @@
                                     <div class="col-10">
                                         <input type="text" class="form-control" id="img" name="img">
                                     </div>
+                                    <div class="col-12"><small class="text-danger">*link be like: https://i.ytimg.com/vi/JacN1MzyeKo/hqdefault.jpg <- should have file format at the end</small></div>
                                 </div>
                             </div>
 
@@ -58,8 +59,12 @@
                                     <div class="col-10">
                                         <textarea style="height:150px;" type="text" class="form-control" id="content" name="content"></textarea>
                                     </div>
+                                    <div class="col-12"><small class="text-danger">*If you want put OC video, streamable.com embed code ONLY</small></div>
                                 </div>
+
                             </div>
+
+
 
                             <hr>
 
@@ -73,6 +78,11 @@
                             <hr>
                             <button type="submit" class="btn btn-primary d-block mx-auto">Store</button>
                         </form>
+                        <hr>
+                        <div id="guide" class="d-none">
+                            Embed Code copy guide: <img width="100%" src="/images/embedcode_guide.jpg" alt="">
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -98,14 +108,17 @@
             var content_layout = document.getElementById('news')
             var img = document.getElementById('img');
             var content = document.getElementById('content')
+            var guide = document.getElementById('guide')
 
             if(type == 'img'){
                 content.value = '';
                 content_layout.classList.add('d-none')
+                guide.classList.add('d-none')
                 img_layout.classList.remove('d-none')
             }else{
                 img.value = '';
                 content_layout.classList.remove('d-none')
+                guide.classList.remove('d-none')
                 img_layout.classList.add('d-none')
             }
         }
