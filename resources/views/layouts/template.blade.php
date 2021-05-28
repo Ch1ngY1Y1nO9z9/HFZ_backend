@@ -119,7 +119,7 @@
             </a>
           </li>
           <li class="mr-3">
-            <div class="lights" style="cursor: pointer">
+            <div class="lights py-2 px-4" style="cursor: pointer">
                 <i class="far fa-lightbulb"></i>
             </div>
           </li>
@@ -165,12 +165,16 @@
             <h2 class="title-font font-medium tracking-widest text-sm mb-3">FAQ</h2>
           </a>
           <a target="_blank" href="https://twitter.com/HoloFightZ"
-            class="text-gray-500 hover_twitter py-2 px-4 md\:w-2 inline-block no-underline">
+            class="hover_twitter py-2 px-4 md\:w-2 inline-block no-underline">
             <i class="fab fa-twitter"></i>
           </a>
           <a target="_blank" href="https://www.youtube.com/channel/UCGgJUUcCCg5dzRkyG8-fNBw"
-            class="text-gray-500 hover_youtube py-2 px-4 md\:w-2 inline-block no-underline">
+            class="hover_youtube py-2 px-4 md\:w-2 inline-block no-underline">
             <i class="fab fa-youtube"></i>
+          </a>
+          <a target="_blank" href="https://www.twitch.tv/holofightz"
+            class="text-indigo-500  py-2 px-4 md\:w-2 inline-block no-underline">
+            <i class="fab fa-twitch"></i>
           </a>
         </span>
       </div>
