@@ -16,5 +16,5 @@ class News extends Model
     /**
      * @var array
      */
-    protected $fillable = ['title', 'type', 'content', 'date', 'sort','img'];
+    protected $fillable = ['title', 'type', 'content', 'date', 'sort','img','description'];
 }

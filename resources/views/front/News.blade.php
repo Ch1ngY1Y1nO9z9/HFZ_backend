@@ -13,7 +13,13 @@
               <p class="mb-8 leading-relaxed">
                 {{$news->description}}
 
+                @if($news->type == 'video')
                 {!! $news->content !!}
+                @else
+<pre class="text-left">
+{{$news->content}}
+</pre>
+                @endif
               </p>
             </div>
           </div>

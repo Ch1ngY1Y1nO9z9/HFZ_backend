@@ -39,6 +39,7 @@ class NewsController extends Controller
     {
         $item = News::find($id);
         $item->update($request->all());
+        $item->save();
 
         return redirect('/admin/news')->with('update','update success!');
     }

@@ -21,7 +21,7 @@
                             <tr>
                                 <th>Title</th>
                                 <th>type</th>
-                                <th>Fan arts</th>
+                                <th>Description / Fan arts</th>
                                 <th>Date</th>
                                 <th>Sort</th>
                                 <th width="80">Feature</th>
@@ -33,7 +33,13 @@
 
                                     <td>{{$news->title}}</td>
                                     <td>{{$news->type}}</td>
-                                    <td><img src="{{$news->img}}" width="200" alt=""></td>
+                                    <td>
+                                        @if($news->type == 'img')
+                                            <img src="{{$news->img}}" width="200" alt="">
+                                        @else
+                                            {{$news->description}}
+                                        @endif
+                                    </td>
                                     <td>{{$news->date}}</td>
                                     <td>{{$news->sort}}</td>
                                     <td>
