@@ -263,9 +263,9 @@
 
                                         }
 
-                                        $single_lose = $single_total - $single_win;
-                                        $tag_lose = $tag_total - $tag_win;
-                                        $multi_lose = $multi_total - $multi_win;
+                                        $single_lose = $single_total - $single_win - $single_draw;
+                                        $tag_lose = $tag_total - $tag_win - $tag_draw;
+                                        $multi_lose = $multi_total - $multi_win - $multi_draw;
 
                                         $total_win = $single_win + $tag_win + $multi_win;
                                         $total_draw = $single_draw + $tag_draw + $multi_draw;

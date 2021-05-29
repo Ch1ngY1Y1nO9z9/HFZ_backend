@@ -39,7 +39,8 @@
                                         <td class="border-t-2 border-gray-200 px-4 py-3">{{$record->type}}</td>
                                         <td class="border-t-2 border-gray-200 px-4 py-3">{{$record->rule}}</td>
                                         <td class="border-t-2 border-gray-200 px-4 py-3 font-bold">{{$record->participants}}</td>
-                                        <td class="border-t-2 border-gray-200 px-4 py-3  @if($record->result == 'DRAW') text-yellow-500 @else text-red-500 @endif">{{$record->result}}</td>
+                                        <td class="border-t-2 border-gray-200 px-4 py-3  @if($record->result == 'DRAW') text-yellow-500 @else text-red-500 @endif">
+                                            {{$record->result}}</td>
                                     </tr>
                                 @endif
                             @endforeach
