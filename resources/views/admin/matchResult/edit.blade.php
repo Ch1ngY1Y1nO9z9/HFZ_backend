@@ -27,8 +27,8 @@
                                 <label class="col-2 col-form-label" for="type">Type</label>
                                 <div class="col-10">
                                     <select class="form-control" id="type" name="type">
-                                        <option @if($item->type == '1v1 Solo') selected @endif value="1v1 Solo">1v1</option>
-                                        <option @if($item->type == '2v2 Tag Team') selected @endif value="2v2 Tag Team">2v2</option>
+                                        <option @if($item->type == '1v1') selected @endif value="1v1">1v1</option>
+                                        <option @if($item->type == '2v2') selected @endif value="2v2">2v2</option>
                                         <option @if($item->type == 'MULTi') selected @endif value="MULTi">MULTi</option>
                                       </select>
                                 </div>

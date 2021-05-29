@@ -29,8 +29,8 @@
                                 <label class="col-2 col-form-label" for="type">Type</label>
                                 <div class="col-10">
                                     <select class="form-control" id="type" name="type">
-                                        <option value="1v1 Solo">1v1</option>
-                                        <option value="2v2 Tag Team">2v2</option>
+                                        <option value="1v1">1v1</option>
+                                        <option value="2v2">2v2</option>
                                         <option value="MULTi">MULTi</option>
                                       </select>
                                 </div>
