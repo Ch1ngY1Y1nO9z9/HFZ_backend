@@ -37,6 +37,18 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="rule" class="col-2 col-form-label">Context</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="rule" name="rule">
+                                    <div class="col-12">
+                                        <small class="text-danger">
+                                            example: 1Fall, Extreme Rules, Falls Count Anywhere, Tag-Team, Backstage, Championship Match, Tag-Team Championship, Fatal 4-Way Elimination, Triple Threat Elimination, Royal Rumble...
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="participants" class="col-2 col-form-label">Participants</label>
                                 <div class="col-10">
                                     <input type="text" class="form-control" id="participants" name="participants">
@@ -55,7 +67,7 @@
                                     <input type="text" class="form-control" id="result" name="result">
                                     <div class="col-12">
                                         <small class="text-danger">
-                                            put Winner name from below or put DRAW
+                                            put Winner name from below or put DRAW, if the match has multi winner, don't put space after the comma
                                         </small>
                                     </div>
                                 </div>

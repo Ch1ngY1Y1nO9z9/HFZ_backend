@@ -35,6 +35,18 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="rule" class="col-2 col-form-label">Context</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" id="rule" name="rule" value="{{$item->rule}}">
+                                    <div class="col-12">
+                                        <small class="text-danger">
+                                            example: 1Fall, Extreme Rules, Falls Count Anywhere, Tag-Team, Backstage, Championship Match, Tag-Team Championship, Fatal 4-Way Elimination, Triple Threat Elimination, Royal Rumble...
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="participants" class="col-2 col-form-label">Participants</label>
                                 <div class="col-10">
                                     <input type="text" class="form-control" id="participants" name="participants" value="{{$item->participants}}">
@@ -53,7 +65,7 @@
                                     <input type="text" class="form-control" id="result" name="result" value="{{$item->result}}">
                                     <div class="col-12">
                                         <small class="text-danger">
-                                            put Winner's short name from below or Draw, if it's tag team winners, please don't put space after comma.
+                                            put Winner's short name from below or Draw, if the match has multi winner, don't put space after the comma
                                         </small>
                                     </div>
                                 </div>
