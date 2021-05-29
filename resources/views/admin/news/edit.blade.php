@@ -56,7 +56,7 @@
                                 <div class="form-group row">
                                     <label for="content" class="col-2 col-form-label">Content</label>
                                     <div class="col-10">
-                                        <textarea style="height:150px;" type="text" class="form-control" id="content" name="content"></textarea>
+                                        <textarea style="height:150px;" type="text" class="form-control" id="content" name="content">{{$news->content}}</textarea>
                                     </div>
                                     <div class="col-12"><small class="text-danger">*If you want put OC video, streamable.com embed code ONLY</small></div>
                                 </div>
@@ -67,7 +67,7 @@
                                 <div class="form-group row">
                                     <label for="news" class="col-2 col-form-label">Content</label>
                                     <div class="col-10">
-                                        <textarea style="height:150px;" type="text" class="form-control" id="news" name="content"></textarea>
+                                        <textarea style="height:150px;" type="text" class="form-control" id="news" name="content">{{$news->content}}</textarea>
                                     </div>
                                     <div class="col-12"><small class="text-danger">*If you want put OC video embed code, please select video</small></div>
                                 </div>
