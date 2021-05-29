@@ -61,10 +61,30 @@
                                 </a>
                             </div>
                         </div>
+                    @elseif($item->type == 'news')
+                        <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col ALL OC_Video">
+                            <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+                            <div class="bg-white w-full px-6 bg-contain" style="height: 300px; background-image:url('/images/news_default.png');background-position:center;background-repeat:no-repeat"></div>
+                            <div class="w-full font-bold text-xl text-gray-800 px-6 py-6">
+                                {{$item->title}}
+                            </div>
+                            <p class="text-gray-800 text-base px-6 mb-5">
+                                {{$item->description}}
+                            </p>
+                            </div>
+                            <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+                            <div class="flex items-center justify-start">
+                                <a href="/FightZNews/{{$item->id}}"
+                                class="mx-auto lg:mx-0 hover:underline bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                Watch
+                                </a>
+                            </div>
+                            </div>
+                        </div>
                     @else
                         <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col ALL OC_Video">
                             <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-                            <div class="bg-black w-full px-6" style="height: 300px;"></div>
+                            <div class="bg-white w-full px-6 bg-contain" style="height: 300px; background-image:url('/images/OCvideo_default.png');background-position:center;background-repeat:no-repeat"></div>
                             <div class="w-full font-bold text-xl text-gray-800 px-6 py-6">
                                 {{$item->title}}
                             </div>
