@@ -20,8 +20,9 @@
                             <div class="form-group">
                                 <label for="type">Type</label>
                                 <select class="form-control" id="type" name="type" onchange="change_layout(this.id)">
-                                  <option value="img">fan art</option>
                                   <option value="news" @if($news->type == 'news') selected @endif >news</option>
+                                  <option value="img" @if($news->type == 'img') selected @endif>fan art</option>
+                                  <option value="video" @if($news->type == 'video') selected @endif>video</option>
                                 </select>
                             </div>
 
@@ -41,7 +42,7 @@
 
                             <hr>
 
-                            <div id="fan_art" @if($news->type == 'news') class="d-none" @endif>
+                            <div id="fan_art" @if($news->type != 'img') class="d-none" @endif>
                                 <div class="form-group row">
                                     <label for="img" class="col-2 col-form-label">Fan arts file link</label>
                                     <div class="col-10">
@@ -51,14 +52,26 @@
                                 </div>
                             </div>
 
-                            <div id="news" @if($news->type == 'img') class="d-none" @endif>
+                            <div id="video" @if($news->type != 'video') class="d-none" @endif>
                                 <div class="form-group row">
                                     <label for="content" class="col-2 col-form-label">Content</label>
                                     <div class="col-10">
-                                        <textarea style="height:150px;" type="text" class="form-control" id="content" name="content" @if($news->type == 'news') @endif>{{$news->content}}</textarea>
+                                        <textarea style="height:150px;" type="text" class="form-control" id="content" name="content"></textarea>
                                     </div>
                                     <div class="col-12"><small class="text-danger">*If you want put OC video, streamable.com embed code ONLY</small></div>
                                 </div>
+                            </div>
+
+
+                            <div id="news_layout"  @if($news->type != 'news') class="d-none" @endif>
+                                <div class="form-group row">
+                                    <label for="news" class="col-2 col-form-label">Content</label>
+                                    <div class="col-10">
+                                        <textarea style="height:150px;" type="text" class="form-control" id="news" name="content"></textarea>
+                                    </div>
+                                    <div class="col-12"><small class="text-danger">*If you want put OC video embed code, please select video</small></div>
+                                </div>
+
                             </div>
 
 
@@ -85,25 +98,39 @@
 
 @section('js')
 <script>
-    function change_layout(x){
-        var type = document.getElementById(x).value;
-        var img_layout = document.getElementById('fan_art');
-        var content_layout = document.getElementById('news')
-        var img = document.getElementById('img');
-        var content = document.getElementById('content')
-        var guide = document.getElementById('guide')
+        function change_layout(x){
+            var type = document.getElementById(x).value;
+            var img_layout = document.getElementById('fan_art');
+            var content_layout = document.getElementById('video')
+            var img = document.getElementById('img');
+            var content = document.getElementById('content')
+            var guide = document.getElementById('guide')
+            var news_layout = document.getElementById('news_layout')
+            var news = document.getElementById('news')
 
-        if(type == 'img'){
-            content.value = '';
-            content_layout.classList.add('d-none')
-            guide.classList.add('d-none')
-            img_layout.classList.remove('d-none')
-        }else{
-            img.value = '';
-            content_layout.classList.remove('d-none')
-            guide.classList.remove('d-none')
-            img_layout.classList.add('d-none')
+            if(type == 'img'){
+                content.value = '';
+                news.value = '';
+                content_layout.classList.add('d-none')
+                guide.classList.add('d-none')
+                news_layout.classList.add('d-none')
+                img_layout.classList.remove('d-none')
+            }else if(type == 'video'){
+                img.value = '';
+                news.value = '';
+                content_layout.classList.remove('d-none')
+                guide.classList.remove('d-none')
+                img_layout.classList.add('d-none')
+                news_layout.classList.add('d-none')
+            }else{
+                img.value = '';
+                img.value = '';
+                content_layout.classList.add('d-none')
+                guide.classList.add('d-none')
+                img_layout.classList.add('d-none')
+                news_layout.classList.remove('d-none')
+
+            }
         }
-    }
 </script>
 @endsection
