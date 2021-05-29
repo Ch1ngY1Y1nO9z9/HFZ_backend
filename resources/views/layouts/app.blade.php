@@ -54,7 +54,7 @@
                             <a class="nav-link" href="/admin/stream">Stream Management</a>
                         </li>
 
-                        @if(Auth::user() == 'admin')
+                        @if(Auth::user()->role == 'admin')
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/contact">Contact us</a>
                             </li>
