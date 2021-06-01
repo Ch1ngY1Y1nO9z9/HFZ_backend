@@ -132,6 +132,11 @@ class FrontController extends Controller
             $check = Check::create();
             $check->ip_check_for_jp = $result;
             $check->save();
+        }else{
+            $all_check->ip_check_for_jp = '';
+            $all_check->save();
+            $all_check->ip_check_for_jp = $result;
+            $all_check->save();
         }
 
         return view('front.WrestlersProfile', compact('generations','gen0_all','gen1_all','gen2_all','gamers_all','gen3_all','gen4_all','gen5_all','genID1_all','genID2_all','genEN_all','INONAKA_all','cover'));
