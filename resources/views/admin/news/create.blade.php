@@ -134,13 +134,17 @@
             }else if(type == 'video'){
                 img.value = '';
                 news.value = '';
+                news.setAttribute('name','');
+                content.setAttribute('name','content');
                 content_layout.classList.remove('d-none')
                 guide.classList.remove('d-none')
                 img_layout.classList.add('d-none')
                 news_layout.classList.add('d-none')
             }else{
                 img.value = '';
-                img.value = '';
+                content.value = '';
+                news.setAttribute('name','content');
+                content.setAttribute('name','');
                 content_layout.classList.add('d-none')
                 guide.classList.add('d-none')
                 img_layout.classList.add('d-none')
