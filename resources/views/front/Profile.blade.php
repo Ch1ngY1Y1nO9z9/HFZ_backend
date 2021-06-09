@@ -373,7 +373,7 @@
                                     <h2 class="text-lg title-font font-medium @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$clip->clip_title}}</h2>
                                 </div>
                                 <div class="flex-grow">
-                                    {!! $clip->embed_code !!}
+                                    <iframe width="100%" height="375" src="https://www.youtube.com/embed/{{$clip->embed_code}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
@@ -389,7 +389,7 @@
                                     <h2 class="text-lg title-font font-medium @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$clip->clip_title}}</h2>
                                 </div>
                                 <div class="flex-grow">
-                                    {!! $clip->embed_code !!}
+                                    <iframe width="100%" height="375" src="https://www.youtube.com/embed/{{$clip->embed_code}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
@@ -405,7 +405,7 @@
                                     <h2 class="text-lg title-font font-medium @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$clip->clip_title}}</h2>
                                 </div>
                                 <div class="flex-grow">
-                                    {!! $clip->embed_code !!}
+                                    <iframe width="100%" height="375" src="https://www.youtube.com/embed/{{$clip->embed_code}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>

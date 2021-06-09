@@ -23,7 +23,7 @@
                                 <div class="col-10">
                                     <select class="form-control" id="played_at" name="played_at">
                                         @foreach($games as $game)
-                                            <option value="{{$game->game}}">game {{$game->game}}</option>
+                                            <option value="{{$game->game}}">game {{$game->game}}: {{$game->rule}} - {{$game->participants}}</option>
                                         @endforeach
                                       </select>
                                 </div>

@@ -91,7 +91,7 @@
               shows</a>
           </li>
           <li class="mr-3">
-            <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/Poll">Poll</a>
+            <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/Event">Poll</a>
           </li>
           <li class="mr-3">
             <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/#Contact">Contact
@@ -158,7 +158,7 @@
           <a href="/PreviousShows" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
             <h2 class="title-font font-medium tracking-widest text-sm mb-3">Previous Shows</h2>
           </a>
-          <a href="/Poll" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
+          <a href="/Event" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
             <h2 class="title-font font-medium tracking-widest text-sm mb-3">Poll</h2>
           </a>
           <a href="/FAQ" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">

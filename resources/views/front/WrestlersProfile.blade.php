@@ -5,13 +5,17 @@
 
     <section class="text-gray-600 body-font min-h-screen">
         <div class="container px-5 py-24 mx-auto">
-            <div class="flex flex-col text-center w-full mb-10 md:mb-20">
+            <div class="flex flex-col text-center w-full mb-10">
                 <h1 class="text-5xl font-medium title-font mb-4 tracking-widest font-bold" style="color:#49c8f0;">
                     Wrestlers
                     Profile</h1>
                 <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
                     All HoloFightZ wrestler data, spamming text in here.
                 </p>
+                <a href="/Rank"
+                    class="mx-auto hover:underline text-white font-bold rounded-full my-5 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" style="background-color: #49c8f0">
+                    <i class="fas fa-arrow-right"></i>  Check the Power Rank
+                </a>
             </div>
 
             <div

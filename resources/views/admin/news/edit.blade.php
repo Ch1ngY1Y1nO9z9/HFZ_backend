@@ -19,10 +19,8 @@
 
                             <div class="form-group">
                                 <label for="type">Type</label>
-                                <select class="form-control" id="type" name="type" onchange="change_layout(this.id)">
-                                  <option value="news" @if($news->type == 'news') selected @endif >news</option>
-                                  <option value="img" @if($news->type == 'img') selected @endif>fan art</option>
-                                  <option value="video" @if($news->type == 'video') selected @endif>video</option>
+                                <select class="form-control" id="type" name="type" disabled>
+                                  <option value="{{$news->type}}" selected>{{$news->type}}</option>
                                 </select>
                             </div>
 
@@ -42,38 +40,54 @@
 
                             <hr>
 
-                            <div id="fan_art" @if($news->type != 'img') class="d-none" @endif>
-                                <div class="form-group row">
-                                    <label for="img" class="col-2 col-form-label">Fan arts file link</label>
-                                    <div class="col-10">
-                                        <input type="text" class="form-control" id="img" name="img" @if($news->type == 'img') value="{{$news->img}}" @endif>
+                            @if($news->type == 'img')
+                                <div id="fan_art">
+                                    <div class="form-group row">
+                                        <label for="img" class="col-2 col-form-label">Fan arts file link</label>
+                                        <div class="col-10">
+                                            <input type="text" class="form-control" id="img" name="img" @if($news->type == 'img') value="{{$news->img}}" @endif>
+                                        </div>
+                                        <div class="col-12"><small class="text-danger">*link be like: https://i.ytimg.com/vi/JacN1MzyeKo/hqdefault.jpg <- should have file format at the end</small></div>
                                     </div>
-                                    <div class="col-12"><small class="text-danger">*link be like: https://i.ytimg.com/vi/JacN1MzyeKo/hqdefault.jpg <- should have file format at the end</small></div>
                                 </div>
-                            </div>
-
-                            <div id="video" @if($news->type != 'video') class="d-none" @endif>
-                                <div class="form-group row">
-                                    <label for="content" class="col-2 col-form-label">Content</label>
-                                    <div class="col-10">
-                                        <textarea style="height:150px;" type="text" class="form-control" id="content" name="content">{{$news->content}}</textarea>
+                            @elseif($news->type == 'video')
+                                <div id="video">
+                                    <div class="form-group row">
+                                        <div class="form-group row">
+                                            <label for="video_from" class="col-2 col-form-label">Video from</label>
+                                            <div class="col-10">
+                                                <select class="form-control" id="video_from" name="video_from">
+                                                    <option value="youtube" @if($news->video_from == 'youtube') selected @endif>youtube</option>
+                                                    <option value="streamable" @if($news->video_from == 'streamable') selected @endif>streamable</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12">
+                                                <small class="text-danger">
+                                                    *Video id only, don't put embed code<br>
+                                                    video id guide: <br>
+                                                    <img src="/images/embedcode_guide.jpg" alt="">
+                                                    <img src="/images/youtube_video_example.jpg" alt="">
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <label for="content" class="col-2 col-form-label">Content</label>
+                                        <div class="col-10">
+                                            <textarea style="height:150px;" type="text" class="form-control" id="content" name="content">{{$news->content}}</textarea>
+                                        </div>
+                                        <div class="col-12"><small class="text-danger">*If you want put OC video, streamable.com embed code ONLY</small></div>
                                     </div>
-                                    <div class="col-12"><small class="text-danger">*If you want put OC video, streamable.com embed code ONLY</small></div>
                                 </div>
-                            </div>
-
-
-                            <div id="news_layout"  @if($news->type != 'news') class="d-none" @endif>
-                                <div class="form-group row">
-                                    <label for="news" class="col-2 col-form-label">Content</label>
-                                    <div class="col-10">
-                                        <textarea style="height:150px;" type="text" class="form-control" id="news" name="content">{{$news->content}}</textarea>
+                            @else
+                                <div id="news_layout"  @if($news->type != 'news') class="d-none" @endif>
+                                    <div class="form-group row">
+                                        <label for="news" class="col-2 col-form-label">Content</label>
+                                        <div class="col-10">
+                                            <textarea style="height:150px;" type="text" class="form-control" id="news" name="content">{{$news->content}}</textarea>
+                                        </div>
+                                        <div class="col-12"><small class="text-danger">*If you want put OC video embed code, please select video</small></div>
                                     </div>
-                                    <div class="col-12"><small class="text-danger">*If you want put OC video embed code, please select video</small></div>
                                 </div>
-
-                            </div>
-
+                            @endif
 
                             <hr>
                             <div class="form-group row">
@@ -85,10 +99,6 @@
                             <hr>
                             <button type="submit" class="btn btn-primary d-block mx-auto">update</button>
                         </form>
-                        <hr>
-                        <div id="guide" class="d-none">
-                            Embed Code copy guide: <img width="100%" src="/images/embedcode_guide.jpg" alt="">
-                        </div>
                     </div>
                 </div>
             </div>
@@ -96,45 +106,3 @@
     </div>
 @endsection
 
-@section('js')
-<script>
-        function change_layout(x){
-            var type = document.getElementById(x).value;
-            var img_layout = document.getElementById('fan_art');
-            var content_layout = document.getElementById('video')
-            var img = document.getElementById('img');
-            var content = document.getElementById('content')
-            var guide = document.getElementById('guide')
-            var news_layout = document.getElementById('news_layout')
-            var news = document.getElementById('news')
-
-            if(type == 'img'){
-                content.value = '';
-                news.value = '';
-                content_layout.classList.add('d-none')
-                guide.classList.add('d-none')
-                news_layout.classList.add('d-none')
-                img_layout.classList.remove('d-none')
-            }else if(type == 'video'){
-                img.value = '';
-                news.value = '';
-                news.setAttribute('name','');
-                content.setAttribute('name','content');
-                content_layout.classList.remove('d-none')
-                guide.classList.remove('d-none')
-                img_layout.classList.add('d-none')
-                news_layout.classList.add('d-none')
-            }else{
-                img.value = '';
-                content.value = '';
-                news.setAttribute('name','content');
-                content.setAttribute('name','');
-                content_layout.classList.add('d-none')
-                guide.classList.add('d-none')
-                img_layout.classList.add('d-none')
-                news_layout.classList.remove('d-none')
-
-            }
-        }
-</script>
-@endsection

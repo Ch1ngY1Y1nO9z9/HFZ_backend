@@ -52,8 +52,8 @@
                                     <input type="text" class="form-control" id="participants" name="participants" value="{{$item->participants}}">
                                     <div class="col-12">
                                         <small class="text-danger">
-                                            1v1 format example: YAGOO,MIKO<br>
-                                            2v2 format example: SORA,A-CHAN / SUISEI,AZKI
+                                            1v1 format example: Yagoo, Miko<br>
+                                            2v2 format example: Sora, A-chan / Suisei, AZKi
                                         </small>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                     <input type="text" class="form-control" id="result" name="result" value="{{$item->result}}">
                                     <div class="col-12">
                                         <small class="text-danger">
-                                            put Winner's short name from below or Draw, if the match has multi winner, don't put space after the comma
+                                            put Winner's short name from down below or Draw
                                         </small>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
 
                             <div class="form-group row">
                                 <div class="col-12 text-danger">
-                                    *Please copy the short name to put in input, onegai...
+                                    *Please copy the short name down below, onegai...
                                 </div>
                                 <div class="col-12">
                                     <small class="text-danger">

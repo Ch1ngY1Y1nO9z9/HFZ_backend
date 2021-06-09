@@ -24,13 +24,11 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="embed_code" class="col-2 col-form-label">embed code</label>
+                                <label for="embed_code" class="col-2 col-form-label">Youtube video id</label>
                                 <div class="col-10">
-                                    <textarea style="height:150px;" type="text" class="form-control" id="embed_code" name="embed_code">
-                                        {{$item->embed_code}}
-                                    </textarea>
+                                    <input type="text" class="form-control" id="embed_code" name="embed_code" required>
                                 </div>
-                                <div class="col-12"><small class="text-danger">*streamable.com embed code only</small></div>
+                                <div class="col-12"><small class="text-danger">*Youtube video id only</small></div>
                             </div>
 
                             <hr>
@@ -40,14 +38,13 @@
                                 <div class="col-10">
                                     <input type="number" class="form-control" id="sort" name="sort" required value="{{$item->sort}}" min="0" max="999">
                                 </div>
-                                <div class="col-12"><small class="text-danger"></small></div>
+                                <div class="col-12"><small class="text-danger">biggest number will be the first in front-end page</small></div>
                             </div>
                             <hr>
 
                             <button type="submit" class="btn btn-primary d-block mx-auto">update</button>
                         </form>
-
-                        Embed Code copy guide: <img width="100%" src="/images/embedcode_guide.jpg" alt="">
+                        Youtube video id copy guide: <img width="100%" src="/images/youtube_video_example.jpg" alt="">
                     </div>
                 </div>
             </div>

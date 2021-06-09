@@ -27,13 +27,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'FrontController@index');
 Route::get('/lightsoff', 'FrontController@lightsoff');
 Route::get('/FAQ', 'FrontController@FAQ');
-Route::get('/Poll', 'FrontController@Poll');
+Route::get('/Event', 'FrontController@Event');
 Route::get('/Box/{stream_id}', 'FrontController@Box');
 Route::get('/FightZNews', 'FrontController@FightZNews');
 Route::get('/FightZNews/{new_id}', 'FrontController@News');
 Route::get('/PreviousShows', 'FrontController@PreviousShows');
 Route::get('/WrestlersProfile', 'FrontController@WrestlersProfile');
 Route::get('/WrestlersProfile/{character}', 'FrontController@Profile');
+Route::get('/Rank', 'FrontController@Rank');
 
 
 
@@ -98,6 +99,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         Route::post('profile/clips/store', 'ClipsController@store');
         Route::post('profile/clips/update/{id}', 'ClipsController@update');
         Route::post('profile/clips/delete/{id}', 'ClipsController@delete');
+
+        //排行榜
+        Route::get('/rank','ProfilesController@rank_index');
+        Route::post('/rank/update', 'ProfilesController@rank_update');
     });
 
 

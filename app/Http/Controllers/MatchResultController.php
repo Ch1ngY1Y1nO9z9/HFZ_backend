@@ -12,8 +12,11 @@ class MatchResultController extends Controller
     public function index($id)
     {
         $items = MatchesRecords::where('stream_id',$id)->get();
+        $wrestlers_name = Profiles::select('name_short')->get();
 
-        return view('admin.matchResult.index',compact('id','items'));
+        $records_number = count($items);
+
+        return view('admin.matchResult.index',compact('id','items','wrestlers_name','records_number'));
     }
 
     public function create($id)
@@ -45,6 +48,14 @@ class MatchResultController extends Controller
 
         $item = MatchesRecords::find($id);
         $item->update($request->all());
+
+        $winners_array = explode(' ',$item->result);
+        $winners = '';
+        foreach($winners_array as $array){
+            $winners = $winners.$array;
+        }
+
+        $item->result = $winners;
 
         $item->save();
 

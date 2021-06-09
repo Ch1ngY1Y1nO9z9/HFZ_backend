@@ -57,6 +57,11 @@ class FrontController extends Controller
         return view('front.FAQ');
     }
 
+    public function Rank() {
+        $wrestlers = Profiles::orderBy('rank','asc')->get();
+        return view('front.Rank',compact('wrestlers'));
+    }
+
     public function FightZNews() {
         $news = News::orderBy('sort','desc')->get();
         return view('front.FightZNews',compact('news'));
@@ -142,9 +147,9 @@ class FrontController extends Controller
         return view('front.WrestlersProfile', compact('generations','gen0_all','gen1_all','gen2_all','gamers_all','gen3_all','gen4_all','gen5_all','genID1_all','genID2_all','genEN_all','INONAKA_all','cover'));
     }
 
-    public function Poll()
+    public function Event()
     {
-        return view('front.Poll');
+        return view('front.Event');
     }
 
     public function Profile($character) {

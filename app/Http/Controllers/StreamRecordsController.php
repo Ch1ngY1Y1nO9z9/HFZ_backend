@@ -17,7 +17,9 @@ class StreamRecordsController extends Controller
 
     public function create()
     {
-        return view('admin.stream.create');
+        $number = count(Matches::all());
+
+        return view('admin.stream.create',compact('number'));
     }
 
     public function store(Request $request)

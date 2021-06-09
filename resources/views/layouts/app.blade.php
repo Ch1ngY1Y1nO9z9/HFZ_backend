@@ -48,6 +48,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/profile">Profile Management</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/rank">Rank Management</a>
+                            </li>
                         @endif
 
                         <li class="nav-item">

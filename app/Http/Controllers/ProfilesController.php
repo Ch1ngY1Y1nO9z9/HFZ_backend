@@ -158,4 +158,29 @@ class ProfilesController extends Controller
     public function delete_file($path){
         File::delete(public_path().$path);
     }
+
+
+    public function rank_index()
+    {
+        $items = Profiles::orderBy('rank','asc')->get();
+
+        return view('admin.rank.index',compact('items'));
+    }
+
+    public function rank_update (Request $request)
+    {
+        $wrestlers_id = $request->wrestler_id;
+        $new_rank = $request->rank;
+
+        foreach($wrestlers_id as $key => $wrestler_id){
+            $wrestler = Profiles::find($wrestler_id);
+
+            $wrestler->last_week_rank = $wrestler->rank;
+            $wrestler->rank = $new_rank[$key];
+
+            $wrestler->save();
+        }
+
+        return redirect()->back()->with('message','success!');
+    }
 }

@@ -117,7 +117,7 @@
               shows</a>
           </li>
           <li class="mr-3">
-            <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/Poll">Poll</a>
+            <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/Event">Poll</a>
           </li>
           <li class="mr-3">
             <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/#Contact">Contact
@@ -257,64 +257,37 @@
         <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
       </div>
 
-      @foreach ($news as $item)
-        @if($item->type == 'img')
-            <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col">
+      <div class="w-full flex flex-wrap justify-center">
+        @foreach ($news as $item)
+            <div class="p-4 lg:w-1/3 w-full">
+                <div class="h-full bg-gray-200 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
+                    <h2 class="tracking-widest text-xl title-font font-medium mb-1 @if($item->type == 'img') text-indigo-400 @elseif($item->type == 'news') text-red-400 @else text-blue-400 @endif">
+                        @if($item->type == 'img') Fan arts @elseif($item->type == 'news') News @else OC VOD @endif
+                    </h2>
+                    <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">{{$item->title}}</h1>
+                    <p class="leading-relaxed mb-3 text-gray-800">{{$item->description}}</p>
+                    <a href="/FightZNews/{{$item->id}}" class="text-indigo-500 inline-flex items-center">Learn More
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <div class="text-center mt-2 leading-none flex justify-center absolute bottom-0 left-0 w-full py-4">
+                        @if(strtotime($item->date.'+3 day') > strtotime(date('Y-m-d')) )
+                            <span class="text-gray-400 mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                                Date: {{$item->date}}
+                            </span>
+                            <span class="text-withe bg-red-600 px-2 inline-flex items-center leading-none text-sm">
+                                New!
+                            </span>
+                        @else
+                            <span class="text-gray-400 inline-flex items-center leading-none text-sm py-1">
+                                Date: {{$item->date}}
+                            </span>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        @endforeach
+      </div>
 
-                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-                    <a href="{{$item->img}}" data-lightbox="fan-art" data-title="Fan Arts" class="text-gray-800">
-                        <div class="w-full px-6" style="height: 300px; background-image: url('{{$item->img}}'); background-size:contain; background-repeat:no-repeat; background-position: center;"></div>
-                        <div class="w-full font-bold text-xl px-6 py-6">
-                            {{$item->title}}
-                        </div>
-                        <p class="text-base px-6 mb-5">
-                            {{$item->description}}
-                        </p>
-                    </a>
-                </div>
-            </div>
-        @elseif($item->type == 'news')
-            <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col text-gray-800">
-                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-                    <div class="bg-white w-full px-6 bg-contain" style="height: 300px; background-image:url('/images/news_default.png');background-position:center;background-repeat:no-repeat"></div>
-                <div class="w-full font-bold text-xl px-6 py-6">
-                    {{$item->title}}
-                </div>
-                <p class="text-base px-6 mb-5">
-                    {{$item->description}}
-                </p>
-                </div>
-                <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-                <div class="flex items-center justify-start">
-                    <a href="/FightZNews/{{$item->id}}"
-                    class="mx-auto lg:mx-0 hover:underline bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                    Watch
-                    </a>
-                </div>
-                </div>
-            </div>
-        @else
-            <div class="lg:w-1/3 md:w-1/2 w-full p-6 flex flex-col text-gray-800">
-                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-                    <div class="bg-white w-full px-6 bg-contain" style="height: 300px; background-image:url('/images/OCvideo_default.png');background-position:center;background-repeat:no-repeat"></div>
-                <div class="w-full font-bold text-xl px-6 py-6">
-                    {{$item->title}}
-                </div>
-                <p class="text-base px-6 mb-5">
-                    {{$item->description}}
-                </p>
-                </div>
-                <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-                <div class="flex items-center justify-start">
-                    <a href="/FightZNews/{{$item->id}}"
-                    class="mx-auto lg:mx-0 hover:underline bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                    Watch
-                    </a>
-                </div>
-                </div>
-            </div>
-        @endif
-      @endforeach
 
     </div>
   </section>
@@ -438,7 +411,8 @@
         <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
       </div>
       <h3 class="my-4 text-3xl leading-tight">
-        We're welcom you to send any HFZ video or fan art to us!
+        If you have any match idea or fan art, even original video or just wanna tell us some secret :)<br>
+        We're all welcome you sent to us.
       </h3>
       <div class="lg:w-1/2 md:w-2/3 mx-auto">
         <form action="/ContactHFZ" method="post">
@@ -490,7 +464,7 @@
           <a href="/PreviousShows" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
             <h2 class="title-font font-medium tracking-widest text-sm mb-3">Previous Shows</h2>
           </a>
-          <a href="/Poll" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
+          <a href="/Event" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
             <h2 class="title-font font-medium tracking-widest text-sm mb-3">Poll</h2>
           </a>
           <a href="/FAQ" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">

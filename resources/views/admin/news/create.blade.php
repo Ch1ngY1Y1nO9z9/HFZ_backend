@@ -56,11 +56,27 @@
 
                             <div id="video" class="d-none">
                                 <div class="form-group row">
-                                    <label for="content" class="col-2 col-form-label">Content</label>
+                                    <label for="video_from" class="col-2 col-form-label">Video from</label>
                                     <div class="col-10">
-                                        <textarea style="height:150px;" type="text" class="form-control" id="content" name="content"></textarea>
+                                        <select class="form-control" id="video_from" name="">
+                                            <option value="youtube">youtube</option>
+                                            <option value="streamable">streamable</option>
+                                          </select>
                                     </div>
-                                    <div class="col-12"><small class="text-danger">*If you want put OC video, streamable.com embed code ONLY</small></div>
+                                    <div class="col-12">
+                                        <small class="text-danger">
+                                            *Video id only, don't put embed code<br>
+                                            video id guide: <br>
+                                            <img src="/images/embedcode_guide.jpg" alt="">
+                                            <img src="/images/youtube_video_example.jpg" alt="">
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="content" class="col-2 col-form-label">Video id</label>
+                                    <div class="col-10">
+                                        <input type="text" class="form-control" id="content" name="content">
+                                    </div>
                                 </div>
                             </div>
 
@@ -90,11 +106,6 @@
                             <hr>
                             <button type="submit" class="btn btn-primary d-block mx-auto">Store</button>
                         </form>
-                        <hr>
-                        <div id="guide" class="d-none">
-                            Embed Code copy guide: <img width="100%" src="/images/embedcode_guide.jpg" alt="">
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -120,6 +131,7 @@
             var content_layout = document.getElementById('video')
             var img = document.getElementById('img');
             var content = document.getElementById('content')
+            var video_from = document.getElementById('video_from')
             var guide = document.getElementById('guide')
             var news_layout = document.getElementById('news_layout')
             var news = document.getElementById('news')
@@ -128,7 +140,6 @@
                 content.value = '';
                 news.value = '';
                 content_layout.classList.add('d-none')
-                guide.classList.add('d-none')
                 news_layout.classList.add('d-none')
                 img_layout.classList.remove('d-none')
             }else if(type == 'video'){
@@ -136,8 +147,8 @@
                 news.value = '';
                 news.setAttribute('name','');
                 content.setAttribute('name','content');
+                video_from.setAttribute('name','video_from');
                 content_layout.classList.remove('d-none')
-                guide.classList.remove('d-none')
                 img_layout.classList.add('d-none')
                 news_layout.classList.add('d-none')
             }else{
@@ -145,6 +156,7 @@
                 content.value = '';
                 news.setAttribute('name','content');
                 content.setAttribute('name','');
+                video_from.setAttribute('name','');
                 content_layout.classList.add('d-none')
                 guide.classList.add('d-none')
                 img_layout.classList.add('d-none')
