@@ -79,13 +79,6 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="rank" class="col-2 col-form-label">Rank Leader?</label>
-                                <div class="col-10">
-                                    <input class="form-check-input" type="checkbox" @if($wrestler->rank == 1) checked="true" @endif value="1" id="rank" name="rank">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
                                 <label for="isHolochampion" class="col-2 col-form-label">Holo Champion?</label>
                                 <div class="col-10">
                                     <input class="form-check-input" type="checkbox" @if($wrestler->isHolochampion == 1) checked="true" @endif value="1" id="isHolochampion" name="isHolochampion">

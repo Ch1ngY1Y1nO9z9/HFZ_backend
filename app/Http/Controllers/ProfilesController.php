@@ -53,19 +53,6 @@ class ProfilesController extends Controller
         }
 
 
-        if($request->rank){
-
-            foreach($all_wrestler as $single_data){
-                $single_data->rank = 0;
-                $single_data->save();
-            }
-
-            $wrestler->rank = 1;
-        }else{
-            $wrestler->rank = 0;
-        }
-
-
         if($request->isHolochampion){
 
             foreach($all_wrestler as $single_data){
