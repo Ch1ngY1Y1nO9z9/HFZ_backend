@@ -14,7 +14,7 @@
                 </p>
                 <a href="/Rank"
                     class="mx-auto hover:underline text-white font-bold rounded-full my-5 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" style="background-color: #49c8f0">
-                    <i class="fas fa-arrow-right"></i>  Check the Power Rank
+                    <i class="fas fa-arrow-right"></i>  Check the Power Rankings
                 </a>
             </div>
 
