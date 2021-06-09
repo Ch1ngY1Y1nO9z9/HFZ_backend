@@ -5,10 +5,10 @@
     <section class="body-font py-8 pt-24 min-h-screen @if(Session::has('darkMode')) text-white dark-mode @else text-gray-900 @endif">
         <div class="flex flex-col text-center w-full mb-5">
             <h1 class="text-5xl font-medium title-font mb-4 tracking-widest font-bold" style="color:#49c8f0;">
-                POWER RANK
+                POWER RANKINGS
             </h1>
             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-                HolofightZ Wrestlers power rank, update every week.
+                HolofightZ Wrestlers power Rankings, update every week.
             </p>
             <a href="/WrestlersProfile"
                 class="mx-auto hover:underline bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-full my-5 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
