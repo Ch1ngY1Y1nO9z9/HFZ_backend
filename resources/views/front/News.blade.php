@@ -35,7 +35,7 @@
 </pre>
                 @else
 
-                <img width="100%" src="https://pbs.twimg.com/media/E3I5Y8RVkAE0DKY.jpg" alt="fan_arts">
+                <img width="100%" src="{{$news->img}}" alt="fan_arts">
                 {{$news->description}}
                 @endif
               </p>
