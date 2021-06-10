@@ -266,9 +266,11 @@
                     </h2>
                     <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">{{$item->title}}</h1>
                     <p class="leading-relaxed mb-3 text-gray-800">{{$item->description}}</p>
-                    <a href="/FightZNews/{{$item->id}}" class="text-indigo-500 inline-flex items-center">Learn More
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    @if($item->content || $item->type == 'img')
+                        <a href="/FightZNews/{{$item->id}}" class="text-indigo-500 inline-flex items-center">Learn More
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    @endif
                     <div class="text-center mt-2 leading-none flex justify-center absolute bottom-0 left-0 w-full py-4">
                         @if(strtotime($item->date.'+3 day') > strtotime(date('Y-m-d')) )
                             <span class="text-gray-400 mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
