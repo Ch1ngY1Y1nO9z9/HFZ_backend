@@ -25,21 +25,21 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="context1" class="col-2 col-form-label">context1</label>
+                                <label for="context1" class="col-2 col-form-label">highlight 1</label>
                                 <div class="col-10">
                                     <input type="text" class="form-control" id="context1" name="context1" value="{{$item->context1}}">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="context2" class="col-2 col-form-label">context2</label>
+                                <label for="context2" class="col-2 col-form-label">highlight 2</label>
                                 <div class="col-10">
                                     <input type="text" class="form-control" id="context2" name="context2" value="{{$item->context2}}">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="context3" class="col-2 col-form-label">context3</label>
+                                <label for="context3" class="col-2 col-form-label">highlight 3</label>
                                 <div class="col-10">
                                     <input type="text" class="form-control" id="context3" name="context3" value="{{$item->context3}}">
                                 </div>
