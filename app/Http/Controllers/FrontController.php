@@ -63,7 +63,7 @@ class FrontController extends Controller
     }
 
     public function FightZNews() {
-        $news = News::orderBy('id','desc')->orderBy('sort','desc')->get();
+        $news = News::orderBy('sort','desc')->orderBy('id','desc')->get();
         return view('front.FightZNews',compact('news'));
     }
 
