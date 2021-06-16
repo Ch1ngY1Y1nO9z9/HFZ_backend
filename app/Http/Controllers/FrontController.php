@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Seo;
 use App\News;
+use App\Roll;
 use App\User;
 use App\Check;
 use App\Banners;
@@ -16,7 +17,7 @@ use App\WrestlerData;
 use App\MatchesRecords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-
+use Symfony\Contracts\Service\Attribute\Required;
 
 class FrontController extends Controller
 {
@@ -60,6 +61,18 @@ class FrontController extends Controller
     public function Rank() {
         $wrestlers = Profiles::orderBy('rank','asc')->get();
         return view('front.Rank',compact('wrestlers'));
+    }
+
+    public function roll() {
+        return view('front.roll');
+    }
+
+    public function getresult(Request $request){
+        $roll_number = rand(1,49);
+
+        $result = Roll::find($roll_number);
+
+        return $result;
     }
 
     public function FightZNews() {

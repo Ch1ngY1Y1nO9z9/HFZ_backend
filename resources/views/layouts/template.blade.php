@@ -182,33 +182,9 @@
   </footer>
 
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script>
-      $('.lights').click(function(){
-          if($('body').hasClass('bg-white')){
-
-            $('body').removeClass('bg-white')
-            $('body').addClass('bg-black')
-            $('.footer-bg').removeClass('bg-gray-100');
-            $('.footer-bg').addClass('bg-gray-900');
-
-          }else{
-
-            $('body').addClass('bg-white');
-            $('body').removeClass('bg-black');
-            $('.footer-bg').addClass('bg-gray-100');
-            $('.footer-bg').removeClass('bg-gray-900');
-          }
-
-
-        $.get('/lightsoff');
-
-
-      })
-  </script>
-  <script src="{{asset('js/pages.js')}}"></script>
-  @yield('js')
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    @yield('js')
+    <script src="{{asset('js/pages.js')}}"></script>
 
 </body>
 

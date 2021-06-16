@@ -21,12 +21,36 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
+        dd($request->all());
         $new_record = News::create($request->all());
 
         $new_record->save();
 
         return redirect('/admin/news')->with('store','store success!');
 
+    }
+
+    public function upload_img(Request $request)
+    {
+        $img = $request->src;
+        $base64_string= explode(',', $img);
+        $client_id="e88d27b3d1cd4f5";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://api.imgur.com/3/image.json');
+        curl_setopt($ch, CURLOPT_POST, TRUE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Client-ID ' . $client_id));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array('image' => $base64_string[1]));
+
+        $reply = curl_exec($ch);
+        curl_close($ch);
+
+        $reply = json_decode($reply);
+
+        $link = $reply->data->link;
+
+        return $link;
     }
 
     public function edit($id)

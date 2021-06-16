@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsTypeTable extends Migration
+class CreateRollTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateProductsTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('products_type', function (Blueprint $table) {
+        Schema::create('roll', function (Blueprint $table) {
             $table->id();
-            $table->string('type_name_ch')->nullable();
-            $table->string('type_name_en')->nullable();
+            $table->string('rare')->default('rare');
             $table->string('img')->nullable();
-            $table->integer('sort');
+            $table->string('name')->nullable();
+            $table->string('intro')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateProductsTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products_type');
+        Schema::dropIfExists('roll');
     }
 }

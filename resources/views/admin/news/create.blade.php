@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -81,21 +81,17 @@
                             </div>
 
 
-                            <div id="news_layout">
+                            <div id="news_layout" class="pb-5">
                                 <div class="form-group row">
                                     <label for="news" class="col-2 col-form-label">Content</label>
                                     <div class="col-10">
-                                        <textarea style="height:150px;" type="text" class="form-control" id="news" name="content"></textarea>
+                                        <textarea style="display:none;" type="text" class="form-control" id="news" name="content"></textarea>
+                                        <div id="editor"></div>
                                     </div>
-                                    <div class="col-12"><small class="text-danger">*If you want put OC video embed code, please select video</small></div>
                                 </div>
-
                             </div>
 
-
-
                             <hr>
-
                             <div class="form-group row">
                                 <label for="sort" class="col-2 col-form-label">Sort</label>
                                 <div class="col-10">
@@ -114,56 +110,125 @@
 @endsection
 
 @section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script src="https://cdn.rawgit.com/kensnyder/quill-image-resize-module/3411c9a7/image-resize.min.js"></script>
 
     <script>
-        var current_date = new Date();
 
-        var date = current_date.getFullYear() + '/' + (current_date.getMonth() + 1) + '/' + current_date.getDate()
+        window.addEventListener('load', function(){
 
-        document.querySelector('input[name="date"]').setAttribute('value', date)
+            var quill = new Quill('#editor', {
+                bounds: '#editor',
+                modules: {
+                    imageResize: {
+                        displaySize: true
+                    },
+                    syntax: true,
+                    toolbar: [
+                    [{ 'size': [] }],
+                    [ 'bold', 'italic', 'underline', 'strike' ],
+                    [{ 'color': [] }, { 'background': [] }],
+                    [{ 'script': 'super' }, { 'script': 'sub' }],
+                    [{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block' ],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+                    [ {'direction': 'rtl'}, { 'align': [] }],
+                    [ 'link', 'image'],
+                    [ 'clean' ]
+                    ],
+                },
+                theme: 'snow',
+            });
 
 
 
-        function change_layout(x){
-            var type = document.getElementById(x).value;
-            var img_layout = document.getElementById('fan_art');
-            var content_layout = document.getElementById('video')
-            var img = document.getElementById('img');
-            var content = document.getElementById('content')
-            var video_from = document.getElementById('video_from')
-            var guide = document.getElementById('guide')
-            var news_layout = document.getElementById('news_layout')
-            var news = document.getElementById('news')
 
-            if(type == 'img'){
-                content.value = '';
-                news.value = '';
-                content_layout.classList.add('d-none')
-                news_layout.classList.add('d-none')
-                img_layout.classList.remove('d-none')
-            }else if(type == 'video'){
-                img.value = '';
-                news.value = '';
-                news.setAttribute('name','');
-                content.setAttribute('name','content');
-                video_from.setAttribute('name','video_from');
-                content_layout.classList.remove('d-none')
-                img_layout.classList.add('d-none')
-                news_layout.classList.add('d-none')
-            }else{
-                img.value = '';
-                content.value = '';
-                news.setAttribute('name','content');
-                content.setAttribute('name','');
-                video_from.setAttribute('name','');
-                content_layout.classList.add('d-none')
-                guide.classList.add('d-none')
-                img_layout.classList.add('d-none')
-                news_layout.classList.remove('d-none')
 
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-        }
+        });
+
+        $('form').submit(function(e){
+            async function test() {
+                function upload(){
+                    $('.ql-editor').find('img').map(function(){
+                        var img = $(this);
+                        $.ajax({
+                            method: 'POST',
+                            url: '/upload_to_imgru',
+                            data: {src:$(this).attr('src')},
+                            success: function (res) {
+                                img.attr('src',res);
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                console.error(textStatus + " " + errorThrown);
+                            }
+                        });
+                    })
+                }
+
+                function to_content() {
+                    console.log($('.ql-editor').html())
+                    $('#news').html($('.ql-editor').html())
+                }
+
+
+                await upload();
+                await to_content();
+            }
+
+            test();
+            e.preventDefault();
+        })
+//////////////////////////////////////////////////////////////////////////////////////////
+            var current_date = new Date();
+
+            var date = current_date.getFullYear() + '/' + (current_date.getMonth() + 1) + '/' + current_date.getDate()
+
+            document.querySelector('input[name="date"]').setAttribute('value', date)
+
+            function change_layout(x){
+                var type = document.getElementById(x).value;
+                var img_layout = document.getElementById('fan_art');
+                var content_layout = document.getElementById('video')
+                var img = document.getElementById('img');
+                var content = document.getElementById('content')
+                var video_from = document.getElementById('video_from')
+                var guide = document.getElementById('guide')
+                var news_layout = document.getElementById('news_layout')
+                var news = document.getElementById('news')
+
+                if(type == 'img'){
+                    content.value = '';
+                    news.value = '';
+                    content_layout.classList.add('d-none')
+                    news_layout.classList.add('d-none')
+                    img_layout.classList.remove('d-none')
+                }else if(type == 'video'){
+                    img.value = '';
+                    news.value = '';
+                    news.setAttribute('name','');
+                    content.setAttribute('name','content');
+                    video_from.setAttribute('name','video_from');
+                    content_layout.classList.remove('d-none')
+                    img_layout.classList.add('d-none')
+                    news_layout.classList.add('d-none')
+                }else{
+                    img.value = '';
+                    content.value = '';
+                    news.setAttribute('name','content');
+                    content.setAttribute('name','');
+                    video_from.setAttribute('name','');
+                    content_layout.classList.add('d-none')
+                    guide.classList.add('d-none')
+                    img_layout.classList.add('d-none')
+                    news_layout.classList.remove('d-none')
+
+                }
+            }
+        });
 
     </script>
 @endsection

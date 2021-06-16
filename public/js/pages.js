@@ -83,5 +83,22 @@ function checkParent(t, elm) {
   return false;
 }
 
+$('.lights').click(function(){
+    if($('body').hasClass('bg-white')){
+
+      $('body').removeClass('bg-white')
+      $('body').addClass('bg-black')
+      $('.footer-bg').removeClass('bg-gray-100');
+      $('.footer-bg').addClass('bg-gray-900');
+
+    }else{
+
+      $('body').addClass('bg-white');
+      $('body').removeClass('bg-black');
+      $('.footer-bg').addClass('bg-gray-100');
+      $('.footer-bg').removeClass('bg-gray-900');
+    }
 
 
+  $.get('/lightsoff');
+})

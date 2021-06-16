@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/en', 'FrontController@index_en');
 // test get lang
 
+Route::post('/upload_to_imgru', 'NewsController@upload_img');
 
 Route::get('/', 'FrontController@index');
 Route::get('/lightsoff', 'FrontController@lightsoff');
@@ -35,9 +36,9 @@ Route::get('/PreviousShows', 'FrontController@PreviousShows');
 Route::get('/WrestlersProfile', 'FrontController@WrestlersProfile');
 Route::get('/WrestlersProfile/{character}', 'FrontController@Profile');
 Route::get('/Rank', 'FrontController@Rank');
+Route::get('/roll', 'FrontController@roll');
 
-
-
+Route::post('/get_result', 'FrontController@getresult');
 Route::post('/ContactHFZ', 'FrontController@contact_us');
 
 Route::get('/news/{lang}/{id}', 'FrontController@news');
