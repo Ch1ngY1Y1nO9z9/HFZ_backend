@@ -35,7 +35,7 @@
                         If you have coupon code, you can roll one more time for free!!
                     </p>
                 </div>
-                <div x-show="!show" class="w-full mx-auto overflow-auto" style="background-image: url('/roll_img/rateup.jpg');background-size:contain;background-position: center; background-repeat:no-repeat;">
+                <div x-show="!show" class="w-full mx-auto overflow-auto" style="background-image: url('https://i.imgur.com/SQKmRus.jpg');background-size:contain;background-position: center; background-repeat:no-repeat;">
                         <div class="h-96"></div>
                 </div>
                 <button x-show="!show" x-on:click="show = !show" :aria-expanded="show ? 'true' : 'false'" :class="{ 'active': show }" x-on:click.once.debounce.3200ms="getrolling()" x-on:click.once="do_transition()" class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">ROLL</button>
@@ -86,7 +86,7 @@
         })
 
         function do_transition(){
-            $('.rolling_animation img').attr('src','/roll_img/RAWLOGO.gif')
+            $('.rolling_animation img').attr('src','https://i.imgur.com/cXwbpQG.gif')
         }
 
         function getrolling() {
