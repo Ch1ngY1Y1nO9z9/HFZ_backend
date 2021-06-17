@@ -39,6 +39,7 @@ Route::get('/Rank', 'FrontController@Rank');
 Route::get('/roll', 'FrontController@roll');
 
 Route::post('/get_result', 'FrontController@getresult');
+Route::post('/get_result_by_code', 'FrontController@getresultbycode');
 Route::post('/ContactHFZ', 'FrontController@contact_us');
 
 Route::get('/news/{lang}/{id}', 'FrontController@news');

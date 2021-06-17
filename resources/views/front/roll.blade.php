@@ -35,12 +35,12 @@
                         If you have coupon code, you can roll one more time for free!!
                     </p>
                 </div>
-                <div x-show="!show" class="w-full mx-auto overflow-auto" style="background-image: url('https://i.imgur.com/SQKmRus.jpg');background-size:contain;background-position: center; background-repeat:no-repeat;">
+                <div x-show="!show" id="thumbnail" class="w-full mx-auto overflow-auto" style="background-image: url('https://i.imgur.com/SQKmRus.jpg');background-size:contain;background-position: center; background-repeat:no-repeat;">
                         <div class="h-96"></div>
                 </div>
-                <button x-show="!show" x-on:click="show = !show" :aria-expanded="show ? 'true' : 'false'" :class="{ 'active': show }" x-on:click.once.debounce.3200ms="getrolling()" x-on:click.once="do_transition()" class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">ROLL</button>
+                <button id="roll_btn" x-show="!show" x-on:click="show = !show" :aria-expanded="show ? 'true' : 'false'" :class="{ 'active': show }" x-on:click.once.debounce.3200ms="getrolling()" x-on:click.once="do_transition()" class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">ROLL</button>
 
-                <div x-show="show" class="flex flex-col text-center w-full text-gray-600">
+                <div id="res_all" x-show="show" class="flex flex-col text-center w-full text-gray-600">
                     <h1 class="text-5xl font-medium title-font mb-4 tracking-widest font-bold">
                         You got...
                     </h1>
@@ -53,13 +53,38 @@
                     <img src="" alt="" class="mx-auto">
                 </div>
 
-                <div x-show="show" class="flex flex-col text-center w-full mb-10 text-gray-600">
+                <div id="res_content" x-show="show" class="flex flex-col text-center w-full mb-10 text-gray-600">
                     <h1 id="rare" class="text-5xl font-medium title-font mb-4 tracking-widest font-bold">
 
                     </h1>
                     <p id="result_intro" class="lg:w-2/3 mx-auto leading-relaxed text-base text-xl">
 
                     </p>
+                </div>
+
+                <div id="promocode_form" class="flex flex-col text-center w-full my-10 text-gray-600">
+                    <h1  class="text-5xl font-medium title-font tracking-widest font-bold">
+                        Promo code
+                    </h1>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-xl mb-4">
+                        Have a promo code? Use the promo code to get 1 free roll!
+                    </p>
+
+                    <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                        <div class="flex flex-wrap -m-2">
+                          <div class="p-2 w-full">
+                            <div class="relative">
+                              <label for="code" class="leading-7 text-xl text-gray-600">Promo code:</label>
+                              <br>
+                              <input type="text" id="code" name="code" value="#" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            </div>
+                          </div>
+                          <div class="p-2 w-full">
+                            <button x-on:click="check_code()" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Send</button>
+                          </div>
+                        </div>
+                      </div>
+
                 </div>
 
                 <div class="rolling_animation" x-show.transition="show">
@@ -91,10 +116,68 @@
             $('.rolling_animation img').attr('src','https://i.imgur.com/cXwbpQG.gif')
         }
 
+        function check_code(){
+            const Code = $('#code').val();
+            if(Code != '#Ina4life'){
+                alert('Promo code is wrong!')
+            }else{
+                promo_transition()
+                setTimeout('getrollingbycode()',3200)
+            }
+        }
+
+        function promo_transition() {
+            $('#rolling_animation').show();
+            $('#promocode_form').hide();
+            $('#thumbnail').hide();
+            $('#roll_btn').hide();
+            $('#res_all').show();
+            $('#result_pic').show();
+            $('#res_content').show();
+        }
+
         function getrolling() {
             $.ajax({
                 method: 'POST',
                 url: '/get_result',
+                data: {},
+                success: function (res) {
+
+                    const intro = res.intro;
+                    const name = res.name;
+                    const img = res.img;
+                    const rare = res.rare;
+                    $('.rolling_animation').hide();
+                    if(res.id == 52){
+                        $('#result_intro').addClass('text-left');
+                        $('#result_intro').html(intro);
+                    }else{
+                        $('#result_intro').text(intro);
+                    }
+
+                    if(rare == 'rare'){
+                        $('#rare').css('color','#49c8f0')
+                    }else if(rare == 'SR'){
+                        $('#rare').addClass('text-blue-500')
+                    }else if(rare == 'SSR'){
+                        $('#rare').addClass('text-red-500')
+                    }else if(rare == 'UR'){
+                        $('#rare').addClass('text-yellow-500')
+                    }
+                    $('#rare').text(rare);
+                    $('#result_pic img').attr('src', img);
+                    $('#result_item').text(name);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus + " " + errorThrown);
+                }
+            });
+        }
+
+        function getrollingbycode() {
+            $.ajax({
+                method: 'POST',
+                url: '/get_result_by_code',
                 data: {},
                 success: function (res) {
                     const intro = res.intro;
