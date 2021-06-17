@@ -68,11 +68,20 @@ class FrontController extends Controller
     }
 
     public function getresult(Request $request){
-        $roll_number = rand(1,49);
+        // rare 90% SR 8% SSR 1.9% UR 0.1%
+        $roll_number = rand(1,1000);
 
-        $result = Roll::find($roll_number);
+        if($roll_number >= 100) {
+            $rare = Roll::where('rare','!=','SR')->where('rare','!=','LEGEND')->where('rare','!=','SSR')->inRandomOrder()->first();
+        }elseif($roll_number < 80 && $roll_number >= 1) {
+            $rare = Roll::where('rare','SR')->inRandomOrder()->first();
+        }elseif($roll_number <= 100 && $roll_number <= 81) {
+            $rare = Roll::where('rare','SSR')->inRandomOrder()->first();
+        }else{
+            $rare = Roll::where('rare','LEGEND')->inRandomOrder()->first();
+        }
 
-        return $result;
+        return $rare;
     }
 
     public function FightZNews() {

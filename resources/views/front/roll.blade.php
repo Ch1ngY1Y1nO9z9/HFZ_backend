@@ -102,7 +102,13 @@
                     const img = res.img;
                     const rare = res.rare;
                     $('.rolling_animation').hide();
-                    $('#result_intro').text(intro);
+                    if(res.id == 52){
+                        $('#result_intro').addClass('text-left');
+                        $('#result_intro').html(intro);
+                    }else{
+                        $('#result_intro').text(intro);
+                    }
+
                     if(rare == 'rare'){
                         $('#rare').css('color','#49c8f0')
                     }else if(rare == 'SR'){
