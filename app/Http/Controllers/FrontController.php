@@ -86,12 +86,12 @@ class FrontController extends Controller
     }
 
     public function getresultbycode(Request $request){
-        // rare 50% SR 46% SSR 3.9% UR 0.1%
+        // rare 80% SR 16% SSR 3.9% UR 0.1%
         $roll_number = rand(1,1000);
 
-        if($roll_number <= 500) {
+        if($roll_number <= 800) {
             $rare = Roll::where('rare','!=','SR')->where('rare','!=','LEGEND')->where('rare','!=','SSR')->inRandomOrder()->first();
-        }elseif($roll_number > 500 && $roll_number <= 960) {
+        }elseif($roll_number > 800 && $roll_number <= 960) {
             $rare = Roll::where('rare','SR')->inRandomOrder()->first();
         }elseif($roll_number > 960 && $roll_number <= 999) {
             $rare = Roll::where('rare','SSR')->inRandomOrder()->first();
