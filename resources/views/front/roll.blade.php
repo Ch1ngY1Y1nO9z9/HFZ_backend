@@ -121,6 +121,7 @@
             if(Code != '#Ina4life'){
                 alert('Promo code is wrong!')
             }else{
+                do_transition()
                 promo_transition()
                 setTimeout('getrollingbycode()',3200)
             }
