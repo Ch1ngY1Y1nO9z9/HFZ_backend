@@ -68,8 +68,7 @@ class FrontController extends Controller
     }
 
     public function getresult(Request $request){
-        // $roll_number = rand(1,49);
-        $roll_number = 49;
+        $roll_number = rand(1,49);
 
         $result = Roll::find($roll_number);
 

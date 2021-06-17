@@ -85,7 +85,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
         //聯絡我們管理
         Route::get('contact','ContactController@index');
-        Route::post('contact/{id}','ContactController@show');
+        Route::get('contact/{id}','ContactController@show');
         Route::post('contact/delete/{id}','ContactController@delete');
 
         //檔案資料管理

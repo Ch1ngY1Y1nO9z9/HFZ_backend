@@ -62,9 +62,11 @@
                     </p>
                 </div>
 
-
                 <div class="rolling_animation" x-show.transition="show">
                     <img width="100%" height="100%" src="" alt="transition">
+                </div>
+                <div class="prelaod" hidden>
+                    <img src="https://i.imgur.com/cXwbpQG.gif" alt="preload">
                 </div>
             </div>
         </section>
