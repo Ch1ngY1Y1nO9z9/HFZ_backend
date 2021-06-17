@@ -100,7 +100,10 @@
                                 <div class="col-12"><small class="text-danger"></small></div>
                             </div>
                             <hr>
-                            <button type="submit" class="btn btn-primary d-block mx-auto">Store</button>
+                            <div class="d-flex justify-content-center">
+                                <span id="check" class="btn btn-primary">Store</span>
+                            </div>
+
                         </form>
                     </div>
                 </div>
@@ -116,8 +119,57 @@
 
     <script>
 
-        window.addEventListener('load', function(){
+        var current_date = new Date();
 
+        var date = current_date.getFullYear() + '/' + (current_date.getMonth() + 1) + '/' + current_date.getDate()
+
+        document.querySelector('input[name="date"]').setAttribute('value', date)
+
+        var type = 'news'
+
+        function change_layout(x){
+            var type = document.getElementById(x).value;
+            var img_layout = document.getElementById('fan_art');
+            var content_layout = document.getElementById('video')
+            var img = document.getElementById('img');
+            var content = document.getElementById('content')
+            var video_from = document.getElementById('video_from')
+            var news_layout = document.getElementById('news_layout')
+            var news = document.getElementById('news')
+
+            console.log(type);
+
+            if(type == 'img'){
+                content.value = '';
+                news.value = '';
+                content_layout.classList.add('d-none')
+                news_layout.classList.add('d-none')
+                img_layout.classList.remove('d-none')
+            }else if(type == 'video'){
+                img.value = '';
+                news.value = '';
+                news.setAttribute('name','');
+                content.setAttribute('name','content');
+                video_from.setAttribute('name','video_from');
+                content_layout.classList.remove('d-none')
+                img_layout.classList.add('d-none')
+                news_layout.classList.add('d-none')
+            }else{
+                img.value = '';
+                content.value = '';
+                news.setAttribute('name','content');
+                content.setAttribute('name','');
+                video_from.setAttribute('name','');
+                content_layout.classList.add('d-none')
+                img_layout.classList.add('d-none')
+                news_layout.classList.remove('d-none')
+
+            }
+        }
+
+
+
+        $(document).ready(function(){
             var quill = new Quill('#editor', {
                 bounds: '#editor',
                 modules: {
@@ -140,19 +192,22 @@
                 theme: 'snow',
             });
 
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
 
-
-
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            function go_store(){
+                $('form').submit();
             }
-        });
 
-        $('form').submit(function(e){
-            async function test() {
-                function upload(){
+            $('#check').click(function(e){
+                $img_count = $('.ql-editor').find('img').length
+                var count = 0
+                e.preventDefault();
+
+                if(type == 'news'){
                     $('.ql-editor').find('img').map(function(){
                         var img = $(this);
                         $.ajax({
@@ -161,74 +216,31 @@
                             data: {src:$(this).attr('src')},
                             success: function (res) {
                                 img.attr('src',res);
+                                count += 1;
+
+                                if($img_count == count){
+                                    $('#news').html($('.ql-editor').html());
+
+                                    setTimeout(function(){$('form').submit();},3200)
+                                }
                             },
                             error: function (jqXHR, textStatus, errorThrown) {
                                 console.error(textStatus + " " + errorThrown);
                             }
                         });
                     })
-                }
-
-                function to_content() {
-                    console.log($('.ql-editor').html())
-                    $('#news').html($('.ql-editor').html())
-                }
-
-
-                await upload();
-                await to_content();
-            }
-
-            test();
-            e.preventDefault();
-        })
-//////////////////////////////////////////////////////////////////////////////////////////
-            var current_date = new Date();
-
-            var date = current_date.getFullYear() + '/' + (current_date.getMonth() + 1) + '/' + current_date.getDate()
-
-            document.querySelector('input[name="date"]').setAttribute('value', date)
-
-            function change_layout(x){
-                var type = document.getElementById(x).value;
-                var img_layout = document.getElementById('fan_art');
-                var content_layout = document.getElementById('video')
-                var img = document.getElementById('img');
-                var content = document.getElementById('content')
-                var video_from = document.getElementById('video_from')
-                var guide = document.getElementById('guide')
-                var news_layout = document.getElementById('news_layout')
-                var news = document.getElementById('news')
-
-                if(type == 'img'){
-                    content.value = '';
-                    news.value = '';
-                    content_layout.classList.add('d-none')
-                    news_layout.classList.add('d-none')
-                    img_layout.classList.remove('d-none')
-                }else if(type == 'video'){
-                    img.value = '';
-                    news.value = '';
-                    news.setAttribute('name','');
-                    content.setAttribute('name','content');
-                    video_from.setAttribute('name','video_from');
-                    content_layout.classList.remove('d-none')
-                    img_layout.classList.add('d-none')
-                    news_layout.classList.add('d-none')
                 }else{
-                    img.value = '';
-                    content.value = '';
-                    news.setAttribute('name','content');
-                    content.setAttribute('name','');
-                    video_from.setAttribute('name','');
-                    content_layout.classList.add('d-none')
-                    guide.classList.add('d-none')
-                    img_layout.classList.add('d-none')
-                    news_layout.classList.remove('d-none')
-
+                    go_store();
                 }
-            }
-        });
+
+            })
+
+        })
+
+
+
+
+
 
     </script>
 @endsection

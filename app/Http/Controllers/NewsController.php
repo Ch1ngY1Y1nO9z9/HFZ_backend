@@ -21,7 +21,6 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
         $new_record = News::create($request->all());
 
         $new_record->save();

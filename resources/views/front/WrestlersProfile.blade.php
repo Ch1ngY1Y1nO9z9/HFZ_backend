@@ -85,7 +85,7 @@
                                     <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$gen1->file_list_name}}</h2>
                                     <h3 class="text-gray-500 mb-3">@ {{$gen1->aka}}</h3>
                                     <p class="mb-4">
-                                        {{$gen1->spamming}}
+                                        {!!$gen1->spamming!!}
                                     </p>
                                     <span class="inline-flex">
                                         <a target="_blank" href="{{$gen1->twitter_link}}" class="text-gray-500 hover_twitter">

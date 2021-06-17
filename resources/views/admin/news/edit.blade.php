@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('css')
+    @if($news->type == 'news')
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    @endif
 @endsection
 
 @section('content')
@@ -78,13 +81,15 @@
                                     </div>
                                 </div>
                             @else
-                                <div id="news_layout"  @if($news->type != 'news') class="d-none" @endif>
+                                <div id="news_layout" class="pb-5">
                                     <div class="form-group row">
                                         <label for="news" class="col-2 col-form-label">Content</label>
                                         <div class="col-10">
-                                            <textarea style="height:150px;" type="text" class="form-control" id="news" name="content">{{$news->content}}</textarea>
+                                            <textarea style="display:none;" type="text" class="form-control" id="news" name="content">{{$news->content}}</textarea>
+                                            <div id="editor">
+                                                {{$news->content}}
+                                            </div>
                                         </div>
-                                        <div class="col-12"><small class="text-danger">*If you want put OC video embed code, please select video</small></div>
                                     </div>
                                 </div>
                             @endif
@@ -97,7 +102,14 @@
                                 </div>
                             </div>
                             <hr>
+                            @if($news->type == 'news')
+                            <div class="d-flex justify-content-center">
+                                <span id="check" class="btn btn-primary">Store</span>
+                            </div>
+                            @else
                             <button type="submit" class="btn btn-primary d-block mx-auto">update</button>
+                            @endif
+
                         </form>
                     </div>
                 </div>
@@ -105,4 +117,86 @@
         </div>
     </div>
 @endsection
+
+
+@section('js')
+    @if($news->type == 'news')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script src="https://cdn.rawgit.com/kensnyder/quill-image-resize-module/3411c9a7/image-resize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var quill = new Quill('#editor', {
+                bounds: '#editor',
+                modules: {
+                    imageResize: {
+                        displaySize: true
+                    },
+                    syntax: true,
+                    toolbar: [
+                    [{ 'size': [] }],
+                    [ 'bold', 'italic', 'underline', 'strike' ],
+                    [{ 'color': [] }, { 'background': [] }],
+                    [{ 'script': 'super' }, { 'script': 'sub' }],
+                    [{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block' ],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+                    [ {'direction': 'rtl'}, { 'align': [] }],
+                    [ 'link', 'image'],
+                    [ 'clean' ]
+                    ],
+                },
+                theme: 'snow',
+            });
+
+            quill.setText($('#news').text());
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            function go_store(){
+                $('form').submit();
+            }
+
+            $('#check').click(function(e){
+                $img_count = $('.ql-editor').find('img').length
+                var count = 0
+                e.preventDefault();
+
+                if(type == 'news'){
+                    $('.ql-editor').find('img').map(function(){
+                        var img = $(this);
+                        $.ajax({
+                            method: 'POST',
+                            url: '/upload_to_imgru',
+                            data: {src:$(this).attr('src')},
+                            success: function (res) {
+                                img.attr('src',res);
+                                count += 1;
+
+                                if($img_count == count){
+                                    $('#news').html($('.ql-editor').html());
+
+                                    setTimeout(function(){$('form').submit();},3200)
+                                }
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                console.error(textStatus + " " + errorThrown);
+                            }
+                        });
+                    })
+                }else{
+                    go_store();
+                }
+
+            })
+
+        })
+    </script>
+
+    @endif
+@endsection
+
 
