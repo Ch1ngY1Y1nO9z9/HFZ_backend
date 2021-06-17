@@ -87,7 +87,7 @@
 
                 </div>
 
-                <div class="rolling_animation" x-show.transition="show">
+                <div class="rolling_animation" hidden>
                     <img width="100%" height="100%" src="" alt="transition">
                 </div>
                 <div class="prelaod" hidden>
@@ -113,6 +113,7 @@
         })
 
         function do_transition(){
+            $('.rolling_animation').show();
             $('.rolling_animation img').attr('src','https://i.imgur.com/cXwbpQG.gif')
         }
 
@@ -128,7 +129,7 @@
         }
 
         function promo_transition() {
-            $('#rolling_animation').show();
+            $('.rolling_animation').show();
             $('#promocode_form').hide();
             $('#thumbnail').hide();
             $('#roll_btn').hide();
