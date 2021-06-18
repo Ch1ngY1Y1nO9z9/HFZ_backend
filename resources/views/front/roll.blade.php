@@ -38,15 +38,26 @@
                 <div x-show="!show" id="thumbnail" class="w-full mx-auto overflow-auto" style="background-image: url('https://i.imgur.com/SQKmRus.jpg');background-size:contain;background-position: center; background-repeat:no-repeat;">
                         <div class="h-96"></div>
                 </div>
-                <button id="roll_btn" x-show="!show" x-on:click="show = !show" :aria-expanded="show ? 'true' : 'false'" :class="{ 'active': show }" x-on:click.once.debounce.3200ms="getrolling()" x-on:click.once="do_transition()" class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">ROLL</button>
+                <div x-show="!show" class="flex flex-col text-center w-full text-gray-600">
+                    <h1 class="text-3xl font-medium title-font mb-4 tracking-widest font-bold" style="color:#49c8f0;">
+                        RRAT:
+                    </h1>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-xl">
+                        <b style="color:#49c8f0;">Rare: 90%</b><br>
+                        <b class="text-blue-500">SR: 8%</b><br>
+                        <b class="text-red-500">SSR: 1.9%</b><br>
+                        <b class="text-yellow-500">LEGEND: 0.1%</b><br>
+                    </p>
+                </div>
+                <button id="roll_btn" x-show="!show" x-on:click="show = !show" :aria-expanded="show ? 'true' : 'false'" :class="{ 'active': show }" x-on:click.once.debounce.3200ms="getrolling()" x-on:click.once="do_transition()" class="flex mx-auto my-10 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">ROLL</button>
 
                 <div id="res_all" x-show="show" class="flex flex-col text-center w-full text-gray-600">
                     <h1 class="text-5xl font-medium title-font mb-4 tracking-widest font-bold">
                         You got...
                     </h1>
-                    <h1 id="result_item" class="text-4xl font-medium title-font mb-1 tracking-widest font-bold" style="color:#49c8f0;">
+                    <h2 id="result_item" class="text-4xl font-medium title-font mb-1 tracking-widest font-bold" style="color:#49c8f0;">
 
-                    </h1>
+                    </h2>
                 </div>
 
                 <div x-show="show" id="result_pic" class="w-full mx-auto overflow-auto">
@@ -68,6 +79,16 @@
                     </h1>
                     <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-xl mb-4">
                         Have a promo code? Use the promo code to get 1 free roll!
+                    </p>
+
+                    <h2 x-show="!show" class="text-3xl font-medium title-font mb-4 tracking-widest font-bold" style="color:#49c8f0;">
+                        PROMO RRAT:
+                    </h2>
+                    <p x-show="!show" class="lg:w-2/3 mx-auto leading-relaxed text-base text-xl mb-5">
+                        <b style="color:#49c8f0;">Rare: 80%</b><br>
+                        <b class="text-blue-500">SR: 16%</b><br>
+                        <b class="text-red-500">SSR: 3.9%</b><br>
+                        <b class="text-yellow-500">LEGEND: 0.1%</b><br>
                     </p>
 
                     <div class="lg:w-1/2 md:w-2/3 mx-auto">
@@ -122,6 +143,7 @@
             if(Code != '#Ina4life'){
                 alert('Promo code is wrong!')
             }else{
+                $('.rolling_animation img').attr('src','')
                 do_transition()
                 promo_transition()
                 setTimeout('getrollingbycode()',3200)

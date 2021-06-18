@@ -125,8 +125,6 @@
 
         document.querySelector('input[name="date"]').setAttribute('value', date)
 
-        var type = 'news'
-
         function change_layout(x){
             var type = document.getElementById(x).value;
             var img_layout = document.getElementById('fan_art');
@@ -136,8 +134,6 @@
             var video_from = document.getElementById('video_from')
             var news_layout = document.getElementById('news_layout')
             var news = document.getElementById('news')
-
-            console.log(type);
 
             if(type == 'img'){
                 content.value = '';
@@ -198,11 +194,8 @@
                 }
             });
 
-            function go_store(){
-                $('form').submit();
-            }
-
             $('#check').click(function(e){
+                var type = $('#type').val();
                 $img_count = $('.ql-editor').find('img').length
                 var count = 0
                 e.preventDefault();
@@ -219,8 +212,10 @@
                                 count += 1;
 
                                 if($img_count == count){
-                                    $('#news').html($('.ql-editor').html());
-
+                                    setTimeout(function(){
+                                        const DATA = JSON.stringify( quill.getContents() );
+                                        $('#news').html(DATA);
+                                        },2000)
                                     setTimeout(function(){$('form').submit();},3200)
                                 }
                             },
@@ -230,17 +225,13 @@
                         });
                     })
                 }else{
-                    go_store();
+                    console.log('123')
+                    $('form').submit();
                 }
 
             })
 
         })
-
-
-
-
-
 
     </script>
 @endsection

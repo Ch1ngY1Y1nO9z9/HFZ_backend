@@ -86,9 +86,7 @@
                                         <label for="news" class="col-2 col-form-label">Content</label>
                                         <div class="col-10">
                                             <textarea style="display:none;" type="text" class="form-control" id="news" name="content">{{$news->content}}</textarea>
-                                            <div id="editor">
-                                                {{$news->content}}
-                                            </div>
+                                            <div id="editor"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -148,7 +146,27 @@
                 theme: 'snow',
             });
 
-            quill.setText($('#news').text());
+            function check_json(str) {
+                try {
+                    JSON.parse(str);
+                } catch (e) {
+
+                    return false;
+                }
+                return true;
+            };
+
+            content = $('#news').html()
+
+            if( check_json(content) ) {
+                quill.setContents(JSON.parse( content ).ops);
+            }else {
+                quill.setText(content);
+            }
+
+
+            console.log()
+
 
             $.ajaxSetup({
                 headers: {
@@ -156,16 +174,12 @@
                 }
             });
 
-            function go_store(){
-                $('form').submit();
-            }
-
             $('#check').click(function(e){
                 $img_count = $('.ql-editor').find('img').length
                 var count = 0
                 e.preventDefault();
 
-                if(type == 'news'){
+                if($('.ql-editor').find('img').length != 0){
                     $('.ql-editor').find('img').map(function(){
                         var img = $(this);
                         $.ajax({
@@ -177,8 +191,10 @@
                                 count += 1;
 
                                 if($img_count == count){
-                                    $('#news').html($('.ql-editor').html());
-
+                                    setTimeout(function(){
+                                        const DATA = JSON.stringify( quill.getContents() );
+                                        $('#news').html(DATA);
+                                        },2000)
                                     setTimeout(function(){$('form').submit();},3200)
                                 }
                             },
@@ -188,9 +204,10 @@
                         });
                     })
                 }else{
-                    go_store();
+                    const DATA = JSON.stringify( quill.getContents() );
+                    $('#news').html(DATA);
+                    setTimeout(function(){$('form').submit();},1000)
                 }
-
             })
 
         })
