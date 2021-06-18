@@ -1,5 +1,11 @@
 @extends('layouts.template')
 
+@section('css')
+    @if($news->type == 'news')
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    @endif
+@endsection
+
 @section('content')
 <div class="pt-12">
     <section class="text-gray-600 body-font px-8 py-24 min-h-screen">
@@ -29,10 +35,10 @@
                     @endif
                 </div>
                 @elseif($news->type == 'news')
-                {{$news->description}}
-<pre class="text-left">
-{{$news->content}}
-</pre>
+                    {{$news->description}}
+                    <div id="news" class="w-full">
+                        {{$news->content}}
+                    </div>
                 @else
 
                 <img width="100%" src="{{$news->img}}" alt="fan_arts">
@@ -62,5 +68,24 @@
         }
 
     })
+
+
 </script>
+
+@if($news->type == 'news')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script>
+
+        const DATA = document.getElementById('news').innerHTML;
+
+        var el = document.createElement( "div" ),
+        ql = new Quill( el, {} );
+        ql.setContents( JSON.parse( DATA ).ops );
+        document.getElementById( "news" ).innerHTML = ql.root.innerHTML;
+
+    </script>
+@endif
+
+
 @endsection
