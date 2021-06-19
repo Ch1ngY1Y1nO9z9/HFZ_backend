@@ -31,7 +31,7 @@ class FrontController extends Controller
     public function index() {
         $seo = Seo::find(1);
         $banner = Banners::find(1);
-        $news = News::orderBy('sort','desc')->take(3)->get();
+        $news = News::orderBy('sort','desc')->orderBy('id','desc')->take(3)->get();
 
         $stars = Profiles::where('toindex', 1)->first();
         $rank_leader = Profiles::where('rank', 1)->first();
