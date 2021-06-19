@@ -201,31 +201,37 @@
                 e.preventDefault();
 
                 if(type == 'news'){
-                    $('.ql-editor').find('img').map(function(){
-                        var img = $(this);
-                        $.ajax({
-                            method: 'POST',
-                            url: '/upload_to_imgru',
-                            data: {src:$(this).attr('src')},
-                            success: function (res) {
-                                img.attr('src',res);
-                                count += 1;
+                    if($img_count != 0){
+                        $('.ql-editor').find('img').map(function(){
+                            var img = $(this);
+                            $.ajax({
+                                method: 'POST',
+                                url: '/upload_to_imgru',
+                                data: {src:$(this).attr('src')},
+                                success: function (res) {
+                                    img.attr('src',res);
+                                    count += 1;
 
-                                if($img_count == count){
-                                    setTimeout(function(){
-                                        const DATA = JSON.stringify( quill.getContents() );
-                                        $('#news').html(DATA);
-                                        },2000)
-                                    setTimeout(function(){$('form').submit();},3200)
+                                    if($img_count == count){
+                                        setTimeout(function(){
+                                            const DATA = JSON.stringify( quill.getContents() );
+                                            $('#news').html(DATA);
+                                            },2000)
+                                        setTimeout(function(){$('form').submit();},3200)
+                                    }
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    console.error(textStatus + " " + errorThrown);
                                 }
-                            },
-                            error: function (jqXHR, textStatus, errorThrown) {
-                                console.error(textStatus + " " + errorThrown);
-                            }
-                        });
-                    })
+                            });
+                        })
+                    }else{
+                        const DATA = JSON.stringify( quill.getContents() );
+                        $('#news').html(DATA);
+                        setTimeout(function(){$('form').submit();},2000);
+                    }
+
                 }else{
-                    console.log('123')
                     $('form').submit();
                 }
 
