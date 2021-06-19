@@ -202,6 +202,8 @@
                     if(res.id == 52){
                         $('#result_intro').addClass('text-left');
                         $('#result_intro').html(intro);
+                    }else if(res.id == 81){
+                        $('#result_intro').html(intro);
                     }else{
                         $('#result_intro').text(intro);
                     }

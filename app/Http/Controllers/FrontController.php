@@ -64,7 +64,46 @@ class FrontController extends Controller
     }
 
     public function roll() {
+        if (isset($_SERVER['HTTP_CLIENT_IP'])) {
 
+            $result = $_SERVER['HTTP_CLIENT_IP'];
+
+         } elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+
+            $result = $_SERVER['HTTP_X_FORWARDED_FOR'];
+
+         } elseif (isset($_SERVER['HTTP_X_FORWARDED'])) {
+
+            $result = $_SERVER['HTTP_X_FORWARDED'];
+
+         } elseif (isset($_SERVER['HTTP_FORWARDED_FOR'])) {
+
+            $result = $_SERVER['HTTP_FORWARDED_FOR'];
+
+         } elseif (isset($_SERVER['HTTP_FORWARDED'])) {
+
+            $result = $_SERVER['HTTP_FORWARDED'];
+
+         } elseif (isset($_SERVER['REMOTE_ADDR'])) {
+
+            $result = $_SERVER['REMOTE_ADDR'];
+
+         } else {
+
+             $result = '';
+         }
+
+        $all_check = Check::where('ip_check_for_jp',$result)->first();
+        if(!$all_check){
+            $check = Check::create();
+            $check->ip_check_for_jp = $result;
+            $check->save();
+        }else{
+            $all_check->ip_check_for_jp = '';
+            $all_check->save();
+            $all_check->ip_check_for_jp = $result;
+            $all_check->save();
+        }
         return view('front.roll');
     }
 
