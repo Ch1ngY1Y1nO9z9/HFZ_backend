@@ -94,8 +94,7 @@
             <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/Event">Poll</a>
           </li>
           <li class="mr-3">
-            <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/#Contact">Contact
-              us</a>
+            <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/roll">Roll</a>
           </li>
           <li class="mr-3">
             <a target="_blank" href="https://twitter.com/HoloFightZ"

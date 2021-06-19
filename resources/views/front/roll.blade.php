@@ -81,16 +81,6 @@
                         Have a promo code? Use the promo code to get 1 free roll!
                     </p>
 
-                    <h2 x-show="!show" class="text-3xl font-medium title-font mb-4 tracking-widest font-bold" style="color:#49c8f0;">
-                        PROMO RRAT:
-                    </h2>
-                    <p x-show="!show" class="lg:w-2/3 mx-auto leading-relaxed text-base text-xl mb-5">
-                        <b style="color:#49c8f0;">Rare: 80%</b><br>
-                        <b class="text-blue-500">SR: 16%</b><br>
-                        <b class="text-red-500">SSR: 3.9%</b><br>
-                        <b class="text-yellow-500">LEGEND: 0.1%</b><br>
-                    </p>
-
                     <div class="lg:w-1/2 md:w-2/3 mx-auto">
                         <div class="flex flex-wrap -m-2">
                           <div class="p-2 w-full">
