@@ -315,11 +315,11 @@
               RISING STAR
               <div class="h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </h1>
-            <a href="/WrestlersProfile/{{$rank_leader->file_list_name}}">
+            <a href="/WrestlersProfile/{{$stars->file_list_name}}">
               <img src="{{$stars->avatar}}" alt="{{$stars->name_en}}">
               <span class="flex-grow flex flex-col">
                 <h4 class="md:text-3xl text-2xl font-bold leading-tight">
-                    {{$stars->name_en}} @ {{$stars->aka}}
+                    {{$stars->file_list_name}} @ {{$stars->aka}}
                 </h4>
               </span>
             </a>
