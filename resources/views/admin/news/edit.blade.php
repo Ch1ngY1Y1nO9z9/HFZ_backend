@@ -139,7 +139,7 @@
                     [{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block' ],
                     [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
                     [ {'direction': 'rtl'}, { 'align': [] }],
-                    [ 'link', 'image'],
+                    [ 'link'],
                     [ 'clean' ]
                     ],
                 },
@@ -165,49 +165,11 @@
             }
 
 
-            console.log()
-
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
             $('#check').click(function(e){
-                $img_count = $('.ql-editor').find('img').length
-                var count = 0
                 e.preventDefault();
-
-                if($('.ql-editor').find('img').length != 0){
-                    $('.ql-editor').find('img').map(function(){
-                        var img = $(this);
-                        $.ajax({
-                            method: 'POST',
-                            url: '/upload_to_imgru',
-                            data: {src:$(this).attr('src')},
-                            success: function (res) {
-                                img.attr('src',res);
-                                count += 1;
-
-                                if($img_count == count){
-                                    setTimeout(function(){
-                                        const DATA = JSON.stringify( quill.getContents() );
-                                        $('#news').html(DATA);
-                                        },2000)
-                                    setTimeout(function(){$('form').submit();},3200)
-                                }
-                            },
-                            error: function (jqXHR, textStatus, errorThrown) {
-                                console.error(textStatus + " " + errorThrown);
-                            }
-                        });
-                    })
-                }else{
-                    const DATA = JSON.stringify( quill.getContents() );
-                    $('#news').html(DATA);
-                    setTimeout(function(){$('form').submit();},1000)
-                }
+                const DATA = JSON.stringify( quill.getContents() );
+                $('#news').html(DATA);
+                setTimeout(function(){$('form').submit();},1000)
             })
 
         })
