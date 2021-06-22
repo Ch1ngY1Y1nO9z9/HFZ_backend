@@ -16,7 +16,7 @@ class Check extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_address','updated_at'];
+    protected $fillable = ['id_address','updated_at','country','location','city','VPN'];
 
     protected $table = 'check';
 }

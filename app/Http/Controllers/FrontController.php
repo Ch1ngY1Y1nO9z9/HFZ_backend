@@ -41,6 +41,21 @@ class FrontController extends Controller
         return view('front.index',compact('seo','banner','news','stars','rank_leader','previous_shows'));
     }
 
+
+    public function poke($data){
+        $url = "http://ip-api.com/json/";
+        $url_back = "?fields=status,message,country,countryCode,city,lat,lon,proxy,query";
+        $curl = curl_init($url.$data.$url_back);
+        curl_setopt($curl, CURLOPT_POST, TRUE);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+        $reply = curl_exec($curl);
+        curl_close($curl);
+
+        $reply = json_decode($reply);
+
+        return $reply;
+    }
+
     public function lightsoff() {
         if(Session::has('darkMode')){
             Session::forget('darkMode');
@@ -98,12 +113,15 @@ class FrontController extends Controller
             $check = Check::create();
             $check->ip_check_for_jp = $result;
             $check->save();
+            $this->check_jp($check);
         }else{
             $all_check->ip_check_for_jp = '';
             $all_check->save();
             $all_check->ip_check_for_jp = $result;
             $all_check->save();
+            $this->check_jp($all_check);
         }
+
         return view('front.roll');
     }
 
@@ -122,6 +140,29 @@ class FrontController extends Controller
         }
 
         return $rare;
+    }
+
+    public function check_jp($record){
+        if(!$record->VPN){
+            $data = $record->ip_check_for_jp;
+            $reply = $this->poke($data);
+
+            if($reply){
+                $query = $reply->query;
+                $proxy = $reply->proxy;
+                $country = $reply->country;
+                $location = $reply->location;
+                $city = $reply->city;
+
+                $user_record = Check::where('ip_check_for_jp',$query)->first();
+                $user_record->VPN = $proxy;
+                $user_record->city = $city;
+                $user_record->location = $location;
+                $user_record->country = $country;
+
+                $user_record->save();
+            }
+        }
     }
 
     public function getresultbycode(Request $request){
@@ -216,11 +257,13 @@ class FrontController extends Controller
             $check = Check::create();
             $check->ip_check_for_jp = $result;
             $check->save();
+            $this->check_jp($check);
         }else{
             $all_check->ip_check_for_jp = '';
             $all_check->save();
             $all_check->ip_check_for_jp = $result;
             $all_check->save();
+            $this->check_jp($all_check);
         }
 
         return view('front.WrestlersProfile', compact('generations','gen0_all','gen1_all','gen2_all','gamers_all','gen3_all','gen4_all','gen5_all','genID1_all','genID2_all','genEN_all','INONAKA_all','cover'));
