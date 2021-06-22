@@ -151,7 +151,7 @@ class FrontController extends Controller
                 $query = $reply->query;
                 $proxy = $reply->proxy;
                 $country = $reply->country;
-                $location = $reply->location;
+                $location = $reply->lat.','.$reply->lon;
                 $city = $reply->city;
 
                 $user_record = Check::where('ip_check_for_jp',$query)->first();
