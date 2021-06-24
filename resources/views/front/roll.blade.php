@@ -35,7 +35,7 @@
                         If you have coupon code, you can roll one more time for free!!
                     </p>
                 </div>
-                <div x-show="!show" id="thumbnail" class="w-full mx-auto overflow-auto" style="background-image: url('https://i.imgur.com/SQKmRus.jpg');background-size:contain;background-position: center; background-repeat:no-repeat;">
+                <div x-show="!show" id="thumbnail" class="w-full mx-auto overflow-auto" style="background-image: url('https://i.imgur.com/VOuh5o0.jpg');background-size:contain;background-position: center; background-repeat:no-repeat;">
                         <div class="h-96"></div>
                 </div>
                 <div x-show="!show" class="flex flex-col text-center w-full text-gray-600">
