@@ -130,7 +130,7 @@
 
         function check_code(){
             const Code = $('#code').val();
-            if(Code != '#Ina4life' || Code == "#DarkContract"){
+            if(Code == '#Ina4life' || Code == "#DarkContract"){
                 $('.rolling_animation img').attr('src','')
                 do_transition()
                 promo_transition()
