@@ -130,13 +130,13 @@
 
         function check_code(){
             const Code = $('#code').val();
-            if(Code != '#Ina4life'){
-                alert('Promo code is wrong!')
-            }else{
+            if(Code != '#Ina4life' || Code == "#DarkContract"){
                 $('.rolling_animation img').attr('src','')
                 do_transition()
                 promo_transition()
                 setTimeout('getrollingbycode()',3200)
+            }else {
+                alert('Promo code is wrong!')
             }
         }
 
