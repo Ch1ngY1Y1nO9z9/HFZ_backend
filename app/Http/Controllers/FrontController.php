@@ -137,6 +137,19 @@ class FrontController extends Controller
             $rare = Roll::where('rare','SSR')->inRandomOrder()->first();
         }else{
             $rare = Roll::where('rare','LEGEND')->inRandomOrder()->first();
+
+            $another_roll = rand(1,1000);
+
+            if($another_roll == 666){
+                $rare = Roll::find(666);
+
+                return $rare;
+            }
+
+        }
+
+        if($roll_number == 666) {
+            $rare = Roll::find(665);
         }
 
         return $rare;
@@ -177,6 +190,19 @@ class FrontController extends Controller
             $rare = Roll::where('rare','SSR')->inRandomOrder()->first();
         }else{
             $rare = Roll::where('rare','LEGEND')->inRandomOrder()->first();
+
+            $another_roll = rand(1,1000);
+
+            if($another_roll == 666){
+                $rare = Roll::find(666);
+
+                return $rare;
+            }
+
+        }
+
+        if($roll_number == 666) {
+            $rare = Roll::find(665);
         }
 
         return $rare;
