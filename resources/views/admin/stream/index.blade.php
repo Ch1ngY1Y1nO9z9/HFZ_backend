@@ -47,9 +47,7 @@
 
                                     </td>
                                     <td width="200">
-                                        @if(Auth::user()->role == 'admin')
-                                            <a class="btn btn-primary btn-sm" href="/admin/stream/edit/{{$item->id}}">edit</a>
-                                        @endif
+                                        <a class="btn btn-primary btn-sm" href="/admin/stream/edit/{{$item->id}}">edit</a>
                                         <a class="btn btn-success btn-sm my-1" href="/admin/stream/match_result/{{$item->stream_number}}">match result</a>
                                         <a class="btn btn-info btn-sm my-1" href="/admin/stream/song_list/{{$item->stream_number}}">song list</a>
                                         {{-- <a class="btn btn-danger  btn-sm" href="#" data-itemid="{{$item->id}}" href="">delete</a> --}}
