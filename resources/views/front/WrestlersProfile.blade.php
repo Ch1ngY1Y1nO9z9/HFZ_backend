@@ -362,6 +362,35 @@
                     @endforeach
                 </div>
 
+                <div class="w-full flex flex-wrap Members Gen-11">
+                    @foreach ($PROJECT_HOPE as $HOPE)
+                    <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$HOPE->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$HOPE->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$HOPE->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$HOPE->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$HOPE->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$HOPE->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$HOPE->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
                 <div class="w-full flex flex-wrap Members">
                     @foreach ($cover as $management)
                     <div class="p-4 w-full lg:w-1/2">

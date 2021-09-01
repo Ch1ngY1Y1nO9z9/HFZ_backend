@@ -17,6 +17,7 @@
         </div>
         <div class="container px-5 py-12 mx-auto flex flex-wrap text-gray-800">
         @foreach($wrestlers as $key => $wrestler)
+            @if($wrestler->rank == 0) @continue  @endif
             @if($wrestler->rank - $wrestler->last_week_rank == 0)
             <div class="flex relative sm:items-center w-2/3 mx-auto border-b-2">
                 <div class="h-full w-6 absolute inset-0 flex items-center justify-center bg-gray-300"></div>
