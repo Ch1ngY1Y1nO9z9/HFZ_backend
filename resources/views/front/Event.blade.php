@@ -359,9 +359,9 @@
                                                 <div class="bg-gray-600 border-b border-black flex rounded-tr">
                                                     <div
                                                         class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
-                                                        ?
+                                                        11
                                                     </div>
-                                                    <div class="px-3 py-2"></div>
+                                                    <div class="px-3 py-2"><a class="hover:text-white" href="/WrestlersProfile/N.%20AYAME">Ayame</a></div>
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                     <div
@@ -548,7 +548,10 @@
                                                     <div class="px-3 py-2"><a class="hover:text-blue-300" href="/WrestlersProfile/G.%20GURA">Gura</a></div>
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                    <div class="px-3 py-2">Loser round 2, game 3</div>
+                                                    <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
+                                                        3
+                                                    </div>
+                                                    <div class="px-3 py-2"><a class="hover:text-red-500" href="/WrestlersProfile/ROBOCO">Roboco</a></div>
                                                 </div>
                                             </div>
                                         </td>
