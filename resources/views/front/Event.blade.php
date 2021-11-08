@@ -506,10 +506,16 @@
                                         <td>
                                             <div class="-mt-6 ml-3">
                                                 <div class="bg-gray-600 border-b border-black flex rounded-tr">
-                                                    <div class="px-3 py-2">　　　　　　　　</div>
+                                                    <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
+                                                        9
+                                                    </div>
+                                                    <div class="px-3 py-2"><a class="hover:text-pink-500" href="/WrestlersProfile/M.%20CALLIOPE">Mori</a></div>
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                    <div class="px-3 py-2">　　　　　　　　</div>
+                                                    <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
+                                                        4
+                                                    </div>
+                                                    <div class="px-3 py-2"><a class="hover:text-blue-500" href="/WrestlersProfile/T.%20SORA">Sora</a></div>
                                                 </div>
                                             </div>
                                         </td>
@@ -612,10 +618,16 @@
                                         <td>
                                             <div class="-mt-6 ml-3">
                                                 <div class="bg-gray-600 border-b border-black flex rounded-tr">
-                                                    <div class="px-3 py-2">　</div>
+                                                    <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
+                                                        12
+                                                    </div>
+                                                    <div class="px-3 py-2"><a class="hover:text-blue-100" href="/WrestlersProfile/P.%20REINE">Reine</a></div>
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                    <div class="px-3 py-2">　</div>
+                                                    <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
+                                                        10
+                                                    </div>
+                                                    <div class="px-3 py-2"><a class="hover:text-white" href="/WrestlersProfile/T.%20WATAME">Watame</a></div>
                                                 </div>
                                             </div>
                                         </td>
