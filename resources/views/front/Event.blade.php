@@ -216,8 +216,8 @@
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                     <div
                                                         class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
-                                                        ?</div>
-                                                    <div class="px-3 py-2"></div>
+                                                        13</div>
+                                                    <div class="px-3 py-2">Kanata</div>
                                                 </div>
                                             </div>
                                         </td>
@@ -475,7 +475,10 @@
                                                 <div class="px-3 py-2">Flare</div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                <div class="px-3 py-2">Loser round 1, game 4</div>
+                                                <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
+                                                    4
+                                                </div>
+                                                <div class="px-3 py-2">Sora</div>
                                             </div>
                                         </td>
                                         <td>
