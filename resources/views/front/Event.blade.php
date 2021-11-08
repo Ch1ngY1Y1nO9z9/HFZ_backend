@@ -487,7 +487,10 @@
                                         <td>
                                             <div class="mt-14 ml-3">
                                                 <div class="bg-gray-600 border-b border-black flex rounded-tr">
-                                                    <div class="px-3 py-2">　</div>
+                                                    <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
+                                                        4
+                                                    </div>
+                                                    <div class="px-3 py-2">Sora</div>
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                     <div class="px-3 py-2">Loser round 2, game 3</div>
