@@ -406,8 +406,8 @@
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                     <div
                                                         class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
-                                                        ?</div>
-                                                    <div class="px-3 py-2"></div>
+                                                        15</div>
+                                                    <div class="px-3 py-2">Shion</div>
                                                 </div>
                                             </div>
                                         </td>
@@ -569,8 +569,10 @@
                                                 <div class="px-3 py-2">Watame</div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
-
-                                                <div class="px-3 py-2">Loser round 1, game 8</div>
+                                                <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
+                                                    2
+                                                </div>
+                                                <div class="px-3 py-2">Polka</div>
                                             </div>
                                         </td>
                                         <td>
