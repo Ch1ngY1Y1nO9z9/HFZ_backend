@@ -28,7 +28,7 @@
         }
 
         .loser_table {
-            height: 550px;
+            height: 700px;
         }
 
         @media(max-width: 768px){
@@ -88,13 +88,13 @@
                                             <div class="bg-gray-600 border-b border-black flex rounded-tr">
                                                 <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">1
                                                 </div>
-                                                <div class="px-3 py-2">Matsuri</div>
+                                                <div class="px-3 py-2"><a class="hover:text-green-100" href="/WrestlersProfile/N.MATSURI">Matsuri</a></div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                 <div
                                                     class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
                                                     16</div>
-                                                <div class="px-3 py-2">Noel</div>
+                                                <div class="px-3 py-2"><a class="hover:text-white" href="/WrestlersProfile/S.%20NOEL">Noel</a></div>
                                             </div>
                                         </td>
                                         <td></td>
@@ -113,13 +113,13 @@
                                             <div class="bg-gray-600 border-b border-black flex rounded-tr">
                                                 <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">9
                                                 </div>
-                                                <div class="px-3 py-2">Mori</div>
+                                                <div class="px-3 py-2"><a class="hover:text-pink-500" href="/WrestlersProfile/M.%20CALLIOPE">Mori</a></div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                 <div
                                                     class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
                                                     8</div>
-                                                <div class="px-3 py-2">Suisei</div>
+                                                <div class="px-3 py-2"><a class="hover:text-blue-300" href="/WrestlersProfile/H.%20SUISEI">Suisei</a></div>
                                             </div>
                                         </td>
                                         <td>
@@ -154,13 +154,13 @@
                                             <div class="bg-gray-600 border-b border-black flex rounded-tr">
                                                 <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">5
                                                 </div>
-                                                <div class="px-3 py-2">Flare</div>
+                                                <div class="px-3 py-2"><a class="hover:text-red-200" href="/WrestlersProfile/S.%20FLARE">Flare</a></div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                 <div
                                                     class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
                                                     12</div>
-                                                <div class="px-3 py-2">Reine</div>
+                                                <div class="px-3 py-2"><a class="hover:text-blue-100" href="/WrestlersProfile/P.%20REINE">Reine</a></div>
                                             </div>
                                         </td>
                                         <td></td>
@@ -195,13 +195,13 @@
                                             <div class="bg-gray-600 border-b border-black flex rounded-tr">
                                                 <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">13
                                                 </div>
-                                                <div class="px-3 py-2">Kanata</div>
+                                                <div class="px-3 py-2"><a class="hover:text-white" href="/WrestlersProfile/A.%20KANATA">Kanata</a></div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                 <div
                                                     class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
                                                     4</div>
-                                                <div class="px-3 py-2">Sora</div>
+                                                <div class="px-3 py-2"><a class="hover:text-blue-500" href="/WrestlersProfile/T.%20SORA">Sora</a></div>
                                             </div>
                                         </td>
                                         <td>
@@ -236,13 +236,13 @@
                                             <div class="bg-gray-600 border-b border-black flex rounded-tr">
                                                 <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">3
                                                 </div>
-                                                <div class="px-3 py-2">Roboco</div>
+                                                <div class="px-3 py-2"><a class="hover:text-red-500" href="/WrestlersProfile/ROBOCO">Roboco</a></div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                 <div
                                                     class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
                                                     14</div>
-                                                <div class="px-3 py-2">Gura</div>
+                                                <div class="px-3 py-2"><a class="hover:text-blue-300" href="/WrestlersProfile/G.%20GURA">Gura</a></div>
                                             </div>
                                         </td>
                                         <td></td>
@@ -303,13 +303,13 @@
                                             <div class="bg-gray-600 border-b border-black flex rounded-tr">
                                                 <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">11
                                                 </div>
-                                                <div class="px-3 py-2">Ayame</div>
+                                                <div class="px-3 py-2"><a class="hover:text-white" href="/WrestlersProfile/N.%20AYAME">Ayame</a></div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                 <div
                                                     class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
                                                     6</div>
-                                                <div class="px-3 py-2">Risu</div>
+                                                <div class="px-3 py-2"><a class="hover:text-red-100" href="/WrestlersProfile/A.%20RISU">Risu</a></div>
                                             </div>
                                         </td>
                                         <td>
@@ -344,13 +344,13 @@
                                             <div class="bg-gray-600 border-b border-black flex rounded-tr">
                                                 <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">7
                                                 </div>
-                                                <div class="px-3 py-2">Towa</div>
+                                                <div class="px-3 py-2"><a class="hover:text-purple-300" href="/WrestlersProfile/T.%20TOWA">Towa</a></div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                 <div
                                                     class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
                                                     10</div>
-                                                <div class="px-3 py-2">Watame</div>
+                                                <div class="px-3 py-2"><a class="hover:text-white" href="/WrestlersProfile/T.%20WATAME">Watame</a></div>
                                             </div>
                                         </td>
                                         <td></td>
@@ -385,13 +385,13 @@
                                             <div class="bg-gray-600 border-b border-black flex rounded-tr">
                                                 <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">15
                                                 </div>
-                                                <div class="px-3 py-2">Shion</div>
+                                                <div class="px-3 py-2"><a class="hover:text-purple-500" href="/WrestlersProfile/M.%20SHION">Shion</a></div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                 <div
                                                     class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
                                                     2</div>
-                                                <div class="px-3 py-2">Polka</div>
+                                                <div class="px-3 py-2"><a class="hover:text-red-500" href="/WrestlersProfile/O.%20POLKA">Polka</a></div>
                                             </div>
                                         </td>
                                         <td>
@@ -427,159 +427,158 @@
             </div>
             <div class="flex flex-col">
                 <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
-                    <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
+                    <div class="rounded overflow-hidden shadow bg-white mx-2 w-full ">
                         <div class="table-responsive bg-gray-900 ">
                             <table class="table text-gray-300 text-center w-full loser_table">
                                 <thead class="text-normal bg-gray-700">
-                                    <tr>
-                                        <th scope="col"></th>
-                                        <th scope="col">Loser round 1</th>
-                                        <th scope="col">Loser round 2</th>
-                                        <th scope="col">Loser round 3</th>
-                                        <th scope="col">Loser Bracket Winner</th>
-                                        <th scope="col"></th>
-                                    </tr>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="font-light py-1 px-2 font-bold text-gray-500">
-                                            <div class="match_number flex justify-center flex-col">
-                                                9
-                                            </div>
-                                        </td>
                                         <td>
                                             <div class="bg-gray-600 border-b border-black flex rounded-tr">
-                                                <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">?
-                                                </div>
-                                                <div class="px-3 py-2">?</div>
+                                                <div class="px-3 py-2">Loser round 1, game 1</div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                <div
-                                                    class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
-                                                    ?</div>
-                                                <div class="px-3 py-2">?</div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="font-light py-1 px-2 font-bold text-gray-500">
-                                            <div class="match_number flex justify-center flex-col">
-                                                10
+                                                <div class="px-3 py-2">Loser round 1, game 2</div>
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="bg-gray-600 border-b border-black flex rounded-tr">
-                                                <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">?
-                                                </div>
-                                                <div class="px-3 py-2">?</div>
-                                            </div>
-                                            <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                <div
-                                                    class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
-                                                    ?</div>
-                                                <div class="px-3 py-2">?</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="-mt-24 ml-3">
+                                            <div class="mt-14 ml-3">
                                                 <div class="bg-gray-600 border-b border-black flex rounded-tr">
-                                                    <div
-                                                        class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
-                                                        ?
-                                                    </div>
-                                                    <div class="px-3 py-2">?</div>
+                                                    <div class="px-3 py-2">　</div>
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                    <div
-                                                        class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
-                                                        ?</div>
-                                                    <div class="px-3 py-2">?</div>
+                                                    <div class="px-3 py-2">Loser round 2, game 4</div>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="font-light py-1 px-2 font-bold text-gray-500">
-                                            <div class="match_number flex justify-center flex-col">
-                                                11
+                                        <td>
+                                            <div class="bg-gray-600 border-b border-black flex rounded-tr">
+                                                <div class="px-3 py-2">Loser round 1, game 3</div>
+                                            </div>
+                                            <div class="bg-gray-600 border-t border-black flex rounded-br">
+                                                <div class="px-3 py-2">Loser round 1, game 4</div>
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="bg-gray-600 border-b border-black flex rounded-tr">
-                                                <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">?
+                                            <div class="mt-14 ml-3">
+                                                <div class="bg-gray-600 border-b border-black flex rounded-tr">
+                                                    <div class="px-3 py-2">　</div>
                                                 </div>
-                                                <div class="px-3 py-2">?</div>
+                                                <div class="bg-gray-600 border-t border-black flex rounded-br">
+                                                    <div class="px-3 py-2">Loser round 2, game 3</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="-mt-6 ml-3">
+                                                <div class="bg-gray-600 border-b border-black flex rounded-tr">
+                                                    <div class="px-3 py-2">　　　　　　　　</div>
+                                                </div>
+                                                <div class="bg-gray-600 border-t border-black flex rounded-br">
+                                                    <div class="px-3 py-2">　　　　　　　　</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="-mt-6 ml-3">
+                                                <div class="bg-gray-600 border-b border-black flex rounded-tr">
+                                                    <div class="px-3 py-2">　</div>
+                                                </div>
+                                                <div class="bg-gray-600 border-t border-black flex rounded-br">
+                                                    <div class="px-3 py-2">Loser round 3, game 1</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="bg-gray-600 border-b border-black flex rounded-tr">
+                                                <div class="px-3 py-2">Loser round 1, game 5</div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                <div
-                                                    class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
-                                                    ?</div>
-                                                <div class="px-3 py-2">?</div>
+                                                <div class="px-3 py-2">Loser round 1, game 6</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="mt-14 ml-3">
+                                                <div class="bg-gray-600 border-b border-black flex rounded-tr">
+                                                    <div class="px-3 py-2">　</div>
+                                                </div>
+                                                <div class="bg-gray-600 border-t border-black flex rounded-br">
+                                                    <div class="px-3 py-2">Loser round 2, game 3</div>
+                                                </div>
                                             </div>
                                         </td>
                                         <td></td>
+                                        <td></td>
                                         <td>
-                                            <div class="-mt-24 ml-3">
+                                            <div class="-mt-6 ml-3">
                                                 <div class="bg-gray-600 border-b border-black flex rounded-tr">
-                                                    <div
-                                                        class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
-                                                        ?
-                                                    </div>
-                                                    <div class="px-3 py-2">?</div>
+                                                    <div class="px-3 py-2">　　　　　　　　</div>
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                    <div
-                                                        class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
-                                                        ?</div>
-                                                    <div class="px-3 py-2">?</div>
+                                                    <div class="px-3 py-2">　　　　　　　　</div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="-mt-20 ml-3">
+                                            <div class="-mt-6 ml-3">
                                                 <div class="bg-gray-600 border-b border-black flex rounded-tr">
-                                                    <div
-                                                        class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
-                                                        ?
-                                                    </div>
-                                                    <div class="px-3 py-2">?</div>
+                                                    <div class="px-3 py-2">　</div>
+                                                </div>
+                                                <div class="bg-gray-600 border-t border-black flex rounded-br">
+                                                    <div class="px-3 py-2">Loser round 4, game 1</div>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="font-light py-1 px-2 font-bold text-gray-500">
-                                            <div class="match_number flex justify-center flex-col">
-                                                12
-                                            </div>
-                                        </td>
                                         <td>
                                             <div class="bg-gray-600 border-b border-black flex rounded-tr">
-                                                <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">?
-                                                </div>
-                                                <div class="px-3 py-2">?</div>
+                                                <div class="px-3 py-2">Loser round 1, game 7</div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                <div
-                                                    class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
-                                                    ?</div>
-                                                <div class="px-3 py-2">?</div>
+
+                                                <div class="px-3 py-2">Loser round 1, game 8</div>
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="-mt-24 ml-3">
+                                            <div class="mt-14 ml-3">
                                                 <div class="bg-gray-600 border-b border-black flex rounded-tr">
-                                                    <div
-                                                        class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
-                                                        ?
-                                                    </div>
-                                                    <div class="px-3 py-2">?</div>
+                                                    <div class="px-3 py-2">　</div>
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                    <div
-                                                        class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
-                                                        ?</div>
-                                                    <div class="px-3 py-2">?</div>
+                                                    <div class="px-3 py-2">Loser round 2, game 1</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="-mt-6 ml-3">
+                                                <div class="bg-gray-600 border-b border-black flex rounded-tr">
+                                                    <div class="px-3 py-2">　</div>
+                                                </div>
+                                                <div class="bg-gray-600 border-t border-black flex rounded-br">
+                                                    <div class="px-3 py-2">　</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="-mt-6 ml-3">
+                                                <div class="bg-gray-600 border-b border-black flex rounded-tr">
+                                                    <div class="px-3 py-2">　</div>
+                                                </div>
+                                                <div class="bg-gray-600 border-t border-black flex rounded-br">
+                                                    <div class="px-3 py-2">Loser round 3, game 2</div>
                                                 </div>
                                             </div>
                                         </td>

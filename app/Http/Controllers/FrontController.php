@@ -173,12 +173,21 @@ class FrontController extends Controller
     public function News($id) {
         $news = News::find($id);
 
+        if(!$news){
+            return abort(404);
+        }
+
         return view('front.News',compact('news'));
     }
 
     public function Box($stream_id) {
 
         $match_records = MatchesRecords::where('stream_id',$stream_id)->get();
+
+        if(!$match_records){
+            return abort(404);
+        }
+
         $songs_list = SongsLists::where('stream_id',$stream_id)->orderBy('played_at','asc')->get();
 
         return view('front.Box',compact('match_records','stream_id','songs_list'));
@@ -260,6 +269,10 @@ class FrontController extends Controller
 
     public function Profile($character) {
         $profile = Profiles::where('file_list_name',$character)->with('gens')->with('clips')->first();
+
+        if(!$profile){
+            return abort(404);
+        }
 
         $data = WrestlerData::find($profile->id);
 
