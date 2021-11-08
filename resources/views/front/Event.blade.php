@@ -127,9 +127,9 @@
                                                 <div class="bg-gray-600 border-b border-black flex rounded-tr">
                                                     <div
                                                         class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
-                                                        ?
+                                                        1
                                                     </div>
-                                                    <div class="px-3 py-2"></div>
+                                                    <div class="px-3 py-2">Matsuri</div>
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                     <div
