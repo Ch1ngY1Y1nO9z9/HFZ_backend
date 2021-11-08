@@ -324,8 +324,8 @@
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                     <div
                                                         class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
-                                                        ?</div>
-                                                    <div class="px-3 py-2"></div>
+                                                        11</div>
+                                                    <div class="px-3 py-2">Ayame</div>
                                                 </div>
                                             </div>
                                         </td>
@@ -521,7 +521,10 @@
                                                 <div class="px-3 py-2">Gura</div>
                                             </div>
                                             <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                <div class="px-3 py-2">Loser round 1, game 6</div>
+                                                <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
+                                                    6
+                                                </div>
+                                                <div class="px-3 py-2">Risu</div>
                                             </div>
                                         </td>
                                         <td>
