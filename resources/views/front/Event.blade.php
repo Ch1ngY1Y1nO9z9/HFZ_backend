@@ -464,10 +464,10 @@
                                                     <div class="px-3 py-2"><a class="hover:text-pink-500" href="/WrestlersProfile/M.%20CALLIOPE">Mori</a></div>
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                    <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
+                                                    {{-- <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
                                                         1
-                                                    </div>
-                                                    <div class="px-3 py-2"><a class="hover:text-green-100" href="/WrestlersProfile/N.MATSURI">Matsuri</a></div>
+                                                    </div> --}}
+                                                    <div class="px-3 py-2">Loser round 2, game 4</div>
                                                 </div>
                                             </div>
                                         </td>
@@ -497,9 +497,9 @@
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                     <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
-                                                        12
+                                                        3
                                                     </div>
-                                                    <div class="px-3 py-2"><a class="hover:text-blue-100" href="/WrestlersProfile/P.%20REINE">Reine</a></div>
+                                                    <div class="px-3 py-2"><a class="hover:text-red-500" href="/WrestlersProfile/ROBOCO">Roboco</a></div>
                                                 </div>
                                             </div>
                                         </td>
@@ -549,9 +549,9 @@
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                     <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
-                                                        3
+                                                        12
                                                     </div>
-                                                    <div class="px-3 py-2"><a class="hover:text-red-500" href="/WrestlersProfile/ROBOCO">Roboco</a></div>
+                                                    <div class="px-3 py-2"><a class="hover:text-blue-100" href="/WrestlersProfile/P.%20REINE">Reine</a></div>
                                                 </div>
                                             </div>
                                         </td>
@@ -602,7 +602,10 @@
                                                     <div class="px-3 py-2"><a class="hover:text-white" href="/WrestlersProfile/T.%20WATAME">Watame</a></div>
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                    <div class="px-3 py-2">Loser round 2, game 1</div>
+                                                    <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
+                                                        1
+                                                    </div>
+                                                    <div class="px-3 py-2"><a class="hover:text-green-100" href="/WrestlersProfile/N.MATSURI">Matsuri</a></div>
                                                 </div>
                                             </div>
                                         </td>
