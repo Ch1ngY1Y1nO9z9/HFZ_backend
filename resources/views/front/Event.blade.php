@@ -176,8 +176,8 @@
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                     <div
                                                         class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
-                                                        ?</div>
-                                                    <div class="px-3 py-2"></div>
+                                                        13</div>
+                                                    <div class="px-3 py-2"><a class="hover:text-white" href="/WrestlersProfile/A.%20KANATA">Kanata</a></div>
                                                 </div>
                                             </div>
                                         </td>
@@ -496,7 +496,10 @@
                                                     <div class="px-3 py-2"><a class="hover:text-blue-500" href="/WrestlersProfile/T.%20SORA">Sora</a></div>
                                                 </div>
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
-                                                    <div class="px-3 py-2">Loser round 2, game 3</div>
+                                                    <div class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
+                                                        12
+                                                    </div>
+                                                    <div class="px-3 py-2"><a class="hover:text-blue-100" href="/WrestlersProfile/P.%20REINE">Reine</a></div>
                                                 </div>
                                             </div>
                                         </td>
