@@ -331,7 +331,23 @@
                                         </td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
+                                        <td>
+                                            <div class="-mt-24 ml-3">
+                                                <div class="bg-gray-600 border-b border-black flex rounded-tr">
+                                                    <div
+                                                        class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
+                                                        11
+                                                    </div>
+                                                    <div class="px-3 py-2"><a class="hover:text-white" href="/WrestlersProfile/N.%20AYAME">Ayame</a></div>
+                                                </div>
+                                                <div class="bg-gray-600 border-t border-black flex rounded-br">
+                                                    <div
+                                                        class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
+                                                        7</div>
+                                                    <div class="px-3 py-2"><a class="hover:text-purple-300" href="/WrestlersProfile/T.%20TOWA">Towa</a></div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td></td>
                                     </tr>
                                     <tr>
