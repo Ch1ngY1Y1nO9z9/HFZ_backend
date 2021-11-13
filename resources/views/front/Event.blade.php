@@ -285,10 +285,10 @@
                                             <div class="-mt-20 ml-3">
                                                 <div class="bg-gray-600 border-b border-black flex rounded-tr">
                                                     <div
-                                                        class="numbers_block rounded-tl py-2 bg-gray-400 text-white">
-                                                        ?
+                                                        class="numbers_block rounded-tl py-2 bg-yellow-400 text-white">
+                                                        KING
                                                     </div>
-                                                    <div class="px-3 py-2"></div>
+                                                    <div class="px-3 py-2"><a class="hover:text-purple-300" href="/WrestlersProfile/T.%20TOWA">TOWA</a></div>
                                                 </div>
                                         </td>
                                         <td></td>
