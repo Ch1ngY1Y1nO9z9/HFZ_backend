@@ -276,8 +276,8 @@
                                                 <div class="bg-gray-600 border-t border-black flex rounded-br">
                                                     <div
                                                         class="numbers_block rounded-bl px-3 py-2 bg-gray-400 text-white">
-                                                        ?</div>
-                                                    <div class="px-3 py-2">Loser Bracket Winner</div>
+                                                        7</div>
+                                                    <div class="px-3 py-2"><a class="hover:text-purple-300" href="/WrestlersProfile/T.%20TOWA">Towa</a></div>
                                                 </div>
                                             </div>
                                         </td>
