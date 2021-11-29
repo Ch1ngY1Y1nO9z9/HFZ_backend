@@ -247,25 +247,25 @@
                 </div>
 
                 <div class="w-full flex flex-wrap Members Gen-7">
-                    @foreach ($genID1_all as $genID1)
+                    @foreach ($gen6_all as $gen6)
                     <div class="p-4 w-full lg:w-1/2">
                             <div
                                 class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                                <a href="/WrestlersProfile/{{$genID1->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                <a href="/WrestlersProfile/{{$gen6->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
                                     <img width="100%" class="rounded-lg object-cover object-center" alt="team"
-                                        src="{{$genID1->avatar}}">
+                                        src="{{$gen6->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$genID1->file_list_name}}</h2>
-                                    <h3 class="text-gray-500 mb-3">@ {{$genID1->aka}}</h3>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$gen6->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$gen6->aka}}</h3>
                                     <p class="mb-4">
-                                        {{$genID1->spamming}}
+                                        {{$gen6->spamming}}
                                     </p>
                                     <span class="inline-flex">
-                                        <a target="_blank" href="{{$genID1->twitter_link}}" class="text-gray-500 hover_twitter">
+                                        <a target="_blank" href="{{$gen6->twitter_link}}" class="text-gray-500 hover_twitter">
                                             <i class="fab fa-twitter"></i>
                                         </a>
-                                        <a target="_blank" href="{{$genID1->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                        <a target="_blank" href="{{$gen6->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
                                             <i class="fab fa-youtube"></i>
                                         </a>
                                     </span>
@@ -276,25 +276,25 @@
                 </div>
 
                 <div class="w-full flex flex-wrap Members Gen-8">
-                    @foreach ($genID2_all as $genID2)
+                    @foreach ($genID_all as $genID)
                     <div class="p-4 w-full lg:w-1/2">
                             <div
                                 class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                                <a href="/WrestlersProfile/{{$genID2->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                <a href="/WrestlersProfile/{{$genID->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
                                     <img width="100%" class="rounded-lg object-cover object-center" alt="team"
-                                        src="{{$genID2->avatar}}">
+                                        src="{{$genID->avatar}}">
                                 </a>
                                 <div class="flex-grow sm:pl-8">
-                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$genID2->file_list_name}}</h2>
-                                    <h3 class="text-gray-500 mb-3">@ {{$genID2->aka}}</h3>
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$genID->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$genID->aka}}</h3>
                                     <p class="mb-4">
-                                        {{$genID2->spamming}}
+                                        {{$genID->spamming}}
                                     </p>
                                     <span class="inline-flex">
-                                        <a target="_blank" href="{{$genID2->twitter_link}}" class="text-gray-500 hover_twitter">
+                                        <a target="_blank" href="{{$genID->twitter_link}}" class="text-gray-500 hover_twitter">
                                             <i class="fab fa-twitter"></i>
                                         </a>
-                                        <a target="_blank" href="{{$genID2->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                        <a target="_blank" href="{{$genID->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
                                             <i class="fab fa-youtube"></i>
                                         </a>
                                     </span>
@@ -382,6 +382,35 @@
                                             <i class="fab fa-twitter"></i>
                                         </a>
                                         <a target="_blank" href="{{$HOPE->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="w-full flex flex-wrap Members Gen-12">
+                    @foreach ($Council as $genEn2)
+                    <div class="p-4 w-full lg:w-1/2">
+                            <div
+                                class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <a href="/WrestlersProfile/{{$genEn2->file_list_name}}" class="flex-shrink-0 w-48 h-48 sm:mb-0 mb-4">
+                                    <img width="100%" class="rounded-lg object-cover object-center" alt="team"
+                                        src="{{$genEn2->avatar}}">
+                                </a>
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg @if(Session::has('darkMode')) text-white  dark-mode @else text-gray-900 @endif">{{$genEn2->file_list_name}}</h2>
+                                    <h3 class="text-gray-500 mb-3">@ {{$genEn2->aka}}</h3>
+                                    <p class="mb-4">
+                                        {{$genEn2->spamming}}
+                                    </p>
+                                    <span class="inline-flex">
+                                        <a target="_blank" href="{{$genEn2->twitter_link}}" class="text-gray-500 hover_twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                        <a target="_blank" href="{{$genEn2->youtube_link}}" class="ml-2 text-gray-500 hover_youtube">
                                             <i class="fab fa-youtube"></i>
                                         </a>
                                     </span>

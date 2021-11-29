@@ -210,56 +210,14 @@ class FrontController extends Controller
         $gen3_all = Profiles::where('generations_id','5')->get();
         $gen4_all = Profiles::where('generations_id','6')->get();
         $gen5_all = Profiles::where('generations_id','7')->get();
-        $genID1_all = Profiles::where('generations_id','8')->get();
-        $genID2_all = Profiles::where('generations_id','9')->get();
+        $gen6_all = Profiles::where('generations_id','8')->get();
+        $genID_all = Profiles::where('generations_id','9')->get();
         $genEN_all = Profiles::where('generations_id','10')->get();
         $INONAKA_all = Profiles::where('generations_id','11')->get();
         $PROJECT_HOPE = Profiles::where('generations_id','12')->get();
+        $Council = Profiles::where('generations_id','13')->get();
 
-        // if (isset($_SERVER['HTTP_CLIENT_IP'])) {
-
-        //     $result = $_SERVER['HTTP_CLIENT_IP'];
-
-        //  } elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-
-        //     $result = $_SERVER['HTTP_X_FORWARDED_FOR'];
-
-        //  } elseif (isset($_SERVER['HTTP_X_FORWARDED'])) {
-
-        //     $result = $_SERVER['HTTP_X_FORWARDED'];
-
-        //  } elseif (isset($_SERVER['HTTP_FORWARDED_FOR'])) {
-
-        //     $result = $_SERVER['HTTP_FORWARDED_FOR'];
-
-        //  } elseif (isset($_SERVER['HTTP_FORWARDED'])) {
-
-        //     $result = $_SERVER['HTTP_FORWARDED'];
-
-        //  } elseif (isset($_SERVER['REMOTE_ADDR'])) {
-
-        //     $result = $_SERVER['REMOTE_ADDR'];
-
-        //  } else {
-
-        //      $result = '';
-        //  }
-
-        // $all_check = Check::where('ip_check_for_jp',$result)->first();
-        // if(!$all_check){
-        //     $check = Check::create();
-        //     $check->ip_check_for_jp = $result;
-        //     $check->save();
-        //     $this->check_jp($check);
-        // }else{
-        //     $all_check->ip_check_for_jp = '';
-        //     $all_check->save();
-        //     $all_check->ip_check_for_jp = $result;
-        //     $all_check->save();
-        //     $this->check_jp($all_check);
-        // }
-
-        return view('front.WrestlersProfile', compact('generations','gen0_all','gen1_all','gen2_all','gamers_all','gen3_all','gen4_all','gen5_all','genID1_all','genID2_all','genEN_all','INONAKA_all','cover','PROJECT_HOPE'));
+        return view('front.WrestlersProfile', compact('generations','gen0_all','gen1_all','gen2_all','gamers_all','gen3_all','gen4_all','gen5_all','gen6_all','genID_all','genEN_all','INONAKA_all','cover','PROJECT_HOPE','Council'));
     }
 
     public function Event()
