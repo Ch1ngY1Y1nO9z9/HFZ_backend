@@ -51,7 +51,7 @@
     </script>
 
   <link rel="stylesheet" href="/css/swiper-bundle.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <!--Replace with your tailwind.css once created-->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
