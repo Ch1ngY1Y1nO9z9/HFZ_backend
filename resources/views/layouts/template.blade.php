@@ -53,11 +53,11 @@
       }
 
     .hover_youtube {
-      color: red;
+      color: #ff0000;
     }
 
     .hover_twitter {
-      color: rgba(29, 161, 242, 1.00);
+      color: #1da1f2;
     }
 
     .btt {

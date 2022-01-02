@@ -197,6 +197,7 @@
       </div>
     </div>
   </div>
+
   <div class="relative -mt-12 lg:-mt-24">
     <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -220,6 +221,7 @@
       </g>
     </svg>
   </div>
+
   <section class="py-8 @if(Session::has('darkMode')) bg-black @else bg-white @endif">
     <div class="container max-w-5xl mx-auto m-8">
       <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center" style="color:#49c8f0;">
@@ -309,6 +311,7 @@
 
     </div>
   </section>
+
   <section class="py-8 text-gray-600 body-font">
     <div class="container mx-auto flex flex-wrap pt-4 pb-12">
       <div class="flex flex-wrap w-full gray_800 @if(Session::has('darkMode')) text-gray-200 @else text-gray-800 @endif">

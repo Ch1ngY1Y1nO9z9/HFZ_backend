@@ -53,7 +53,7 @@
                             @elseif($item->type == 'video')
                                 background-image:url('/images/OCvideo_default.png');
                             @else
-                                background-image:url('{{$item->img}}'); background-size:contain;
+                                background-image:url('{{$item->thumbnail}}'); background-size:contain;
                             @endif
                             "></div>
                             <div class="w-full font-bold text-xl text-gray-800 px-6 py-6">
