@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    Rank management
+                        Rank management
                     </div>
 
                     <form method="POST" action="/admin/rank/update" enctype="multipart/form-data">
@@ -24,25 +24,27 @@
                             <hr>
                             <table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
-                                <tr>
-                                    <th>rank</th>
-                                    <th>name</th>
-                                    <th>this week rank:</th>
-                                </tr>
+                                    <tr>
+                                        <th>rank</th>
+                                        <th>name</th>
+                                        <th>this week rank:</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($items as $item)
-                                    <tr>
-                                        <td>{{$item->rank}}</td>
-                                        <td>
-                                            {{$item->name_short}}
-                                            <input type="hidden" class="form-control" id="wrestler_id" name="wrestler_id[]" value="{{$item->id}}">
-                                        </td>
-                                        <td>
-                                            <input type="number" class="form-control" id="rank" name="rank[]" required value="{{$item->rank}}" min="0" max="999">
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                    @foreach ($items as $item)
+                                        <tr>
+                                            <td>{{ $item->rank }}</td>
+                                            <td>
+                                                {{ $item->name_short }}
+                                                <input type="hidden" class="form-control" id="wrestler_id"
+                                                    name="wrestler_id[]" value="{{ $item->id }}">
+                                            </td>
+                                            <td>
+                                                <input type="number" class="form-control" id="rank" name="rank[]" required
+                                                    value="{{ $item->rank }}" min="0" max="999">
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -55,29 +57,35 @@
 @endsection
 
 @section('js')
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" defer></script>
-<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" defer></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" defer></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" defer></script>
     <script>
         $(document).ready(function() {
             $('#example').DataTable({
-                order: [[ 0, 'asc' ]],
-                "lengthMenu": [[-1], ["All"]]
+                order: [
+                    [0, 'asc']
+                ],
+                "lengthMenu": [
+                    [-1],
+                    ["All"]
+                ]
             });
 
-            $('.btn-primary').on('click',function(){
+            $('.btn-primary').on('click', function() {
                 event.preventDefault();
-                var r = confirm("Update will automatically update old rank data to last week rank and compare with new rank data, ARE YOU SURE TO UPDATE?");
+                var r = confirm(
+                    "Update will automatically update old rank data to last week rank and compare with new rank data, ARE YOU SURE TO UPDATE?"
+                );
                 if (r == true) {
                     $('form').submit();
                 }
             });
-        } );
+        });
     </script>
 
-    @if(Session::has('update'))
+    @if (Session::has('update'))
         <script>
             alert('update success!')
         </script>
     @endif
-
 @endsection

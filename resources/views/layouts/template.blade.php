@@ -108,7 +108,7 @@
               shows</a>
           </li>
           <li class="mr-3">
-            <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4 text-red-500 font-bold" href="/Event">Event</a>
+            <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4 text-red-500 font-bold" href="/Poll">Poll</a>
           </li>
           <li class="mr-3">
             <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/roll">Roll</a>

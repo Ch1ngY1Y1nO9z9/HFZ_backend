@@ -37,6 +37,8 @@ Route::get('/WrestlersProfile', 'FrontController@WrestlersProfile');
 Route::get('/WrestlersProfile/{character}', 'FrontController@Profile');
 Route::get('/Rank', 'FrontController@Rank');
 Route::get('/roll', 'FrontController@roll');
+Route::get('/Poll', 'FrontController@Poll');
+Route::post('/vote', 'PollController@countVote');
 
 Route::post('/get_result', 'FrontController@getresult');
 Route::post('/get_result_by_code', 'FrontController@getresultbycode');
@@ -65,37 +67,37 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 // 網站後台
 Route::middleware(['auth'])->prefix('admin')->group(function () {
 
-    Route::get('/','HomeController@index');
+    Route::get('/', 'HomeController@index');
 
-    Route::middleware('role:admin')->group(function(){
+    Route::middleware('role:admin')->group(function () {
         Route::get('seo', 'SeoController@index');
         Route::post('seo', 'SeoController@update');
 
         // Banner
-        Route::get('banner','BannerController@index');
+        Route::get('banner', 'BannerController@index');
         Route::get('banner/edit/{id}', 'BannerController@edit');
         Route::post('banner/update/{id}', 'BannerController@update');
 
         // 最新消息
-        Route::get('/news','NewsController@index');
-        Route::get('news/create','NewsController@create');
+        Route::get('/news', 'NewsController@index');
+        Route::get('news/create', 'NewsController@create');
         Route::get('news/edit/{id}', 'NewsController@edit');
-        Route::post('news/store','NewsController@store');
+        Route::post('news/store', 'NewsController@store');
         Route::post('news/update/{id}', 'NewsController@update');
         Route::post('news/delete/{id}', 'NewsController@delete');
 
         //聯絡我們管理
-        Route::get('contact','ContactController@index');
-        Route::get('contact/{id}','ContactController@show');
-        Route::post('contact/delete/{id}','ContactController@delete');
+        Route::get('contact', 'ContactController@index');
+        Route::get('contact/{id}', 'ContactController@show');
+        Route::post('contact/delete/{id}', 'ContactController@delete');
 
         //檔案資料管理
-        Route::get('profile','ProfilesController@index');
+        Route::get('profile', 'ProfilesController@index');
         Route::get('profile_data/edit/{id}', 'ProfilesController@edit_data');
         Route::post('profile_data/update/{id}', 'ProfilesController@update_data');
 
         // 短片管理
-        Route::get('profile/{wrestler_id}/clips','ClipsController@index');
+        Route::get('profile/{wrestler_id}/clips', 'ClipsController@index');
         Route::get('profile/{wrestler_id}/clips/create', 'ClipsController@create');
         Route::get('profile/{wrestler_id}/clips/edit/{id}', 'ClipsController@edit');
         Route::post('profile/clips/store', 'ClipsController@store');
@@ -103,13 +105,15 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         Route::post('profile/clips/delete/{id}', 'ClipsController@delete');
 
         //排行榜
-        Route::get('/rank','ProfilesController@rank_index');
+        Route::get('/rank', 'ProfilesController@rank_index');
         Route::post('/rank/update', 'ProfilesController@rank_update');
+
+        Route::get('/poll', 'PollController@index');
     });
 
 
     // 直播記錄管理
-    Route::get('stream','StreamRecordsController@index');
+    Route::get('stream', 'StreamRecordsController@index');
     Route::get('stream/create', 'StreamRecordsController@create')->middleware('role:admin');
     Route::get('stream/edit/{id}', 'StreamRecordsController@edit');
     Route::post('stream/store', 'StreamRecordsController@store')->middleware('role:admin');
@@ -117,7 +121,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('stream/delete/{id}', 'StreamRecordsController@delete')->middleware('role:admin');
 
     // 比賽紀錄管理
-    Route::get('stream/match_result/{stream_id}','MatchResultController@index');
+    Route::get('stream/match_result/{stream_id}', 'MatchResultController@index');
     Route::get('stream/match_result/{stream_id}/create', 'MatchResultController@create');
     Route::get('stream/match_result/{stream_id}/edit/{id}', 'MatchResultController@edit');
     Route::post('stream/match_result/{stream_id}/store', 'MatchResultController@store');
@@ -125,11 +129,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('stream/match_result/delete/{id}', 'MatchResultController@delete');
 
     // 歌單管理
-    Route::get('stream/song_list/{stream_id}','SongListController@index');
+    Route::get('stream/song_list/{stream_id}', 'SongListController@index');
     Route::get('stream/song_list/{stream_id}/create', 'SongListController@create');
     Route::get('stream/song_list/edit/{id}', 'SongListController@edit');
     Route::post('stream/song_list/store', 'SongListController@store');
     Route::post('stream/song_list/update/{id}', 'SongListController@update');
     Route::post('stream/song_list/delete/{id}', 'SongListController@delete');
-
 });

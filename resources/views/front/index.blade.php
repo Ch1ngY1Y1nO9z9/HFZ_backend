@@ -134,7 +134,7 @@
               shows</a>
           </li>
           <li class="mr-3">
-            <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4 text-red-500 font-bold" href="/Event">Event</a>
+            <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4 text-red-500 font-bold" href="/Poll">Poll</a>
           </li>
           <li class="mr-3">
             <a class="inline-block no-underline hover:text-blue-200 hover:text-underline py-2 px-4" href="/roll">Roll</a>
@@ -485,8 +485,8 @@
           <a href="/PreviousShows" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
             <h2 class="title-font font-medium tracking-widest text-sm mb-3">Previous Shows</h2>
           </a>
-          <a href="/Event" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
-            <h2 class="title-font font-medium tracking-widest text-sm mb-3 text-red-500 font-bold">Event</h2>
+          <a href="/Poll" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
+            <h2 class="title-font font-medium tracking-widest text-sm mb-3 text-red-500 font-bold">Poll</h2>
           </a>
           <a href="/FAQ" class="md\:w-2 inline-block no-underline hover:text-underline py-2 px-4">
             <h2 class="title-font font-medium tracking-widest text-sm mb-3">FAQ</h2>
@@ -517,6 +517,8 @@
     <script>
         $('.lights').click(function(){
             if($('body').hasClass('bg-white')){
+
+                console.log($('section.bg-white'))
 
                 $('body').removeClass('bg-white')
                 $('body').addClass('bg-black')
