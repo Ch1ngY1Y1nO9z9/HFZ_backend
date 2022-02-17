@@ -34,7 +34,7 @@ class PollController extends Controller
             $place1 = Poll::where('name_short', $votes['place1'])->first();
 
             $place1['vote'] += 1;
-            $place1['point'] += 5;
+            $place1['point'] += 7;
 
             $place1->save();
         }
@@ -48,8 +48,8 @@ class PollController extends Controller
             $place2->save();
         }
 
-        if(!empty($vote['place3'])){
-            $place3 = Poll::where('name_short', $vote['place3'])->first();
+        if(!empty($votes['place3'])){
+            $place3 = Poll::where('name_short', $votes['place3'])->first();
 
             $place3['vote'] += 1;
             $place3['point'] += 3;
@@ -61,7 +61,7 @@ class PollController extends Controller
             $place4 = Poll::where('name_short', $votes['place4'])->first();
 
             $place4['vote'] += 1;
-            $place4['point'] += 5;
+            $place4['point'] += 2;
 
             $place4->save();
         }
@@ -70,7 +70,7 @@ class PollController extends Controller
             $place5 = Poll::where('name_short', $votes['place5'])->first();
 
             $place5['vote'] += 1;
-            $place5['point'] += 5;
+            $place5['point'] += 1;
 
             $place5->save();
         }
