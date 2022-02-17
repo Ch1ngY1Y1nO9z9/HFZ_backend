@@ -239,10 +239,10 @@ class FrontController extends Controller
         }else{
             $checked = 'false';
         }
+ 
 
 
-
-        return view('Front.poll', compact('list', 'place','checked'));
+        return view('front.poll', compact('list', 'place','checked'));
     }
 
     public function contact_us(Request $request)
