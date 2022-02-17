@@ -21,45 +21,52 @@
                     </h1>
                     <p class="lg:w-2/3 mx-auto leading-relaxed text-xl">
                         Choose your top 5 favorites. <br>
-                        (please don't pick the same character)
+                        (please don't pick the same character) <br>
+                        (first place will gaint most points)
                     </p>
                 </div>
             </div>
 
             <div class="container px-5 pb-12 mx-auto">
-                @if ($checked == 'false')
-                    <form action="/vote" method="post" id="PollVote">
-                        <div class="ml-6 items-center w-full">
-                            @csrf
-                            <div class="w-full text-black flex justify-between">
-                                @foreach ($place as $num)
-                                    <div class="relative">
-                                        <label for="place{{ $num }}" class="leading-7 text-xl">
-                                            place {{ $num }} :
-                                        </label>
-                                        <select name="place{{ $num }}"
-                                            class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10 placeSelect"
-                                            required>
-                                            <option selected hidden>-</option>
-                                            @foreach ($list as $wrestler)
-                                                <option value="{{ $wrestler['name_short'] }}">
-                                                    {{ $wrestler['name_short'] }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                @endforeach
+                @if ($OP->event_controll != 'stop')
+                    @if ($checked == 'false')
+                        <form action="/vote" method="post" id="PollVote">
+                            <div class="ml-6 items-center w-full">
+                                @csrf
+                                <div class="w-full text-black flex justify-between">
+                                    @foreach ($place as $num)
+                                        <div class="relative">
+                                            <label for="place{{ $num }}" class="leading-7 text-xl">
+                                                place {{ $num }} :
+                                            </label>
+                                            <select name="place{{ $num }}"
+                                                class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10 placeSelect"
+                                                required>
+                                                <option selected hidden>-</option>
+                                                @foreach ($list as $wrestler)
+                                                    <option value="{{ $wrestler['name_short'] }}">
+                                                        {{ $wrestler['name_short'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <input type="hidden" value="" name="recaptcha_response" id="recaptchaResponse">
+                                <div class="py-12 w-full">
+                                    <button
+                                        class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+                                </div>
                             </div>
-                            <input type="hidden" value="" name="recaptcha_response" id="recaptchaResponse">
-                            <div class="py-12 w-full">
-                                <button
-                                    class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                @elseif($checked == 'true')
+                        </form>
+                    @elseif($checked == 'true')
+                        <h2 class="text-5xl font-medium title-font mb-4 tracking-widest font-bold text-red-500 text-center">
+                            THANKS FOR YOUR VOTE :)
+                        </h2>
+                    @endif
+                @else
                     <h2 class="text-5xl font-medium title-font mb-4 tracking-widest font-bold text-red-500 text-center">
-                        THANKS FOR YOUR VOTE :)
+                        POLL IS CLOSED, PLZ WAIT FOR NEXT POLL :)
                     </h2>
                 @endif
                 <div class="flex flex-col text-center w-full text-gray-600">

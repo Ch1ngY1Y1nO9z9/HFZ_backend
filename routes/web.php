@@ -109,6 +109,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         Route::post('/rank/update', 'ProfilesController@rank_update');
 
         Route::get('/poll', 'PollController@index');
+        Route::post('/poll/close', 'PollController@close');
     });
 
 

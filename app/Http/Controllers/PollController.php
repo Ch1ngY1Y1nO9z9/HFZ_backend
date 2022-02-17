@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Poll;
+use App\User;
 use App\Check;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,20 @@ class PollController extends Controller
     public function index()
     {
         $items = Poll::orderBy('point', 'desc')->get();
+        $OP = User::find(1);
 
-        return view('admin.poll.index', compact('items'));
+        return view('admin.poll.index', compact('items','OP'));
+    }
+
+    public function close()
+    {
+        $OP = User::find(1);
+
+        $OP['event_controll'] = 'stop';
+
+        $OP->save();
+
+        return redirect('/admin/poll')->with('closed', 'poll is closed');
     }
 
     public function countVote(Request $request)

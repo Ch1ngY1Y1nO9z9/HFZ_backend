@@ -239,10 +239,11 @@ class FrontController extends Controller
         }else{
             $checked = 'false';
         }
- 
+
+        $OP = User::find(1);
 
 
-        return view('front.poll', compact('list', 'place','checked'));
+        return view('front.poll', compact('list', 'place','checked','OP'));
     }
 
     public function contact_us(Request $request)

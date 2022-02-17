@@ -14,6 +14,17 @@
                     </div>
 
                     <div class="card-body">
+                        @if($OP->event_controll != 'stop')
+                            <form method="POST" action="/admin/poll/close" enctype="multipart/form-data">
+                                @csrf
+                                <div class="card-body">
+                                    <button type="submit" class="btn btn-primary d-block mx-auto">Close</button>
+                                    <div class="col-12 text-danger">
+                                        *Click it to close the poll :)
+                                    </div>
+                                </div>
+                            </form>
+                        @endif
                         <table id="example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
@@ -57,4 +68,10 @@
             });
         });
     </script>
+
+@if (Session::has('closed'))
+<script>
+    alert('poll is closed!')
+</script>
+@endif
 @endsection
