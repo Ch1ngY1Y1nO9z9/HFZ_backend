@@ -20,6 +20,7 @@
                                     <th>place</th>
                                     <th>name</th>
                                     <th>point</th>
+                                    <th>votes</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -28,6 +29,7 @@
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $item->name_short }}</td>
                                         <td>{{ $item->point }}</td>
+                                        <td>{{ $item->vote }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
