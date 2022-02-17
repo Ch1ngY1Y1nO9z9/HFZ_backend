@@ -76,7 +76,7 @@ class PollController extends Controller
         }
 
 
-        return redirect('/Poll')->with('thanks');
+        return redirect('/Poll')->with('thanks',':)');
     }
 
     public function check($data)
