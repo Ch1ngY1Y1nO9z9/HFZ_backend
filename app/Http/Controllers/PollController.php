@@ -21,51 +21,54 @@ class PollController extends Controller
         $ip = request()->ip();
         $this->check($ip);
 
-        $vote = $request->all();
+        $votes = $request->all();
 
-        if(!empty($vote['place1'])){
-            $place1 = Poll::where('name_short', $vote['place1'])->first();
+        foreach($votes as $vote){
+            
+            if(!empty($vote['place1'])){
+                $place1 = Poll::where('name_short', $vote['place1'])->first();
 
-            $place1['vote'] += 1;
-            $place1['point'] += 5;
+                $place1['vote'] += 1;
+                $place1['point'] += 5;
 
-            $place1->save();
-        }
+                $place1->save();
+            }
 
-        if(!empty($vote['place2'])){
-            $place2 = Poll::where('name_short', $vote['place2'])->first();
+            if(!empty($vote['place2'])){
+                $place2 = Poll::where('name_short', $vote['place2'])->first();
 
-            $place2['vote'] += 1;
-            $place2['point'] += 4;
+                $place2['vote'] += 1;
+                $place2['point'] += 4;
 
-            $place2->save();
-        }
+                $place2->save();
+            }
 
-        if(!empty($vote['place3'])){
-            $place3 = Poll::where('name_short', $vote['place3'])->first();
+            if(!empty($vote['place3'])){
+                $place3 = Poll::where('name_short', $vote['place3'])->first();
 
-            $place3['vote'] += 1;
-            $place3['point'] += 3;
+                $place3['vote'] += 1;
+                $place3['point'] += 3;
 
-            $place3->save();
-        }
+                $place3->save();
+            }
 
-        if(!empty($vote['place4'])){
-            $place4 = Poll::where('name_short', $vote['place4'])->first();
+            if(!empty($vote['place4'])){
+                $place4 = Poll::where('name_short', $vote['place4'])->first();
 
-            $place4['vote'] += 1;
-            $place4['point'] += 5;
+                $place4['vote'] += 1;
+                $place4['point'] += 5;
 
-            $place4->save();
-        }
+                $place4->save();
+            }
 
-        if(!empty($vote['place5'])){
-            $place5 = Poll::where('name_short', $vote['place5'])->first();
+            if(!empty($vote['place5'])){
+                $place5 = Poll::where('name_short', $vote['place5'])->first();
 
-            $place5['vote'] += 1;
-            $place5['point'] += 5;
+                $place5['vote'] += 1;
+                $place5['point'] += 5;
 
-            $place5->save();
+                $place5->save();
+            }
         }
 
         return redirect('/Poll')->with('thanks');
