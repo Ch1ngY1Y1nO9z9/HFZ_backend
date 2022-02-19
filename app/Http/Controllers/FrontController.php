@@ -218,7 +218,7 @@ class FrontController extends Controller
 
         $wreslter_records = MatchesRecords::where(function ($q) use ($name) {
             $q->orWhere('participants', 'like', "%{$name}%");
-        })->orderBy('id', 'desc')->get();
+        })->orderBy('id', 'desc')->orderBy('game', 'desc')->get();
 
         return view('front.Profile', compact('profile', 'data', 'wreslter_records', 'team_mate_name'));
     }
