@@ -86,7 +86,7 @@
                         <div class="flex relative sm:items-center w-2/3 mx-auto border-b-2">
                             <div class="h-full w-6 absolute inset-0 flex items-center justify-center"></div>
                             <div
-                                class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center relative z-10 title-font font-medium text-xl">
+                                class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center relative z-10 text-red-500 text-2xl font-bold">
                                 {{ $key + 1 }}</div>
                             <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row py-10">
                                 <div
@@ -94,10 +94,10 @@
                                     <img width="100%" src="{{ $wrestler->avatar }}" alt="{{ $wrestler->name_short }}">
                                 </div>
                                 <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                                    <h2 class="font-medium title-font mb-1 text-xl text-center sm:text-left">
+                                    <h2 class="font-medium title-font mb-1 text-2xl font-bold text-center sm:text-left">
                                         {{ $wrestler->name_short }}</h2>
-                                    <p class="leading-relaxed">
-                                        Point: {{ $wrestler->point }} votes: {{ $wrestler->vote }}
+                                    <p class="leading-relaxed text-xl">
+                                        Total Point: {{ $wrestler->point }} <br> Total Votes: {{ $wrestler->vote }}
 
                                     </p>
                                 </div>
