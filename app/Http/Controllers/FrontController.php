@@ -226,24 +226,23 @@ class FrontController extends Controller
     public function Poll()
     {
 
-        $list = Poll::all();
-        $place = [1, 2, 3, 4, 5];
+        $list = Poll::orderBy('point', 'desc')->get();
+        // $place = [1, 2, 3, 4, 5];
 
-        $ip = request()->ip();
-        $check = Check::where('ip_check',$ip)->first();
+        // $ip = request()->ip();
+        // $check = Check::where('ip_check',$ip)->first();
 
-        $checked = '';
+        // $checked = '';
 
-        if($check){
-            $checked = 'true';
-        }else{
-            $checked = 'false';
-        }
+        // if($check){
+        //     $checked = 'true';
+        // }else{
+        //     $checked = 'false';
+        // }
 
-        $OP = User::find(1);
+        // $OP = User::find(1);
 
-
-        return view('front.poll', compact('list', 'place','checked','OP'));
+        return view('front.poll', compact('list'));
     }
 
     public function contact_us(Request $request)

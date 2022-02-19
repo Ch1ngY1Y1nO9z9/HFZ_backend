@@ -14,7 +14,7 @@
                 </div>
             </div>
 
-            <div class="container px-5 py-12 mx-auto">
+            {{-- <div class="container px-5 py-12 mx-auto">
                 <div class="flex flex-col text-center w-full text-gray-600">
                     <h1 class="text-3xl font-medium title-font mb-4 tracking-widest font-bold text-red-500">
                         Top favorite HoloFightZ V-Rumblers
@@ -25,10 +25,10 @@
                         (first place will gaint most points)
                     </p>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="container px-5 pb-12 mx-auto">
-                @if ($OP->event_controll != 'stop')
+                {{-- @if ($OP->event_controll != 'stop')
                     @if ($checked == 'false')
                         <form action="/vote" method="post" id="PollVote">
                             <div class="ml-6 items-center w-full">
@@ -68,14 +68,43 @@
                     <h2 class="text-5xl font-medium title-font mb-4 tracking-widest font-bold text-red-500 text-center">
                         POLL IS CLOSED, PLZ WAIT FOR NEXT POLL :)
                     </h2>
-                @endif
+                @endif --}}
                 <div class="flex flex-col text-center w-full text-gray-600">
-                    <h2 class="text-3xl font-medium title-font mb-4 tracking-widest font-bold" style="color:#49c8f0;">
-                        V-Rumbler List:
+                    <h2 class="text-3xl font-medium title-font mb-4 tracking-widest font-bold text-red-500">
+                        RESULT:
                     </h2>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+                        all the points are from your vote,<br>first place will get 7 point, second place get 4 point, third
+                        place get 3 point, fourth get 2, fifth get 1 point.
+                    </p>
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-white">
+                        (and i still don't know why you fuckers vote Cena)
+                    </p>
                 </div>
-                <div class="w-full flex flex-wrap mt-5">
-                    @foreach ($list as $wrestler)
+                <div class="w-full flex flex-wrap text-gray-800">
+                    @foreach ($list as $key => $wrestler)
+                        <div class="flex relative sm:items-center w-2/3 mx-auto border-b-2">
+                            <div class="h-full w-6 absolute inset-0 flex items-center justify-center"></div>
+                            <div
+                                class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center relative z-10 title-font font-medium text-xl">
+                                {{ $key + 1 }}</div>
+                            <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row py-10">
+                                <div
+                                    class="flex-shrink-0 w-24 h-24 rounded-full inline-flex items-center justify-center overflow-hidden">
+                                    <img width="100%" src="{{ $wrestler->avatar }}" alt="{{ $wrestler->name_short }}">
+                                </div>
+                                <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                                    <h2 class="font-medium title-font mb-1 text-xl text-center sm:text-left">
+                                        {{ $wrestler->name_short }}</h2>
+                                    <p class="leading-relaxed">
+                                        Point: {{ $wrestler->point }} votes: {{ $wrestler->vote }}
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    {{-- @foreach ($list as $wrestler)
                         <div class="p-4 w-full lg:w-1/4">
                             <div class="h-full text-center">
                                 <div href="/WrestlersProfile/{{ $wrestler->file_list_name }}"
@@ -91,7 +120,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @endforeach --}}
                 </div>
             </div>
         </section>
